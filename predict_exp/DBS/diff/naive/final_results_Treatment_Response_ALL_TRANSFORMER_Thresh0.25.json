@@ -1,0 +1,64 @@
+{
+  "summary": {
+    "acc": [
+      0.6909090909090908,
+      0.12331509060227759
+    ],
+    "f1": [
+      0.678937728937729,
+      0.213345672971628
+    ],
+    "precision": [
+      0.7942857142857143,
+      0.13449831195359793
+    ],
+    "recall": [
+      0.7142857142857142,
+      0.3155098813995704
+    ],
+    "auc": [
+      0.5599999999999999,
+      0.1756258649642599
+    ],
+    "ap": [
+      0.7158152958152957,
+      0.10037323202542191
+    ]
+  },
+  "hyperparameters": {
+    "batch_size": 8,
+    "learning_rate": 0.0005,
+    "num_epochs": 200,
+    "hidden_dim": 256,
+    "num_blocks": 4,
+    "dropout": 0.3,
+    "feature_type": "ALL",
+    "improvement_threshold": 0.25,
+    "model_type": "Transformer",
+    "svm_params": {
+      "C": 1.0,
+      "kernel": "rbf",
+      "gamma": "scale",
+      "probability": true
+    },
+    "transformer_params": {
+      "embed_dim": 64,
+      "num_heads": 4,
+      "num_layers": 2,
+      "ffn_dim": 128,
+      "dropout": 0.2
+    },
+    "gcn_params": {
+      "hidden_dim": 64,
+      "num_layers": 2,
+      "dropout": 0.5
+    },
+    "early_stopping_patience": 15,
+    "validation_split": 0.2
+  },
+  "total_samples": 55,
+  "class_distribution": [
+    24,
+    31
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "summary": {
+    "acc": [
+      0.6181818181818182,
+      0.12060453783110547
+    ],
+    "f1": [
+      0.5846031746031746,
+      0.20573510574633963
+    ],
+    "precision": [
+      0.7833333333333333,
+      0.17756063127218763
+    ],
+    "recall": [
+      0.5619047619047619,
+      0.2779092659317119
+    ],
+    "auc": [
+      0.5114285714285715,
+      0.12629734917314486
+    ],
+    "ap": [
+      0.6631675599532741,
+      0.10721473563513775
+    ]
+  },
+  "hyperparameters": {
+    "batch_size": 8,
+    "learning_rate": 0.0005,
+    "num_epochs": 200,
+    "hidden_dim": 256,
+    "num_blocks": 4,
+    "dropout": 0.3,
+    "feature_type": "ALL",
+    "improvement_threshold": 0.25,
+    "model_type": "LDA",
+    "svm_params": {
+      "C": 1.0,
+      "kernel": "rbf",
+      "gamma": "scale",
+      "probability": true
+    },
+    "transformer_params": {
+      "d_model": 128,
+      "nhead": 8,
+      "dim_feedforward": 256,
+      "num_layers": 4,
+      "use_cls_token": true
+    },
+    "gcn_params": {
+      "gcn_hidden": 128,
+      "gcn_layers": 2
+    }
+  },
+  "total_samples": 55,
+  "class_distribution": [
+    24,
+    31
+  ]
+}

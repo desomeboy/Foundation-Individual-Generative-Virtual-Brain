@@ -1,0 +1,2235 @@
+2025-12-16 14:39:22,452 - INFO - Using device: cpu
+2025-12-16 14:39:22,474 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 14:39:22,474 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 14:39:22,474 - INFO - Building diff file index...
+2025-12-16 14:39:23,286 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 14:39:23,831 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 14:39:24,292 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 14:39:24,368 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 14:39:24,506 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 14:39:24,895 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 14:39:25,086 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 14:39:25,174 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 14:39:25,581 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 14:39:25,725 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 14:39:25,776 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 14:39:25,929 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 14:39:26,038 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 14:39:26,084 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 14:39:26,151 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 14:39:26,255 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 14:39:26,339 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 14:39:26,451 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 14:39:26,634 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 14:39:26,707 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 14:39:26,771 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 14:39:26,853 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 14:39:27,055 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 14:39:27,209 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 14:39:27,483 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 14:39:27,769 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 14:39:27,883 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 14:39:27,925 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 14:39:28,092 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 14:39:28,199 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 14:39:28,235 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 14:39:28,281 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 14:39:28,384 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 14:39:28,526 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 14:39:28,570 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 14:39:28,685 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 14:39:28,731 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 14:39:28,908 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 14:39:28,954 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 14:39:28,976 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 14:39:29,064 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 14:39:29,091 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 14:39:29,316 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 14:39:29,335 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 14:39:29,358 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 14:39:29,414 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 14:39:29,462 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 14:39:29,488 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 14:39:29,501 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 14:39:29,617 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 14:39:29,661 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 14:39:29,691 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 14:39:29,762 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 14:39:29,890 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 14:39:29,981 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 14:39:29,984 - INFO - Built diff index with 71 patients
+2025-12-16 14:39:29,984 - INFO - Parsing UPDRS data...
+2025-12-16 14:39:30,099 - INFO - Improvement rate statistics:
+2025-12-16 14:39:30,112 - INFO -   Min: 0.0000
+2025-12-16 14:39:30,112 - INFO -   Max: 0.6970
+2025-12-16 14:39:30,112 - INFO -   Mean: 0.3115
+2025-12-16 14:39:30,112 - INFO -   Std: 0.1750
+2025-12-16 14:39:30,113 - INFO - Found 55 valid samples
+2025-12-16 14:39:30,113 - INFO - Preparing feature matrices...
+2025-12-16 14:39:31,881 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 14:39:31,888 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 14:39:31,888 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 14:39:31,888 - INFO - 
+============================================================
+2025-12-16 14:39:31,889 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 14:39:31,889 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 14:39:31,889 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 14:39:31,889 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:39:31,889 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 14:39:31,890 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 14:39:39,998 - INFO - Training fold 1 with early stopping (patience=50)...
+2025-12-16 14:40:03,708 - INFO - Epoch 1/200 | Train Loss: 0.081592 | Val Loss: 0.034379 | Best: inf (ep 1)
+2025-12-16 14:43:24,273 - INFO - Epoch 10/200 | Train Loss: 0.013926 | Val Loss: 0.048073 | Best: inf (ep 1)
+2025-12-16 14:47:56,602 - INFO - Using device: cuda
+2025-12-16 14:47:56,603 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 14:47:56,603 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 14:47:56,603 - INFO - Building diff file index...
+2025-12-16 14:47:56,642 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 14:47:56,650 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 14:47:56,656 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 14:47:56,657 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 14:47:56,660 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 14:47:56,664 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 14:47:56,666 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 14:47:56,669 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 14:47:56,675 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 14:47:56,677 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 14:47:56,678 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 14:47:56,680 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 14:47:56,681 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 14:47:56,681 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 14:47:56,682 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 14:47:56,684 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 14:47:56,686 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 14:47:56,687 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 14:47:56,690 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 14:47:56,691 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 14:47:56,692 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 14:47:56,693 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 14:47:56,696 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 14:47:56,698 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 14:47:56,702 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 14:47:56,707 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 14:47:56,709 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 14:47:56,710 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 14:47:56,712 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 14:47:56,714 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 14:47:56,716 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 14:47:56,717 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 14:47:56,719 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 14:47:56,720 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 14:47:56,721 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 14:47:56,724 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 14:47:56,725 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 14:47:56,727 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 14:47:56,728 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 14:47:56,729 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 14:47:56,730 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 14:47:56,731 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 14:47:56,735 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 14:47:56,736 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 14:47:56,737 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 14:47:56,738 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 14:47:56,738 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 14:47:56,739 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 14:47:56,740 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 14:47:56,746 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 14:47:56,747 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 14:47:56,748 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 14:47:56,748 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 14:47:56,755 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 14:47:56,777 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 14:47:56,777 - INFO - Built diff index with 71 patients
+2025-12-16 14:47:56,777 - INFO - Parsing UPDRS data...
+2025-12-16 14:47:56,802 - INFO - Improvement rate statistics:
+2025-12-16 14:47:56,802 - INFO -   Min: 0.0000
+2025-12-16 14:47:56,802 - INFO -   Max: 0.6970
+2025-12-16 14:47:56,802 - INFO -   Mean: 0.3115
+2025-12-16 14:47:56,802 - INFO -   Std: 0.1750
+2025-12-16 14:47:56,802 - INFO - Found 55 valid samples
+2025-12-16 14:47:56,802 - INFO - Preparing feature matrices...
+2025-12-16 14:47:57,029 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 14:47:57,029 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 14:47:57,029 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 14:47:57,029 - INFO - 
+============================================================
+2025-12-16 14:47:57,029 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 14:47:57,029 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 14:47:57,029 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 14:47:57,029 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:47:57,030 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 14:47:57,030 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 14:47:58,260 - INFO - Training fold 1 with early stopping (patience=50)...
+2025-12-16 14:47:58,604 - INFO - Epoch 1/200 | Train Loss: 0.065998 | Val Loss: 0.032021 | Best: inf (ep 1)
+2025-12-16 14:47:58,795 - INFO - Epoch 10/200 | Train Loss: 0.019146 | Val Loss: 0.024920 | Best: inf (ep 1)
+2025-12-16 14:47:59,007 - INFO - Epoch 20/200 | Train Loss: 0.004524 | Val Loss: 0.029809 | Best: inf (ep 1)
+2025-12-16 14:47:59,218 - INFO - Epoch 30/200 | Train Loss: 0.003768 | Val Loss: 0.025248 | Best: inf (ep 1)
+2025-12-16 14:47:59,430 - INFO - Epoch 40/200 | Train Loss: 0.002391 | Val Loss: 0.020896 | Best: inf (ep 1)
+2025-12-16 14:47:59,641 - INFO - Epoch 50/200 | Train Loss: 0.002703 | Val Loss: 0.029469 | Best: inf (ep 1)
+2025-12-16 14:48:00,160 - INFO - Epoch 60/200 | Train Loss: 0.001656 | Val Loss: 0.033616 | Best: 0.023989 (ep 56)
+2025-12-16 14:48:00,479 - INFO - Epoch 70/200 | Train Loss: 0.001791 | Val Loss: 0.031330 | Best: 0.023164 (ep 64)
+2025-12-16 14:48:00,771 - INFO - Epoch 80/200 | Train Loss: 0.001775 | Val Loss: 0.032100 | Best: 0.022617 (ep 79)
+2025-12-16 14:48:00,983 - INFO - Epoch 90/200 | Train Loss: 0.001125 | Val Loss: 0.026664 | Best: 0.022617 (ep 79)
+2025-12-16 14:48:01,195 - INFO - Epoch 100/200 | Train Loss: 0.001389 | Val Loss: 0.030262 | Best: 0.022617 (ep 79)
+2025-12-16 14:48:01,407 - INFO - Epoch 110/200 | Train Loss: 0.001117 | Val Loss: 0.025534 | Best: 0.022617 (ep 79)
+2025-12-16 14:48:01,619 - INFO - Epoch 120/200 | Train Loss: 0.000896 | Val Loss: 0.026127 | Best: 0.022617 (ep 79)
+2025-12-16 14:48:01,811 - INFO - Early stopping at epoch 129! Best val loss: 0.022617 at epoch 79
+2025-12-16 14:48:01,826 - INFO - Loaded best model from epoch 79
+2025-12-16 14:48:01,842 - INFO - Fold 1 Results - MSE: 0.0226, MAE: 0.1342, R²: 0.2402, Pearson r: 0.5802
+2025-12-16 14:48:01,842 - INFO - 
+--- Fold 2/5 ---
+2025-12-16 14:48:01,842 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:48:01,842 - INFO - Train target - Mean: 0.3079, Std: 0.1712
+2025-12-16 14:48:01,842 - INFO - Test target  - Mean: 0.3255, Std: 0.1887
+2025-12-16 14:48:01,865 - INFO - Training fold 2 with early stopping (patience=50)...
+2025-12-16 14:48:01,887 - INFO - Epoch 1/200 | Train Loss: 0.060689 | Val Loss: 0.053063 | Best: inf (ep 1)
+2025-12-16 14:48:02,078 - INFO - Epoch 10/200 | Train Loss: 0.012663 | Val Loss: 0.037288 | Best: inf (ep 1)
+2025-12-16 14:48:02,291 - INFO - Epoch 20/200 | Train Loss: 0.005230 | Val Loss: 0.034056 | Best: inf (ep 1)
+2025-12-16 14:48:02,505 - INFO - Epoch 30/200 | Train Loss: 0.002356 | Val Loss: 0.037593 | Best: inf (ep 1)
+2025-12-16 14:48:02,717 - INFO - Epoch 40/200 | Train Loss: 0.001667 | Val Loss: 0.039298 | Best: inf (ep 1)
+2025-12-16 14:48:02,930 - INFO - Epoch 50/200 | Train Loss: 0.001760 | Val Loss: 0.032139 | Best: inf (ep 1)
+2025-12-16 14:48:03,194 - INFO - Epoch 60/200 | Train Loss: 0.001620 | Val Loss: 0.036434 | Best: 0.035376 (ep 56)
+2025-12-16 14:48:03,440 - INFO - Epoch 70/200 | Train Loss: 0.001602 | Val Loss: 0.036268 | Best: 0.031949 (ep 64)
+2025-12-16 14:48:03,715 - INFO - Epoch 80/200 | Train Loss: 0.001068 | Val Loss: 0.040371 | Best: 0.030744 (ep 71)
+2025-12-16 14:48:03,930 - INFO - Epoch 90/200 | Train Loss: 0.001264 | Val Loss: 0.037325 | Best: 0.030744 (ep 71)
+2025-12-16 14:48:04,142 - INFO - Epoch 100/200 | Train Loss: 0.001307 | Val Loss: 0.039163 | Best: 0.030744 (ep 71)
+2025-12-16 14:48:04,355 - INFO - Epoch 110/200 | Train Loss: 0.001141 | Val Loss: 0.043609 | Best: 0.030744 (ep 71)
+2025-12-16 14:48:04,568 - INFO - Epoch 120/200 | Train Loss: 0.001401 | Val Loss: 0.042028 | Best: 0.030744 (ep 71)
+2025-12-16 14:48:04,589 - INFO - Early stopping at epoch 121! Best val loss: 0.030744 at epoch 71
+2025-12-16 14:48:04,602 - INFO - Loaded best model from epoch 71
+2025-12-16 14:48:04,612 - INFO - Fold 2 Results - MSE: 0.0307, MAE: 0.1351, R²: 0.1362, Pearson r: 0.4540
+2025-12-16 14:48:04,612 - INFO - 
+--- Fold 3/5 ---
+2025-12-16 14:48:04,612 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:48:04,612 - INFO - Train target - Mean: 0.3210, Std: 0.1827
+2025-12-16 14:48:04,612 - INFO - Test target  - Mean: 0.2734, Std: 0.1335
+2025-12-16 14:48:04,635 - INFO - Training fold 3 with early stopping (patience=50)...
+2025-12-16 14:48:04,658 - INFO - Epoch 1/200 | Train Loss: 0.055323 | Val Loss: 0.010612 | Best: inf (ep 1)
+2025-12-16 14:48:04,849 - INFO - Epoch 10/200 | Train Loss: 0.010510 | Val Loss: 0.010646 | Best: inf (ep 1)
+2025-12-16 14:48:05,061 - INFO - Epoch 20/200 | Train Loss: 0.003924 | Val Loss: 0.023193 | Best: inf (ep 1)
+2025-12-16 14:48:05,273 - INFO - Epoch 30/200 | Train Loss: 0.004916 | Val Loss: 0.015161 | Best: inf (ep 1)
+2025-12-16 14:48:05,485 - INFO - Epoch 40/200 | Train Loss: 0.002501 | Val Loss: 0.019297 | Best: inf (ep 1)
+2025-12-16 14:48:05,701 - INFO - Epoch 50/200 | Train Loss: 0.003418 | Val Loss: 0.018593 | Best: inf (ep 1)
+2025-12-16 14:48:06,001 - INFO - Epoch 60/200 | Train Loss: 0.001184 | Val Loss: 0.014685 | Best: 0.014685 (ep 60)
+2025-12-16 14:48:06,573 - INFO - Epoch 70/200 | Train Loss: 0.001554 | Val Loss: 0.013292 | Best: 0.011870 (ep 67)
+2025-12-16 14:48:06,803 - INFO - Epoch 80/200 | Train Loss: 0.000986 | Val Loss: 0.017049 | Best: 0.011105 (ep 78)
+2025-12-16 14:48:07,016 - INFO - Epoch 90/200 | Train Loss: 0.001518 | Val Loss: 0.018920 | Best: 0.011105 (ep 78)
+2025-12-16 14:48:07,228 - INFO - Epoch 100/200 | Train Loss: 0.001037 | Val Loss: 0.016505 | Best: 0.011105 (ep 78)
+2025-12-16 14:48:07,441 - INFO - Epoch 110/200 | Train Loss: 0.001397 | Val Loss: 0.017993 | Best: 0.011105 (ep 78)
+2025-12-16 14:48:07,653 - INFO - Epoch 120/200 | Train Loss: 0.002185 | Val Loss: 0.015396 | Best: 0.011105 (ep 78)
+2025-12-16 14:48:07,822 - INFO - Early stopping at epoch 128! Best val loss: 0.011105 at epoch 78
+2025-12-16 14:48:07,836 - INFO - Loaded best model from epoch 78
+2025-12-16 14:48:07,914 - INFO - Fold 3 Results - MSE: 0.0111, MAE: 0.0916, R²: 0.3767, Pearson r: 0.7410
+2025-12-16 14:48:07,914 - INFO - 
+--- Fold 4/5 ---
+2025-12-16 14:48:07,914 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:48:07,914 - INFO - Train target - Mean: 0.3217, Std: 0.1731
+2025-12-16 14:48:07,914 - INFO - Test target  - Mean: 0.2706, Std: 0.1765
+2025-12-16 14:48:07,938 - INFO - Training fold 4 with early stopping (patience=50)...
+2025-12-16 14:48:07,961 - INFO - Epoch 1/200 | Train Loss: 0.071478 | Val Loss: 0.062513 | Best: inf (ep 1)
+2025-12-16 14:48:08,153 - INFO - Epoch 10/200 | Train Loss: 0.009068 | Val Loss: 0.029040 | Best: inf (ep 1)
+2025-12-16 14:48:08,365 - INFO - Epoch 20/200 | Train Loss: 0.006136 | Val Loss: 0.032111 | Best: inf (ep 1)
+2025-12-16 14:48:08,577 - INFO - Epoch 30/200 | Train Loss: 0.004317 | Val Loss: 0.035524 | Best: inf (ep 1)
+2025-12-16 14:48:08,787 - INFO - Epoch 40/200 | Train Loss: 0.002756 | Val Loss: 0.035551 | Best: inf (ep 1)
+2025-12-16 14:48:08,999 - INFO - Epoch 50/200 | Train Loss: 0.002775 | Val Loss: 0.035077 | Best: inf (ep 1)
+2025-12-16 14:48:09,298 - INFO - Epoch 60/200 | Train Loss: 0.002181 | Val Loss: 0.030211 | Best: 0.028934 (ep 56)
+2025-12-16 14:48:09,509 - INFO - Epoch 70/200 | Train Loss: 0.001518 | Val Loss: 0.032549 | Best: 0.028934 (ep 56)
+2025-12-16 14:48:09,720 - INFO - Epoch 80/200 | Train Loss: 0.001532 | Val Loss: 0.035074 | Best: 0.028934 (ep 56)
+2025-12-16 14:48:09,934 - INFO - Epoch 90/200 | Train Loss: 0.000922 | Val Loss: 0.035385 | Best: 0.028934 (ep 56)
+2025-12-16 14:48:10,148 - INFO - Epoch 100/200 | Train Loss: 0.000708 | Val Loss: 0.031065 | Best: 0.028934 (ep 56)
+2025-12-16 14:48:10,390 - INFO - Epoch 110/200 | Train Loss: 0.001152 | Val Loss: 0.031600 | Best: 0.026133 (ep 104)
+2025-12-16 14:48:10,602 - INFO - Epoch 120/200 | Train Loss: 0.001210 | Val Loss: 0.036050 | Best: 0.026133 (ep 104)
+2025-12-16 14:48:10,814 - INFO - Epoch 130/200 | Train Loss: 0.000774 | Val Loss: 0.029314 | Best: 0.026133 (ep 104)
+2025-12-16 14:48:11,044 - INFO - Epoch 140/200 | Train Loss: 0.001167 | Val Loss: 0.031038 | Best: 0.026042 (ep 136)
+2025-12-16 14:48:11,375 - INFO - Epoch 150/200 | Train Loss: 0.000990 | Val Loss: 0.025607 | Best: 0.025607 (ep 150)
+2025-12-16 14:48:11,588 - INFO - Epoch 160/200 | Train Loss: 0.001371 | Val Loss: 0.026976 | Best: 0.025607 (ep 150)
+2025-12-16 14:48:11,800 - INFO - Epoch 170/200 | Train Loss: 0.000842 | Val Loss: 0.036565 | Best: 0.025607 (ep 150)
+2025-12-16 14:48:12,012 - INFO - Epoch 180/200 | Train Loss: 0.000819 | Val Loss: 0.029888 | Best: 0.025607 (ep 150)
+2025-12-16 14:48:12,224 - INFO - Epoch 190/200 | Train Loss: 0.000472 | Val Loss: 0.034060 | Best: 0.025607 (ep 150)
+2025-12-16 14:48:12,436 - INFO - Early stopping at epoch 200! Best val loss: 0.025607 at epoch 150
+2025-12-16 14:48:12,449 - INFO - Loaded best model from epoch 150
+2025-12-16 14:48:12,459 - INFO - Fold 4 Results - MSE: 0.0256, MAE: 0.1166, R²: 0.1781, Pearson r: 0.5260
+2025-12-16 14:48:12,459 - INFO - 
+--- Fold 5/5 ---
+2025-12-16 14:48:12,459 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:48:12,459 - INFO - Train target - Mean: 0.2994, Std: 0.1713
+2025-12-16 14:48:12,459 - INFO - Test target  - Mean: 0.3598, Std: 0.1812
+2025-12-16 14:48:12,484 - INFO - Training fold 5 with early stopping (patience=50)...
+2025-12-16 14:48:12,506 - INFO - Epoch 1/200 | Train Loss: 0.056591 | Val Loss: 0.024953 | Best: inf (ep 1)
+2025-12-16 14:48:12,699 - INFO - Epoch 10/200 | Train Loss: 0.007234 | Val Loss: 0.027253 | Best: inf (ep 1)
+2025-12-16 14:48:12,910 - INFO - Epoch 20/200 | Train Loss: 0.003830 | Val Loss: 0.028513 | Best: inf (ep 1)
+2025-12-16 14:48:13,121 - INFO - Epoch 30/200 | Train Loss: 0.003817 | Val Loss: 0.022156 | Best: inf (ep 1)
+2025-12-16 14:48:13,332 - INFO - Epoch 40/200 | Train Loss: 0.001835 | Val Loss: 0.025511 | Best: inf (ep 1)
+2025-12-16 14:48:13,543 - INFO - Epoch 50/200 | Train Loss: 0.002173 | Val Loss: 0.024991 | Best: inf (ep 1)
+2025-12-16 14:48:13,821 - INFO - Epoch 60/200 | Train Loss: 0.002458 | Val Loss: 0.018555 | Best: 0.017242 (ep 56)
+2025-12-16 14:48:14,032 - INFO - Epoch 70/200 | Train Loss: 0.001462 | Val Loss: 0.019118 | Best: 0.017242 (ep 56)
+2025-12-16 14:48:14,243 - INFO - Epoch 80/200 | Train Loss: 0.001531 | Val Loss: 0.021862 | Best: 0.017242 (ep 56)
+2025-12-16 14:48:14,471 - INFO - Epoch 90/200 | Train Loss: 0.002140 | Val Loss: 0.019726 | Best: 0.017076 (ep 88)
+2025-12-16 14:48:14,682 - INFO - Epoch 100/200 | Train Loss: 0.001846 | Val Loss: 0.017876 | Best: 0.017076 (ep 88)
+2025-12-16 14:48:14,893 - INFO - Epoch 110/200 | Train Loss: 0.002897 | Val Loss: 0.023138 | Best: 0.017076 (ep 88)
+2025-12-16 14:48:15,122 - INFO - Epoch 120/200 | Train Loss: 0.001124 | Val Loss: 0.019324 | Best: 0.016870 (ep 117)
+2025-12-16 14:48:15,333 - INFO - Epoch 130/200 | Train Loss: 0.001312 | Val Loss: 0.018405 | Best: 0.016870 (ep 117)
+2025-12-16 14:48:15,543 - INFO - Epoch 140/200 | Train Loss: 0.000747 | Val Loss: 0.020329 | Best: 0.016870 (ep 117)
+2025-12-16 14:48:15,754 - INFO - Epoch 150/200 | Train Loss: 0.001122 | Val Loss: 0.021236 | Best: 0.016870 (ep 117)
+2025-12-16 14:48:15,964 - INFO - Epoch 160/200 | Train Loss: 0.001026 | Val Loss: 0.021175 | Best: 0.016870 (ep 117)
+2025-12-16 14:48:16,192 - INFO - Epoch 170/200 | Train Loss: 0.000728 | Val Loss: 0.020396 | Best: 0.016780 (ep 167)
+2025-12-16 14:48:16,423 - INFO - Epoch 180/200 | Train Loss: 0.000893 | Val Loss: 0.019244 | Best: 0.016482 (ep 179)
+2025-12-16 14:48:16,652 - INFO - Epoch 190/200 | Train Loss: 0.000853 | Val Loss: 0.019224 | Best: 0.016459 (ep 184)
+2025-12-16 14:48:16,863 - INFO - Epoch 200/200 | Train Loss: 0.000939 | Val Loss: 0.018114 | Best: 0.016459 (ep 184)
+2025-12-16 14:48:16,876 - INFO - Loaded best model from epoch 184
+2025-12-16 14:48:16,887 - INFO - Fold 5 Results - MSE: 0.0165, MAE: 0.1065, R²: 0.4986, Pearson r: 0.7445
+2025-12-16 14:48:16,889 - INFO - 
+============================================================
+2025-12-16 14:48:16,889 - INFO - FINAL CROSS-VALIDATION RESULTS FOR: Treatment_Regression_ALL
+2025-12-16 14:48:16,890 - INFO - ----------------------------------------
+2025-12-16 14:48:16,890 - INFO - MSE         : 0.0213 ± 0.0069
+2025-12-16 14:48:16,890 - INFO - RMSE        : 0.1439 ± 0.0246
+2025-12-16 14:48:16,890 - INFO - MAE         : 0.1168 ± 0.0166
+2025-12-16 14:48:16,890 - INFO - R2          : 0.2860 ± 0.1339
+2025-12-16 14:48:16,890 - INFO - PEARSON_R   : 0.6092 ± 0.1162
+2025-12-16 14:48:16,890 - INFO - SPEARMAN_R  : 0.5745 ± 0.1305
+2025-12-16 14:48:16,890 - INFO - ============================================================
+
+2025-12-16 14:48:16,892 - INFO - Results saved to final_results_Treatment_Regression_ALL.json
+2025-12-16 14:48:16,892 - INFO - Total execution time: 20.29 seconds
+2025-12-16 14:50:42,044 - INFO - Using device: cuda
+2025-12-16 14:50:42,045 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 14:50:42,045 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 14:50:42,045 - INFO - Building diff file index...
+2025-12-16 14:50:42,046 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 14:50:42,046 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 14:50:42,047 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 14:50:42,047 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 14:50:42,047 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 14:50:42,047 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 14:50:42,047 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 14:50:42,047 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 14:50:42,047 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 14:50:42,048 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 14:50:42,048 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 14:50:42,048 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 14:50:42,048 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 14:50:42,048 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 14:50:42,048 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 14:50:42,048 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 14:50:42,048 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 14:50:42,048 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 14:50:42,048 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 14:50:42,049 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 14:50:42,049 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 14:50:42,049 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 14:50:42,049 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 14:50:42,049 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 14:50:42,049 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 14:50:42,049 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 14:50:42,049 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 14:50:42,050 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 14:50:42,051 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 14:50:42,052 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 14:50:42,052 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 14:50:42,052 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 14:50:42,052 - INFO - Built diff index with 71 patients
+2025-12-16 14:50:42,052 - INFO - Parsing UPDRS data...
+2025-12-16 14:50:42,066 - INFO - Improvement rate statistics:
+2025-12-16 14:50:42,066 - INFO -   Min: 0.0000
+2025-12-16 14:50:42,066 - INFO -   Max: 0.6970
+2025-12-16 14:50:42,066 - INFO -   Mean: 0.3115
+2025-12-16 14:50:42,066 - INFO -   Std: 0.1750
+2025-12-16 14:50:42,066 - INFO - Found 55 valid samples
+2025-12-16 14:50:42,066 - INFO - Preparing feature matrices...
+2025-12-16 14:50:42,099 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 14:50:42,099 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 14:50:42,099 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 14:50:42,099 - INFO - 
+============================================================
+2025-12-16 14:50:42,099 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 14:50:42,099 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 14:50:42,099 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 14:50:42,099 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:50:42,100 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 14:50:42,100 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 14:50:42,889 - INFO - Training fold 1 with early stopping (patience=50)...
+2025-12-16 14:50:43,033 - INFO - Epoch 1/200 | Train Loss: 0.065998 | Val Loss: 0.032021 | Best: inf (ep 1)
+2025-12-16 14:50:43,223 - INFO - Epoch 10/200 | Train Loss: 0.019146 | Val Loss: 0.024920 | Best: inf (ep 1)
+2025-12-16 14:50:43,433 - INFO - Epoch 20/200 | Train Loss: 0.004524 | Val Loss: 0.029809 | Best: inf (ep 1)
+2025-12-16 14:50:43,643 - INFO - Epoch 30/200 | Train Loss: 0.003768 | Val Loss: 0.025248 | Best: inf (ep 1)
+2025-12-16 14:50:43,854 - INFO - Epoch 40/200 | Train Loss: 0.002391 | Val Loss: 0.020896 | Best: inf (ep 1)
+2025-12-16 14:50:44,063 - INFO - Epoch 50/200 | Train Loss: 0.002703 | Val Loss: 0.029469 | Best: inf (ep 1)
+2025-12-16 14:50:44,421 - INFO - Epoch 60/200 | Train Loss: 0.001656 | Val Loss: 0.033616 | Best: 0.023989 (ep 56)
+2025-12-16 14:50:44,671 - INFO - Epoch 70/200 | Train Loss: 0.001791 | Val Loss: 0.031330 | Best: 0.023164 (ep 64)
+2025-12-16 14:50:44,901 - INFO - Epoch 80/200 | Train Loss: 0.001775 | Val Loss: 0.032100 | Best: 0.022617 (ep 79)
+2025-12-16 14:50:45,110 - INFO - Epoch 90/200 | Train Loss: 0.001125 | Val Loss: 0.026664 | Best: 0.022617 (ep 79)
+2025-12-16 14:50:45,319 - INFO - Epoch 100/200 | Train Loss: 0.001389 | Val Loss: 0.030262 | Best: 0.022617 (ep 79)
+2025-12-16 14:50:45,529 - INFO - Epoch 110/200 | Train Loss: 0.001117 | Val Loss: 0.025534 | Best: 0.022617 (ep 79)
+2025-12-16 14:50:45,738 - INFO - Epoch 120/200 | Train Loss: 0.000896 | Val Loss: 0.026127 | Best: 0.022617 (ep 79)
+2025-12-16 14:50:45,926 - INFO - Early stopping at epoch 129! Best val loss: 0.022617 at epoch 79
+2025-12-16 14:50:45,941 - INFO - Loaded best model from epoch 79
+2025-12-16 14:50:45,956 - INFO - Fold 1 Results - MSE: 0.0226, MAE: 0.1342, R²: 0.2402, Pearson r: 0.5802 (p=6.1315e-02), Spearman r: 0.5091 (p=1.0974e-01)
+2025-12-16 14:50:45,956 - INFO - 
+--- Fold 2/5 ---
+2025-12-16 14:50:45,956 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:50:45,956 - INFO - Train target - Mean: 0.3079, Std: 0.1712
+2025-12-16 14:50:45,957 - INFO - Test target  - Mean: 0.3255, Std: 0.1887
+2025-12-16 14:50:45,979 - INFO - Training fold 2 with early stopping (patience=50)...
+2025-12-16 14:50:46,001 - INFO - Epoch 1/200 | Train Loss: 0.060689 | Val Loss: 0.053063 | Best: inf (ep 1)
+2025-12-16 14:50:46,192 - INFO - Epoch 10/200 | Train Loss: 0.012663 | Val Loss: 0.037288 | Best: inf (ep 1)
+2025-12-16 14:50:46,402 - INFO - Epoch 20/200 | Train Loss: 0.005230 | Val Loss: 0.034056 | Best: inf (ep 1)
+2025-12-16 14:50:46,612 - INFO - Epoch 30/200 | Train Loss: 0.002356 | Val Loss: 0.037593 | Best: inf (ep 1)
+2025-12-16 14:50:46,823 - INFO - Epoch 40/200 | Train Loss: 0.001667 | Val Loss: 0.039298 | Best: inf (ep 1)
+2025-12-16 14:50:47,033 - INFO - Epoch 50/200 | Train Loss: 0.001760 | Val Loss: 0.032139 | Best: inf (ep 1)
+2025-12-16 14:50:47,298 - INFO - Epoch 60/200 | Train Loss: 0.001620 | Val Loss: 0.036434 | Best: 0.035376 (ep 56)
+2025-12-16 14:50:47,546 - INFO - Epoch 70/200 | Train Loss: 0.001602 | Val Loss: 0.036268 | Best: 0.031949 (ep 64)
+2025-12-16 14:50:47,776 - INFO - Epoch 80/200 | Train Loss: 0.001068 | Val Loss: 0.040371 | Best: 0.030744 (ep 71)
+2025-12-16 14:50:47,986 - INFO - Epoch 90/200 | Train Loss: 0.001264 | Val Loss: 0.037325 | Best: 0.030744 (ep 71)
+2025-12-16 14:50:48,196 - INFO - Epoch 100/200 | Train Loss: 0.001307 | Val Loss: 0.039163 | Best: 0.030744 (ep 71)
+2025-12-16 14:50:48,408 - INFO - Epoch 110/200 | Train Loss: 0.001141 | Val Loss: 0.043609 | Best: 0.030744 (ep 71)
+2025-12-16 14:50:48,618 - INFO - Epoch 120/200 | Train Loss: 0.001401 | Val Loss: 0.042028 | Best: 0.030744 (ep 71)
+2025-12-16 14:50:48,639 - INFO - Early stopping at epoch 121! Best val loss: 0.030744 at epoch 71
+2025-12-16 14:50:48,653 - INFO - Loaded best model from epoch 71
+2025-12-16 14:50:48,665 - INFO - Fold 2 Results - MSE: 0.0307, MAE: 0.1351, R²: 0.1362, Pearson r: 0.4540 (p=1.6066e-01), Spearman r: 0.5273 (p=9.5565e-02)
+2025-12-16 14:50:48,665 - INFO - 
+--- Fold 3/5 ---
+2025-12-16 14:50:48,665 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:50:48,665 - INFO - Train target - Mean: 0.3210, Std: 0.1827
+2025-12-16 14:50:48,665 - INFO - Test target  - Mean: 0.2734, Std: 0.1335
+2025-12-16 14:50:48,688 - INFO - Training fold 3 with early stopping (patience=50)...
+2025-12-16 14:50:48,711 - INFO - Epoch 1/200 | Train Loss: 0.055323 | Val Loss: 0.010612 | Best: inf (ep 1)
+2025-12-16 14:50:48,900 - INFO - Epoch 10/200 | Train Loss: 0.010510 | Val Loss: 0.010646 | Best: inf (ep 1)
+2025-12-16 14:50:49,110 - INFO - Epoch 20/200 | Train Loss: 0.003924 | Val Loss: 0.023193 | Best: inf (ep 1)
+2025-12-16 14:50:49,320 - INFO - Epoch 30/200 | Train Loss: 0.004916 | Val Loss: 0.015161 | Best: inf (ep 1)
+2025-12-16 14:50:49,530 - INFO - Epoch 40/200 | Train Loss: 0.002501 | Val Loss: 0.019297 | Best: inf (ep 1)
+2025-12-16 14:50:49,740 - INFO - Epoch 50/200 | Train Loss: 0.003418 | Val Loss: 0.018593 | Best: inf (ep 1)
+2025-12-16 14:50:50,023 - INFO - Epoch 60/200 | Train Loss: 0.001184 | Val Loss: 0.014685 | Best: 0.014685 (ep 60)
+2025-12-16 14:50:50,347 - INFO - Epoch 70/200 | Train Loss: 0.001554 | Val Loss: 0.013292 | Best: 0.011870 (ep 67)
+2025-12-16 14:50:50,576 - INFO - Epoch 80/200 | Train Loss: 0.000986 | Val Loss: 0.017049 | Best: 0.011105 (ep 78)
+2025-12-16 14:50:50,786 - INFO - Epoch 90/200 | Train Loss: 0.001518 | Val Loss: 0.018920 | Best: 0.011105 (ep 78)
+2025-12-16 14:50:50,996 - INFO - Epoch 100/200 | Train Loss: 0.001037 | Val Loss: 0.016505 | Best: 0.011105 (ep 78)
+2025-12-16 14:50:51,205 - INFO - Epoch 110/200 | Train Loss: 0.001397 | Val Loss: 0.017993 | Best: 0.011105 (ep 78)
+2025-12-16 14:50:51,415 - INFO - Epoch 120/200 | Train Loss: 0.002185 | Val Loss: 0.015396 | Best: 0.011105 (ep 78)
+2025-12-16 14:50:51,583 - INFO - Early stopping at epoch 128! Best val loss: 0.011105 at epoch 78
+2025-12-16 14:50:51,597 - INFO - Loaded best model from epoch 78
+2025-12-16 14:50:51,609 - INFO - Fold 3 Results - MSE: 0.0111, MAE: 0.0916, R²: 0.3767, Pearson r: 0.7410 (p=9.0752e-03), Spearman r: 0.7455 (p=8.4547e-03)
+2025-12-16 14:50:51,609 - INFO - 
+--- Fold 4/5 ---
+2025-12-16 14:50:51,609 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:50:51,609 - INFO - Train target - Mean: 0.3217, Std: 0.1731
+2025-12-16 14:50:51,610 - INFO - Test target  - Mean: 0.2706, Std: 0.1765
+2025-12-16 14:50:51,633 - INFO - Training fold 4 with early stopping (patience=50)...
+2025-12-16 14:50:51,655 - INFO - Epoch 1/200 | Train Loss: 0.071478 | Val Loss: 0.062513 | Best: inf (ep 1)
+2025-12-16 14:50:51,843 - INFO - Epoch 10/200 | Train Loss: 0.009068 | Val Loss: 0.029040 | Best: inf (ep 1)
+2025-12-16 14:50:52,053 - INFO - Epoch 20/200 | Train Loss: 0.006136 | Val Loss: 0.032111 | Best: inf (ep 1)
+2025-12-16 14:50:52,262 - INFO - Epoch 30/200 | Train Loss: 0.004317 | Val Loss: 0.035524 | Best: inf (ep 1)
+2025-12-16 14:50:52,475 - INFO - Epoch 40/200 | Train Loss: 0.002756 | Val Loss: 0.035551 | Best: inf (ep 1)
+2025-12-16 14:50:52,686 - INFO - Epoch 50/200 | Train Loss: 0.002775 | Val Loss: 0.035077 | Best: inf (ep 1)
+2025-12-16 14:50:52,932 - INFO - Epoch 60/200 | Train Loss: 0.002181 | Val Loss: 0.030211 | Best: 0.028934 (ep 56)
+2025-12-16 14:50:53,144 - INFO - Epoch 70/200 | Train Loss: 0.001518 | Val Loss: 0.032549 | Best: 0.028934 (ep 56)
+2025-12-16 14:50:53,355 - INFO - Epoch 80/200 | Train Loss: 0.001532 | Val Loss: 0.035074 | Best: 0.028934 (ep 56)
+2025-12-16 14:50:53,566 - INFO - Epoch 90/200 | Train Loss: 0.000922 | Val Loss: 0.035385 | Best: 0.028934 (ep 56)
+2025-12-16 14:50:53,778 - INFO - Epoch 100/200 | Train Loss: 0.000708 | Val Loss: 0.031065 | Best: 0.028934 (ep 56)
+2025-12-16 14:50:54,064 - INFO - Epoch 110/200 | Train Loss: 0.001152 | Val Loss: 0.031600 | Best: 0.026133 (ep 104)
+2025-12-16 14:50:54,277 - INFO - Epoch 120/200 | Train Loss: 0.001210 | Val Loss: 0.036050 | Best: 0.026133 (ep 104)
+2025-12-16 14:50:54,488 - INFO - Epoch 130/200 | Train Loss: 0.000774 | Val Loss: 0.029314 | Best: 0.026133 (ep 104)
+2025-12-16 14:50:54,718 - INFO - Epoch 140/200 | Train Loss: 0.001167 | Val Loss: 0.031038 | Best: 0.026042 (ep 136)
+2025-12-16 14:50:54,948 - INFO - Epoch 150/200 | Train Loss: 0.000990 | Val Loss: 0.025607 | Best: 0.025607 (ep 150)
+2025-12-16 14:50:55,159 - INFO - Epoch 160/200 | Train Loss: 0.001371 | Val Loss: 0.026976 | Best: 0.025607 (ep 150)
+2025-12-16 14:50:55,369 - INFO - Epoch 170/200 | Train Loss: 0.000842 | Val Loss: 0.036565 | Best: 0.025607 (ep 150)
+2025-12-16 14:50:55,579 - INFO - Epoch 180/200 | Train Loss: 0.000819 | Val Loss: 0.029888 | Best: 0.025607 (ep 150)
+2025-12-16 14:50:55,791 - INFO - Epoch 190/200 | Train Loss: 0.000472 | Val Loss: 0.034060 | Best: 0.025607 (ep 150)
+2025-12-16 14:50:56,001 - INFO - Early stopping at epoch 200! Best val loss: 0.025607 at epoch 150
+2025-12-16 14:50:56,016 - INFO - Loaded best model from epoch 150
+2025-12-16 14:50:56,028 - INFO - Fold 4 Results - MSE: 0.0256, MAE: 0.1166, R²: 0.1781, Pearson r: 0.5260 (p=9.6503e-02), Spearman r: 0.3909 (p=2.3454e-01)
+2025-12-16 14:50:56,029 - INFO - 
+--- Fold 5/5 ---
+2025-12-16 14:50:56,029 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:50:56,029 - INFO - Train target - Mean: 0.2994, Std: 0.1713
+2025-12-16 14:50:56,029 - INFO - Test target  - Mean: 0.3598, Std: 0.1812
+2025-12-16 14:50:56,052 - INFO - Training fold 5 with early stopping (patience=50)...
+2025-12-16 14:50:56,076 - INFO - Epoch 1/200 | Train Loss: 0.056591 | Val Loss: 0.024953 | Best: inf (ep 1)
+2025-12-16 14:50:56,267 - INFO - Epoch 10/200 | Train Loss: 0.007234 | Val Loss: 0.027253 | Best: inf (ep 1)
+2025-12-16 14:50:56,478 - INFO - Epoch 20/200 | Train Loss: 0.003830 | Val Loss: 0.028513 | Best: inf (ep 1)
+2025-12-16 14:50:56,690 - INFO - Epoch 30/200 | Train Loss: 0.003817 | Val Loss: 0.022156 | Best: inf (ep 1)
+2025-12-16 14:50:56,904 - INFO - Epoch 40/200 | Train Loss: 0.001835 | Val Loss: 0.025511 | Best: inf (ep 1)
+2025-12-16 14:50:57,115 - INFO - Epoch 50/200 | Train Loss: 0.002173 | Val Loss: 0.024991 | Best: inf (ep 1)
+2025-12-16 14:50:57,397 - INFO - Epoch 60/200 | Train Loss: 0.002458 | Val Loss: 0.018555 | Best: 0.017242 (ep 56)
+2025-12-16 14:50:57,609 - INFO - Epoch 70/200 | Train Loss: 0.001462 | Val Loss: 0.019118 | Best: 0.017242 (ep 56)
+2025-12-16 14:50:57,820 - INFO - Epoch 80/200 | Train Loss: 0.001531 | Val Loss: 0.021862 | Best: 0.017242 (ep 56)
+2025-12-16 14:50:58,048 - INFO - Epoch 90/200 | Train Loss: 0.002140 | Val Loss: 0.019726 | Best: 0.017076 (ep 88)
+2025-12-16 14:50:58,260 - INFO - Epoch 100/200 | Train Loss: 0.001846 | Val Loss: 0.017876 | Best: 0.017076 (ep 88)
+2025-12-16 14:50:58,472 - INFO - Epoch 110/200 | Train Loss: 0.002897 | Val Loss: 0.023138 | Best: 0.017076 (ep 88)
+2025-12-16 14:50:58,703 - INFO - Epoch 120/200 | Train Loss: 0.001124 | Val Loss: 0.019324 | Best: 0.016870 (ep 117)
+2025-12-16 14:50:58,915 - INFO - Epoch 130/200 | Train Loss: 0.001312 | Val Loss: 0.018405 | Best: 0.016870 (ep 117)
+2025-12-16 14:50:59,126 - INFO - Epoch 140/200 | Train Loss: 0.000747 | Val Loss: 0.020329 | Best: 0.016870 (ep 117)
+2025-12-16 14:50:59,336 - INFO - Epoch 150/200 | Train Loss: 0.001122 | Val Loss: 0.021236 | Best: 0.016870 (ep 117)
+2025-12-16 14:50:59,547 - INFO - Epoch 160/200 | Train Loss: 0.001026 | Val Loss: 0.021175 | Best: 0.016870 (ep 117)
+2025-12-16 14:50:59,776 - INFO - Epoch 170/200 | Train Loss: 0.000728 | Val Loss: 0.020396 | Best: 0.016780 (ep 167)
+2025-12-16 14:51:00,005 - INFO - Epoch 180/200 | Train Loss: 0.000893 | Val Loss: 0.019244 | Best: 0.016482 (ep 179)
+2025-12-16 14:51:00,234 - INFO - Epoch 190/200 | Train Loss: 0.000853 | Val Loss: 0.019224 | Best: 0.016459 (ep 184)
+2025-12-16 14:51:00,446 - INFO - Epoch 200/200 | Train Loss: 0.000939 | Val Loss: 0.018114 | Best: 0.016459 (ep 184)
+2025-12-16 14:51:00,460 - INFO - Loaded best model from epoch 184
+2025-12-16 14:51:00,470 - INFO - Fold 5 Results - MSE: 0.0165, MAE: 0.1065, R²: 0.4986, Pearson r: 0.7445 (p=8.5792e-03), Spearman r: 0.7000 (p=1.6471e-02)
+2025-12-16 14:51:00,476 - INFO - 
+============================================================
+2025-12-16 14:51:00,476 - INFO - FINAL CROSS-VALIDATION RESULTS FOR: Treatment_Regression_ALL
+2025-12-16 14:51:00,476 - INFO - ----------------------------------------
+2025-12-16 14:51:00,476 - INFO - MSE         : 0.0213 ± 0.0069
+2025-12-16 14:51:00,476 - INFO - RMSE        : 0.1439 ± 0.0246
+2025-12-16 14:51:00,476 - INFO - MAE         : 0.1168 ± 0.0166
+2025-12-16 14:51:00,476 - INFO - R2          : 0.2860 ± 0.1339
+2025-12-16 14:51:00,476 - INFO - PEARSON_R   : 0.6092 ± 0.1162
+2025-12-16 14:51:00,476 - INFO - PEARSON_P   : 0.0672 ± 0.0573
+2025-12-16 14:51:00,476 - INFO - SPEARMAN_R  : 0.5745 ± 0.1305
+2025-12-16 14:51:00,476 - INFO - SPEARMAN_P  : 0.0930 ± 0.0816
+2025-12-16 14:51:00,476 - INFO - ============================================================
+
+2025-12-16 14:51:00,480 - INFO - Results saved to final_results_Treatment_Regression_ALL.json
+2025-12-16 14:51:00,480 - INFO - Total execution time: 18.44 seconds
+2025-12-16 14:56:44,515 - INFO - Using device: cuda
+2025-12-16 14:56:44,516 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 14:56:44,516 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 14:56:44,516 - INFO - Building diff file index...
+2025-12-16 14:56:44,517 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 14:56:44,517 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 14:56:44,517 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 14:56:44,518 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 14:56:44,518 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 14:56:44,518 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 14:56:44,518 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 14:56:44,518 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 14:56:44,518 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 14:56:44,519 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 14:56:44,520 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 14:56:44,520 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 14:56:44,520 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 14:56:44,520 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 14:56:44,520 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 14:56:44,520 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 14:56:44,520 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 14:56:44,520 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 14:56:44,521 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 14:56:44,522 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 14:56:44,522 - INFO - Built diff index with 71 patients
+2025-12-16 14:56:44,522 - INFO - Parsing UPDRS data...
+2025-12-16 14:56:44,536 - INFO - Improvement rate statistics:
+2025-12-16 14:56:44,536 - INFO -   Min: 0.0000
+2025-12-16 14:56:44,536 - INFO -   Max: 0.6970
+2025-12-16 14:56:44,536 - INFO -   Mean: 0.3115
+2025-12-16 14:56:44,536 - INFO -   Std: 0.1750
+2025-12-16 14:56:44,536 - INFO - Found 55 valid samples
+2025-12-16 14:56:44,536 - INFO - Preparing feature matrices...
+2025-12-16 14:56:44,568 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 14:56:44,568 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 14:56:44,568 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 14:56:44,568 - INFO - 
+============================================================
+2025-12-16 14:56:44,568 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 14:56:44,568 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 14:56:44,569 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 14:56:44,569 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:56:44,569 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 14:56:44,569 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 14:58:25,234 - INFO - Using device: cuda
+2025-12-16 14:58:25,234 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 14:58:25,235 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 14:58:25,235 - INFO - Building diff file index...
+2025-12-16 14:58:25,236 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 14:58:25,236 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 14:58:25,236 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 14:58:25,236 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 14:58:25,237 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 14:58:25,237 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 14:58:25,237 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 14:58:25,237 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 14:58:25,237 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 14:58:25,237 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 14:58:25,237 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 14:58:25,238 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 14:58:25,239 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 14:58:25,239 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 14:58:25,239 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 14:58:25,239 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 14:58:25,239 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 14:58:25,239 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 14:58:25,239 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 14:58:25,239 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 14:58:25,239 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 14:58:25,240 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 14:58:25,241 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 14:58:25,241 - INFO - Built diff index with 71 patients
+2025-12-16 14:58:25,241 - INFO - Parsing UPDRS data...
+2025-12-16 14:58:25,255 - INFO - Improvement rate statistics:
+2025-12-16 14:58:25,255 - INFO -   Min: 0.0000
+2025-12-16 14:58:25,256 - INFO -   Max: 0.6970
+2025-12-16 14:58:25,256 - INFO -   Mean: 0.3115
+2025-12-16 14:58:25,256 - INFO -   Std: 0.1750
+2025-12-16 14:58:25,256 - INFO - Found 55 valid samples
+2025-12-16 14:58:25,256 - INFO - Preparing feature matrices...
+2025-12-16 14:58:25,289 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 14:58:25,289 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 14:58:25,289 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 14:58:25,289 - INFO - 
+============================================================
+2025-12-16 14:58:25,289 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 14:58:25,289 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 14:58:25,290 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 14:58:25,290 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:58:25,290 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 14:58:25,290 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 14:58:26,076 - INFO - Training fold 1 with early stopping (patience=50)...
+2025-12-16 14:58:26,336 - INFO - Epoch 1/200 | Train Loss: 0.587290 | Val Loss: 0.496694 | Best: inf (ep 1)
+2025-12-16 14:58:26,561 - INFO - Epoch 10/200 | Train Loss: 0.223264 | Val Loss: 0.441718 | Best: inf (ep 1)
+2025-12-16 14:58:26,811 - INFO - Epoch 20/200 | Train Loss: 0.175834 | Val Loss: 0.351099 | Best: inf (ep 1)
+2025-12-16 14:58:27,061 - INFO - Epoch 30/200 | Train Loss: 0.169253 | Val Loss: 0.476267 | Best: inf (ep 1)
+2025-12-16 14:58:27,311 - INFO - Epoch 40/200 | Train Loss: 0.177113 | Val Loss: 0.385006 | Best: inf (ep 1)
+2025-12-16 14:58:27,560 - INFO - Epoch 50/200 | Train Loss: 0.137536 | Val Loss: 0.464193 | Best: inf (ep 1)
+2025-12-16 14:58:27,902 - INFO - Epoch 60/200 | Train Loss: 0.128219 | Val Loss: 0.460567 | Best: 0.382917 (ep 55)
+2025-12-16 14:58:28,229 - INFO - Epoch 70/200 | Train Loss: 0.122688 | Val Loss: 0.325493 | Best: 0.325493 (ep 70)
+2025-12-16 14:58:28,497 - INFO - Epoch 80/200 | Train Loss: 0.123215 | Val Loss: 0.322643 | Best: 0.321548 (ep 79)
+2025-12-16 14:58:28,806 - INFO - Epoch 90/200 | Train Loss: 0.136654 | Val Loss: 0.587444 | Best: 0.290697 (ep 84)
+2025-12-16 14:58:29,061 - INFO - Epoch 100/200 | Train Loss: 0.121426 | Val Loss: 0.398969 | Best: 0.290697 (ep 84)
+2025-12-16 14:58:29,319 - INFO - Epoch 110/200 | Train Loss: 0.118795 | Val Loss: 0.356423 | Best: 0.290697 (ep 84)
+2025-12-16 14:58:29,574 - INFO - Epoch 120/200 | Train Loss: 0.114582 | Val Loss: 0.335155 | Best: 0.290697 (ep 84)
+2025-12-16 14:58:29,829 - INFO - Epoch 130/200 | Train Loss: 0.117788 | Val Loss: 0.403849 | Best: 0.290697 (ep 84)
+2025-12-16 14:58:29,931 - INFO - Early stopping at epoch 134! Best val loss: 0.290697 at epoch 84
+2025-12-16 14:58:29,945 - INFO - Loaded best model from epoch 84
+2025-12-16 14:58:29,961 - INFO - Fold 1 Results - MSE: 0.0255, MAE: 0.1342, R²: 0.1440, Pearson r: 0.5778 (p=6.2642e-02), Spearman r: 0.5727 (p=6.5543e-02)
+2025-12-16 14:58:29,961 - INFO - 
+--- Fold 2/5 ---
+2025-12-16 14:58:29,962 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:58:29,962 - INFO - Train target - Mean: 0.3079, Std: 0.1712
+2025-12-16 14:58:29,962 - INFO - Test target  - Mean: 0.3255, Std: 0.1887
+2025-12-16 14:58:29,985 - INFO - Training fold 2 with early stopping (patience=50)...
+2025-12-16 14:58:30,012 - INFO - Epoch 1/200 | Train Loss: 0.491490 | Val Loss: 0.332460 | Best: inf (ep 1)
+2025-12-16 14:58:30,238 - INFO - Epoch 10/200 | Train Loss: 0.237898 | Val Loss: 0.430214 | Best: inf (ep 1)
+2025-12-16 14:58:30,487 - INFO - Epoch 20/200 | Train Loss: 0.197755 | Val Loss: 0.341018 | Best: inf (ep 1)
+2025-12-16 14:58:30,736 - INFO - Epoch 30/200 | Train Loss: 0.230090 | Val Loss: 0.396095 | Best: inf (ep 1)
+2025-12-16 14:58:30,987 - INFO - Epoch 40/200 | Train Loss: 0.147340 | Val Loss: 0.376457 | Best: inf (ep 1)
+2025-12-16 14:58:31,235 - INFO - Epoch 50/200 | Train Loss: 0.141248 | Val Loss: 0.371614 | Best: inf (ep 1)
+2025-12-16 14:58:31,517 - INFO - Epoch 60/200 | Train Loss: 0.126701 | Val Loss: 0.393466 | Best: 0.330620 (ep 53)
+2025-12-16 14:58:31,807 - INFO - Epoch 70/200 | Train Loss: 0.129537 | Val Loss: 0.357815 | Best: 0.312831 (ep 69)
+2025-12-16 14:58:32,056 - INFO - Epoch 80/200 | Train Loss: 0.124184 | Val Loss: 0.362024 | Best: 0.312831 (ep 69)
+2025-12-16 14:58:32,305 - INFO - Epoch 90/200 | Train Loss: 0.126320 | Val Loss: 0.374365 | Best: 0.312831 (ep 69)
+2025-12-16 14:58:32,554 - INFO - Epoch 100/200 | Train Loss: 0.120270 | Val Loss: 0.384626 | Best: 0.312831 (ep 69)
+2025-12-16 14:58:32,802 - INFO - Epoch 110/200 | Train Loss: 0.124890 | Val Loss: 0.431338 | Best: 0.312831 (ep 69)
+2025-12-16 14:58:33,027 - INFO - Early stopping at epoch 119! Best val loss: 0.312831 at epoch 69
+2025-12-16 14:58:33,042 - INFO - Loaded best model from epoch 69
+2025-12-16 14:58:33,057 - INFO - Fold 2 Results - MSE: 0.0307, MAE: 0.1419, R²: 0.1389, Pearson r: 0.5337 (p=9.0853e-02), Spearman r: 0.6000 (p=5.1003e-02)
+2025-12-16 14:58:33,057 - INFO - 
+--- Fold 3/5 ---
+2025-12-16 14:58:33,057 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:58:33,057 - INFO - Train target - Mean: 0.3210, Std: 0.1827
+2025-12-16 14:58:33,058 - INFO - Test target  - Mean: 0.2734, Std: 0.1335
+2025-12-16 14:58:33,082 - INFO - Training fold 3 with early stopping (patience=50)...
+2025-12-16 14:58:33,109 - INFO - Epoch 1/200 | Train Loss: 0.690950 | Val Loss: 0.244898 | Best: inf (ep 1)
+2025-12-16 14:58:33,332 - INFO - Epoch 10/200 | Train Loss: 0.212511 | Val Loss: 0.296236 | Best: inf (ep 1)
+2025-12-16 14:58:33,581 - INFO - Epoch 20/200 | Train Loss: 0.160805 | Val Loss: 0.254666 | Best: inf (ep 1)
+2025-12-16 14:58:33,830 - INFO - Epoch 30/200 | Train Loss: 0.148251 | Val Loss: 0.244510 | Best: inf (ep 1)
+2025-12-16 14:58:34,078 - INFO - Epoch 40/200 | Train Loss: 0.146522 | Val Loss: 0.235044 | Best: inf (ep 1)
+2025-12-16 14:58:34,327 - INFO - Epoch 50/200 | Train Loss: 0.129013 | Val Loss: 0.222494 | Best: inf (ep 1)
+2025-12-16 14:58:34,608 - INFO - Epoch 60/200 | Train Loss: 0.146484 | Val Loss: 0.249935 | Best: 0.232551 (ep 52)
+2025-12-16 14:58:34,892 - INFO - Epoch 70/200 | Train Loss: 0.130900 | Val Loss: 0.215352 | Best: 0.215352 (ep 70)
+2025-12-16 14:58:35,181 - INFO - Epoch 80/200 | Train Loss: 0.201783 | Val Loss: 0.253561 | Best: 0.210629 (ep 72)
+2025-12-16 14:58:35,430 - INFO - Epoch 90/200 | Train Loss: 0.125941 | Val Loss: 0.227232 | Best: 0.210629 (ep 72)
+2025-12-16 14:58:35,678 - INFO - Epoch 100/200 | Train Loss: 0.115692 | Val Loss: 0.243448 | Best: 0.210629 (ep 72)
+2025-12-16 14:58:35,926 - INFO - Epoch 110/200 | Train Loss: 0.125518 | Val Loss: 0.217982 | Best: 0.210629 (ep 72)
+2025-12-16 14:58:36,174 - INFO - Epoch 120/200 | Train Loss: 0.120290 | Val Loss: 0.224499 | Best: 0.210629 (ep 72)
+2025-12-16 14:58:36,224 - INFO - Early stopping at epoch 122! Best val loss: 0.210629 at epoch 72
+2025-12-16 14:58:36,238 - INFO - Loaded best model from epoch 72
+2025-12-16 14:58:36,249 - INFO - Fold 3 Results - MSE: 0.0429, MAE: 0.1765, R²: -1.4093, Pearson r: 0.8038 (p=2.8729e-03), Spearman r: 0.7545 (p=7.2820e-03)
+2025-12-16 14:58:36,250 - INFO - 
+--- Fold 4/5 ---
+2025-12-16 14:58:36,250 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:58:36,250 - INFO - Train target - Mean: 0.3217, Std: 0.1731
+2025-12-16 14:58:36,250 - INFO - Test target  - Mean: 0.2706, Std: 0.1765
+2025-12-16 14:58:36,272 - INFO - Training fold 4 with early stopping (patience=50)...
+2025-12-16 14:58:36,298 - INFO - Epoch 1/200 | Train Loss: 0.716566 | Val Loss: 0.536606 | Best: inf (ep 1)
+2025-12-16 14:58:36,523 - INFO - Epoch 10/200 | Train Loss: 0.320938 | Val Loss: 0.801484 | Best: inf (ep 1)
+2025-12-16 14:58:36,774 - INFO - Epoch 20/200 | Train Loss: 0.236067 | Val Loss: 0.666027 | Best: inf (ep 1)
+2025-12-16 14:58:37,023 - INFO - Epoch 30/200 | Train Loss: 0.211686 | Val Loss: 0.517380 | Best: inf (ep 1)
+2025-12-16 14:58:37,271 - INFO - Epoch 40/200 | Train Loss: 0.143299 | Val Loss: 0.512292 | Best: inf (ep 1)
+2025-12-16 14:58:37,520 - INFO - Epoch 50/200 | Train Loss: 0.185454 | Val Loss: 0.531625 | Best: inf (ep 1)
+2025-12-16 14:58:37,823 - INFO - Epoch 60/200 | Train Loss: 0.138823 | Val Loss: 0.551062 | Best: 0.488425 (ep 53)
+2025-12-16 14:58:38,071 - INFO - Epoch 70/200 | Train Loss: 0.120646 | Val Loss: 0.609147 | Best: 0.488425 (ep 53)
+2025-12-16 14:58:38,319 - INFO - Epoch 80/200 | Train Loss: 0.121070 | Val Loss: 0.536435 | Best: 0.488425 (ep 53)
+2025-12-16 14:58:38,567 - INFO - Epoch 90/200 | Train Loss: 0.144162 | Val Loss: 0.494266 | Best: 0.488425 (ep 53)
+2025-12-16 14:58:38,879 - INFO - Epoch 100/200 | Train Loss: 0.135062 | Val Loss: 0.542442 | Best: 0.461671 (ep 96)
+2025-12-16 14:58:39,127 - INFO - Epoch 110/200 | Train Loss: 0.134202 | Val Loss: 0.508172 | Best: 0.461671 (ep 96)
+2025-12-16 14:58:39,375 - INFO - Epoch 120/200 | Train Loss: 0.128900 | Val Loss: 0.513997 | Best: 0.461671 (ep 96)
+2025-12-16 14:58:39,623 - INFO - Epoch 130/200 | Train Loss: 0.138985 | Val Loss: 0.525865 | Best: 0.461671 (ep 96)
+2025-12-16 14:58:39,870 - INFO - Epoch 140/200 | Train Loss: 0.117113 | Val Loss: 0.538107 | Best: 0.461671 (ep 96)
+2025-12-16 14:58:40,019 - INFO - Early stopping at epoch 146! Best val loss: 0.461671 at epoch 96
+2025-12-16 14:58:40,034 - INFO - Loaded best model from epoch 96
+2025-12-16 14:58:40,045 - INFO - Fold 4 Results - MSE: 0.0357, MAE: 0.1369, R²: -0.1474, Pearson r: 0.5436 (p=8.3917e-02), Spearman r: 0.5000 (p=1.1731e-01)
+2025-12-16 14:58:40,045 - INFO - 
+--- Fold 5/5 ---
+2025-12-16 14:58:40,045 - INFO - Train size: 44, Test size: 11
+2025-12-16 14:58:40,045 - INFO - Train target - Mean: 0.2994, Std: 0.1713
+2025-12-16 14:58:40,045 - INFO - Test target  - Mean: 0.3598, Std: 0.1812
+2025-12-16 14:58:40,069 - INFO - Training fold 5 with early stopping (patience=50)...
+2025-12-16 14:58:40,095 - INFO - Epoch 1/200 | Train Loss: 0.610909 | Val Loss: 0.279944 | Best: inf (ep 1)
+2025-12-16 14:58:40,318 - INFO - Epoch 10/200 | Train Loss: 0.255093 | Val Loss: 0.346467 | Best: inf (ep 1)
+2025-12-16 14:58:40,566 - INFO - Epoch 20/200 | Train Loss: 0.184746 | Val Loss: 0.311973 | Best: inf (ep 1)
+2025-12-16 14:58:40,814 - INFO - Epoch 30/200 | Train Loss: 0.174984 | Val Loss: 0.265958 | Best: inf (ep 1)
+2025-12-16 14:58:41,064 - INFO - Epoch 40/200 | Train Loss: 0.139425 | Val Loss: 0.293509 | Best: inf (ep 1)
+2025-12-16 14:58:41,315 - INFO - Epoch 50/200 | Train Loss: 0.144848 | Val Loss: 0.311986 | Best: inf (ep 1)
+2025-12-16 14:58:41,634 - INFO - Epoch 60/200 | Train Loss: 0.120760 | Val Loss: 0.300900 | Best: 0.258933 (ep 54)
+2025-12-16 14:58:41,920 - INFO - Epoch 70/200 | Train Loss: 0.154851 | Val Loss: 0.306497 | Best: 0.241065 (ep 65)
+2025-12-16 14:58:42,169 - INFO - Epoch 80/200 | Train Loss: 0.120208 | Val Loss: 0.303514 | Best: 0.241065 (ep 65)
+2025-12-16 14:58:42,418 - INFO - Epoch 90/200 | Train Loss: 0.123099 | Val Loss: 0.302187 | Best: 0.241065 (ep 65)
+2025-12-16 14:58:42,667 - INFO - Epoch 100/200 | Train Loss: 0.113656 | Val Loss: 0.279010 | Best: 0.241065 (ep 65)
+2025-12-16 14:58:42,916 - INFO - Epoch 110/200 | Train Loss: 0.120961 | Val Loss: 0.261675 | Best: 0.241065 (ep 65)
+2025-12-16 14:58:43,040 - INFO - Early stopping at epoch 115! Best val loss: 0.241065 at epoch 65
+2025-12-16 14:58:43,054 - INFO - Loaded best model from epoch 65
+2025-12-16 14:58:43,064 - INFO - Fold 5 Results - MSE: 0.0312, MAE: 0.1344, R²: 0.0504, Pearson r: 0.7028 (p=1.5861e-02), Spearman r: 0.5364 (p=8.8953e-02)
+2025-12-16 14:58:43,067 - INFO - 
+============================================================
+2025-12-16 14:58:43,067 - INFO - FINAL CROSS-VALIDATION RESULTS FOR: Treatment_Regression_ALL
+2025-12-16 14:58:43,067 - INFO - ----------------------------------------
+2025-12-16 14:58:43,067 - INFO - MSE         : 0.0332 ± 0.0059
+2025-12-16 14:58:43,067 - INFO - RMSE        : 0.1815 ± 0.0159
+2025-12-16 14:58:43,067 - INFO - MAE         : 0.1448 ± 0.0161
+2025-12-16 14:58:43,067 - INFO - R2          : -0.2447 ± 0.5918
+2025-12-16 14:58:43,067 - INFO - PEARSON_R   : 0.6323 ± 0.1048
+2025-12-16 14:58:43,068 - INFO - PEARSON_P   : 0.0512 ± 0.0357
+2025-12-16 14:58:43,068 - INFO - SPEARMAN_R  : 0.5927 ± 0.0877
+2025-12-16 14:58:43,068 - INFO - SPEARMAN_P  : 0.0660 ± 0.0370
+2025-12-16 14:58:43,068 - INFO - ============================================================
+
+2025-12-16 14:58:43,072 - INFO - Results saved to final_results_Treatment_Regression_ALL.json
+2025-12-16 14:58:43,072 - INFO - Total execution time: 17.84 seconds
+2025-12-16 15:00:43,867 - INFO - Using device: cuda
+2025-12-16 15:00:43,867 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 15:00:43,868 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 15:00:43,868 - INFO - Building diff file index...
+2025-12-16 15:00:43,869 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 15:00:43,869 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 15:00:43,869 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 15:00:43,869 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 15:00:43,869 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 15:00:43,870 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 15:00:43,870 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 15:00:43,870 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 15:00:43,870 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 15:00:43,870 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 15:00:43,870 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 15:00:43,870 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 15:00:43,870 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 15:00:43,871 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 15:00:43,871 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 15:00:43,871 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 15:00:43,871 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 15:00:43,871 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 15:00:43,871 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 15:00:43,871 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 15:00:43,871 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 15:00:43,871 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 15:00:43,871 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 15:00:43,872 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 15:00:43,872 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 15:00:43,872 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 15:00:43,872 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 15:00:43,872 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 15:00:43,872 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 15:00:43,872 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 15:00:43,872 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 15:00:43,872 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 15:00:43,873 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 15:00:43,874 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 15:00:43,874 - INFO - Built diff index with 71 patients
+2025-12-16 15:00:43,874 - INFO - Parsing UPDRS data...
+2025-12-16 15:00:43,888 - INFO - Improvement rate statistics:
+2025-12-16 15:00:43,888 - INFO -   Min: 0.0000
+2025-12-16 15:00:43,888 - INFO -   Max: 0.6970
+2025-12-16 15:00:43,888 - INFO -   Mean: 0.3115
+2025-12-16 15:00:43,888 - INFO -   Std: 0.1750
+2025-12-16 15:00:43,888 - INFO - Found 55 valid samples
+2025-12-16 15:00:43,888 - INFO - Preparing feature matrices...
+2025-12-16 15:00:43,923 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 15:00:43,923 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 15:00:43,923 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 15:00:43,923 - INFO - 
+============================================================
+2025-12-16 15:00:43,923 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 15:00:43,923 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 15:00:43,924 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 15:00:43,924 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:00:43,924 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 15:00:43,924 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 15:00:44,713 - INFO - Training fold 1 with early stopping (patience=50)...
+2025-12-16 15:00:44,928 - INFO - Epoch 1/200 | Train Loss: 0.663830 | Val Loss: 0.574993 | Best: inf (ep 1)
+2025-12-16 15:00:45,160 - INFO - Epoch 10/200 | Train Loss: 0.249573 | Val Loss: 0.473566 | Best: inf (ep 1)
+2025-12-16 15:00:45,417 - INFO - Epoch 20/200 | Train Loss: 0.196133 | Val Loss: 0.532136 | Best: inf (ep 1)
+2025-12-16 15:00:45,672 - INFO - Epoch 30/200 | Train Loss: 0.201089 | Val Loss: 0.422631 | Best: inf (ep 1)
+2025-12-16 15:00:45,928 - INFO - Epoch 40/200 | Train Loss: 0.164407 | Val Loss: 0.465596 | Best: inf (ep 1)
+2025-12-16 15:00:46,183 - INFO - Epoch 50/200 | Train Loss: 0.150777 | Val Loss: 0.504102 | Best: inf (ep 1)
+2025-12-16 15:00:46,516 - INFO - Epoch 60/200 | Train Loss: 0.156996 | Val Loss: 0.559277 | Best: 0.488294 (ep 54)
+2025-12-16 15:00:46,880 - INFO - Epoch 70/200 | Train Loss: 0.163262 | Val Loss: 0.650268 | Best: 0.437967 (ep 63)
+2025-12-16 15:00:47,135 - INFO - Epoch 80/200 | Train Loss: 0.133043 | Val Loss: 0.502518 | Best: 0.437967 (ep 63)
+2025-12-16 15:00:47,444 - INFO - Epoch 90/200 | Train Loss: 0.148663 | Val Loss: 0.525454 | Best: 0.364506 (ep 85)
+2025-12-16 15:00:47,699 - INFO - Epoch 100/200 | Train Loss: 0.140949 | Val Loss: 0.618641 | Best: 0.364506 (ep 85)
+2025-12-16 15:00:47,956 - INFO - Epoch 110/200 | Train Loss: 0.136612 | Val Loss: 0.393544 | Best: 0.364506 (ep 85)
+2025-12-16 15:00:48,211 - INFO - Epoch 120/200 | Train Loss: 0.131713 | Val Loss: 0.376328 | Best: 0.364506 (ep 85)
+2025-12-16 15:00:48,522 - INFO - Epoch 130/200 | Train Loss: 0.157886 | Val Loss: 0.355284 | Best: 0.308631 (ep 126)
+2025-12-16 15:00:48,779 - INFO - Epoch 140/200 | Train Loss: 0.145623 | Val Loss: 0.473885 | Best: 0.308631 (ep 126)
+2025-12-16 15:00:49,035 - INFO - Epoch 150/200 | Train Loss: 0.144486 | Val Loss: 0.428992 | Best: 0.308631 (ep 126)
+2025-12-16 15:00:49,288 - INFO - Epoch 160/200 | Train Loss: 0.128204 | Val Loss: 0.414937 | Best: 0.308631 (ep 126)
+2025-12-16 15:00:49,542 - INFO - Epoch 170/200 | Train Loss: 0.123600 | Val Loss: 0.506695 | Best: 0.308631 (ep 126)
+2025-12-16 15:00:49,694 - INFO - Early stopping at epoch 176! Best val loss: 0.308631 at epoch 126
+2025-12-16 15:00:49,709 - INFO - Loaded best model from epoch 126
+2025-12-16 15:00:49,726 - INFO - Fold 1 Results - MSE: 0.0262, MAE: 0.1396, R²: 0.1202, Pearson r: 0.6515 (p=2.9881e-02), Spearman r: 0.6727 (p=2.3313e-02)
+2025-12-16 15:00:49,726 - INFO - 
+--- Fold 2/5 ---
+2025-12-16 15:00:49,726 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:00:49,726 - INFO - Train target - Mean: 0.3079, Std: 0.1712
+2025-12-16 15:00:49,726 - INFO - Test target  - Mean: 0.3255, Std: 0.1887
+2025-12-16 15:00:49,749 - INFO - Training fold 2 with early stopping (patience=50)...
+2025-12-16 15:00:49,775 - INFO - Epoch 1/200 | Train Loss: 0.775187 | Val Loss: 0.470292 | Best: inf (ep 1)
+2025-12-16 15:00:50,004 - INFO - Epoch 10/200 | Train Loss: 0.229781 | Val Loss: 0.487261 | Best: inf (ep 1)
+2025-12-16 15:00:50,257 - INFO - Epoch 20/200 | Train Loss: 0.174760 | Val Loss: 0.393505 | Best: inf (ep 1)
+2025-12-16 15:00:50,510 - INFO - Epoch 30/200 | Train Loss: 0.163668 | Val Loss: 0.446619 | Best: inf (ep 1)
+2025-12-16 15:00:50,764 - INFO - Epoch 40/200 | Train Loss: 0.148863 | Val Loss: 0.389910 | Best: inf (ep 1)
+2025-12-16 15:00:51,017 - INFO - Epoch 50/200 | Train Loss: 0.160577 | Val Loss: 0.448539 | Best: inf (ep 1)
+2025-12-16 15:00:51,394 - INFO - Epoch 60/200 | Train Loss: 0.145273 | Val Loss: 0.394823 | Best: 0.394823 (ep 60)
+2025-12-16 15:00:51,667 - INFO - Epoch 70/200 | Train Loss: 0.148277 | Val Loss: 0.431039 | Best: 0.383587 (ep 65)
+2025-12-16 15:00:51,921 - INFO - Epoch 80/200 | Train Loss: 0.141065 | Val Loss: 0.413623 | Best: 0.383587 (ep 65)
+2025-12-16 15:00:52,175 - INFO - Epoch 90/200 | Train Loss: 0.135831 | Val Loss: 0.429209 | Best: 0.383587 (ep 65)
+2025-12-16 15:00:52,428 - INFO - Epoch 100/200 | Train Loss: 0.133645 | Val Loss: 0.422979 | Best: 0.383587 (ep 65)
+2025-12-16 15:00:52,681 - INFO - Epoch 110/200 | Train Loss: 0.133489 | Val Loss: 0.431828 | Best: 0.383587 (ep 65)
+2025-12-16 15:00:52,808 - INFO - Early stopping at epoch 115! Best val loss: 0.383587 at epoch 65
+2025-12-16 15:00:52,822 - INFO - Loaded best model from epoch 65
+2025-12-16 15:00:52,832 - INFO - Fold 2 Results - MSE: 0.0396, MAE: 0.1627, R²: -0.1124, Pearson r: 0.4793 (p=1.3574e-01), Spearman r: 0.5545 (p=7.6652e-02)
+2025-12-16 15:00:52,832 - INFO - 
+--- Fold 3/5 ---
+2025-12-16 15:00:52,833 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:00:52,833 - INFO - Train target - Mean: 0.3210, Std: 0.1827
+2025-12-16 15:00:52,833 - INFO - Test target  - Mean: 0.2734, Std: 0.1335
+2025-12-16 15:00:52,856 - INFO - Training fold 3 with early stopping (patience=50)...
+2025-12-16 15:00:52,882 - INFO - Epoch 1/200 | Train Loss: 0.923534 | Val Loss: 0.282310 | Best: inf (ep 1)
+2025-12-16 15:00:53,111 - INFO - Epoch 10/200 | Train Loss: 0.265334 | Val Loss: 0.297745 | Best: inf (ep 1)
+2025-12-16 15:00:53,365 - INFO - Epoch 20/200 | Train Loss: 0.235806 | Val Loss: 0.302510 | Best: inf (ep 1)
+2025-12-16 15:00:53,620 - INFO - Epoch 30/200 | Train Loss: 0.195062 | Val Loss: 0.267410 | Best: inf (ep 1)
+2025-12-16 15:00:53,877 - INFO - Epoch 40/200 | Train Loss: 0.221788 | Val Loss: 0.245414 | Best: inf (ep 1)
+2025-12-16 15:00:54,131 - INFO - Epoch 50/200 | Train Loss: 0.164525 | Val Loss: 0.268853 | Best: inf (ep 1)
+2025-12-16 15:00:54,546 - INFO - Epoch 60/200 | Train Loss: 0.163989 | Val Loss: 0.292073 | Best: 0.242182 (ep 53)
+2025-12-16 15:00:54,802 - INFO - Epoch 70/200 | Train Loss: 0.165194 | Val Loss: 0.259686 | Best: 0.242182 (ep 53)
+2025-12-16 15:00:55,075 - INFO - Epoch 80/200 | Train Loss: 0.177513 | Val Loss: 0.269029 | Best: 0.241361 (ep 71)
+2025-12-16 15:00:55,330 - INFO - Epoch 90/200 | Train Loss: 0.148328 | Val Loss: 0.261861 | Best: 0.241361 (ep 71)
+2025-12-16 15:00:55,605 - INFO - Epoch 100/200 | Train Loss: 0.143960 | Val Loss: 0.261832 | Best: 0.239581 (ep 93)
+2025-12-16 15:00:55,861 - INFO - Epoch 110/200 | Train Loss: 0.129304 | Val Loss: 0.265704 | Best: 0.239581 (ep 93)
+2025-12-16 15:00:56,116 - INFO - Epoch 120/200 | Train Loss: 0.132855 | Val Loss: 0.266442 | Best: 0.239581 (ep 93)
+2025-12-16 15:00:56,373 - INFO - Epoch 130/200 | Train Loss: 0.132937 | Val Loss: 0.280762 | Best: 0.239581 (ep 93)
+2025-12-16 15:00:56,627 - INFO - Epoch 140/200 | Train Loss: 0.128899 | Val Loss: 0.268847 | Best: 0.239581 (ep 93)
+2025-12-16 15:00:56,704 - INFO - Early stopping at epoch 143! Best val loss: 0.239581 at epoch 93
+2025-12-16 15:00:56,718 - INFO - Loaded best model from epoch 93
+2025-12-16 15:00:56,731 - INFO - Fold 3 Results - MSE: 0.0236, MAE: 0.1300, R²: -0.3220, Pearson r: 0.7761 (p=4.9833e-03), Spearman r: 0.7909 (p=3.7461e-03)
+2025-12-16 15:00:56,731 - INFO - 
+--- Fold 4/5 ---
+2025-12-16 15:00:56,731 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:00:56,731 - INFO - Train target - Mean: 0.3217, Std: 0.1731
+2025-12-16 15:00:56,731 - INFO - Test target  - Mean: 0.2706, Std: 0.1765
+2025-12-16 15:00:56,753 - INFO - Training fold 4 with early stopping (patience=50)...
+2025-12-16 15:00:56,780 - INFO - Epoch 1/200 | Train Loss: 0.815891 | Val Loss: 0.559692 | Best: inf (ep 1)
+2025-12-16 15:00:57,008 - INFO - Epoch 10/200 | Train Loss: 0.248469 | Val Loss: 0.643864 | Best: inf (ep 1)
+2025-12-16 15:00:57,263 - INFO - Epoch 20/200 | Train Loss: 0.287965 | Val Loss: 0.695782 | Best: inf (ep 1)
+2025-12-16 15:00:57,518 - INFO - Epoch 30/200 | Train Loss: 0.187815 | Val Loss: 0.534837 | Best: inf (ep 1)
+2025-12-16 15:00:57,772 - INFO - Epoch 40/200 | Train Loss: 0.193947 | Val Loss: 0.617600 | Best: inf (ep 1)
+2025-12-16 15:00:58,026 - INFO - Epoch 50/200 | Train Loss: 0.155628 | Val Loss: 0.528506 | Best: inf (ep 1)
+2025-12-16 15:00:58,349 - INFO - Epoch 60/200 | Train Loss: 0.149268 | Val Loss: 0.502373 | Best: 0.495404 (ep 59)
+2025-12-16 15:00:58,602 - INFO - Epoch 70/200 | Train Loss: 0.138949 | Val Loss: 0.560416 | Best: 0.495404 (ep 59)
+2025-12-16 15:00:58,856 - INFO - Epoch 80/200 | Train Loss: 0.136488 | Val Loss: 0.568792 | Best: 0.495404 (ep 59)
+2025-12-16 15:00:59,109 - INFO - Epoch 90/200 | Train Loss: 0.139273 | Val Loss: 0.554914 | Best: 0.495404 (ep 59)
+2025-12-16 15:00:59,362 - INFO - Epoch 100/200 | Train Loss: 0.136152 | Val Loss: 0.604016 | Best: 0.495404 (ep 59)
+2025-12-16 15:00:59,592 - INFO - Early stopping at epoch 109! Best val loss: 0.495404 at epoch 59
+2025-12-16 15:00:59,606 - INFO - Loaded best model from epoch 59
+2025-12-16 15:00:59,735 - INFO - Fold 4 Results - MSE: 0.0480, MAE: 0.1585, R²: -0.5395, Pearson r: 0.5541 (p=7.6962e-02), Spearman r: 0.5364 (p=8.8953e-02)
+2025-12-16 15:00:59,735 - INFO - 
+--- Fold 5/5 ---
+2025-12-16 15:00:59,735 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:00:59,736 - INFO - Train target - Mean: 0.2994, Std: 0.1713
+2025-12-16 15:00:59,736 - INFO - Test target  - Mean: 0.3598, Std: 0.1812
+2025-12-16 15:00:59,759 - INFO - Training fold 5 with early stopping (patience=50)...
+2025-12-16 15:00:59,787 - INFO - Epoch 1/200 | Train Loss: 0.791246 | Val Loss: 0.343739 | Best: inf (ep 1)
+2025-12-16 15:01:00,016 - INFO - Epoch 10/200 | Train Loss: 0.296465 | Val Loss: 0.295199 | Best: inf (ep 1)
+2025-12-16 15:01:00,271 - INFO - Epoch 20/200 | Train Loss: 0.168534 | Val Loss: 0.310907 | Best: inf (ep 1)
+2025-12-16 15:01:00,528 - INFO - Epoch 30/200 | Train Loss: 0.170157 | Val Loss: 0.343198 | Best: inf (ep 1)
+2025-12-16 15:01:00,782 - INFO - Epoch 40/200 | Train Loss: 0.270904 | Val Loss: 0.295884 | Best: inf (ep 1)
+2025-12-16 15:01:01,037 - INFO - Epoch 50/200 | Train Loss: 0.184662 | Val Loss: 0.371586 | Best: inf (ep 1)
+2025-12-16 15:01:01,329 - INFO - Epoch 60/200 | Train Loss: 0.156186 | Val Loss: 0.291060 | Best: 0.278253 (ep 52)
+2025-12-16 15:01:01,604 - INFO - Epoch 70/200 | Train Loss: 0.139974 | Val Loss: 0.266013 | Best: 0.255261 (ep 61)
+2025-12-16 15:01:01,916 - INFO - Epoch 80/200 | Train Loss: 0.136049 | Val Loss: 0.255496 | Best: 0.242983 (ep 74)
+2025-12-16 15:01:02,171 - INFO - Epoch 90/200 | Train Loss: 0.143772 | Val Loss: 0.307472 | Best: 0.242983 (ep 74)
+2025-12-16 15:01:02,424 - INFO - Epoch 100/200 | Train Loss: 0.127746 | Val Loss: 0.286290 | Best: 0.242983 (ep 74)
+2025-12-16 15:01:02,676 - INFO - Epoch 110/200 | Train Loss: 0.130784 | Val Loss: 0.293186 | Best: 0.242983 (ep 74)
+2025-12-16 15:01:02,929 - INFO - Epoch 120/200 | Train Loss: 0.124610 | Val Loss: 0.278274 | Best: 0.242983 (ep 74)
+2025-12-16 15:01:03,031 - INFO - Early stopping at epoch 124! Best val loss: 0.242983 at epoch 74
+2025-12-16 15:01:03,045 - INFO - Loaded best model from epoch 74
+2025-12-16 15:01:03,057 - INFO - Fold 5 Results - MSE: 0.0204, MAE: 0.1214, R²: 0.3796, Pearson r: 0.7831 (p=4.3643e-03), Spearman r: 0.5818 (p=6.0420e-02)
+2025-12-16 15:01:03,060 - INFO - 
+============================================================
+2025-12-16 15:01:03,060 - INFO - FINAL CROSS-VALIDATION RESULTS FOR: Treatment_Regression_ALL
+2025-12-16 15:01:03,060 - INFO - ----------------------------------------
+2025-12-16 15:01:03,060 - INFO - MSE         : 0.0315 ± 0.0105
+2025-12-16 15:01:03,060 - INFO - RMSE        : 0.1752 ± 0.0290
+2025-12-16 15:01:03,060 - INFO - MAE         : 0.1425 ± 0.0160
+2025-12-16 15:01:03,060 - INFO - R2          : -0.0948 ± 0.3228
+2025-12-16 15:01:03,060 - INFO - PEARSON_R   : 0.6488 ± 0.1199
+2025-12-16 15:01:03,060 - INFO - PEARSON_P   : 0.0504 ± 0.0502
+2025-12-16 15:01:03,060 - INFO - SPEARMAN_R  : 0.6273 ± 0.0943
+2025-12-16 15:01:03,060 - INFO - SPEARMAN_P  : 0.0506 ± 0.0322
+2025-12-16 15:01:03,060 - INFO - ============================================================
+
+2025-12-16 15:01:03,066 - INFO - Results saved to final_results_Treatment_Regression_ALL.json
+2025-12-16 15:01:03,067 - INFO - Total execution time: 19.20 seconds
+2025-12-16 15:01:35,389 - INFO - Using device: cuda
+2025-12-16 15:01:35,389 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 15:01:35,390 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 15:01:35,390 - INFO - Building diff file index...
+2025-12-16 15:01:35,391 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 15:01:35,391 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 15:01:35,391 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 15:01:35,391 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 15:01:35,392 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 15:01:35,392 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 15:01:35,392 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 15:01:35,392 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 15:01:35,392 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 15:01:35,392 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 15:01:35,392 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 15:01:35,393 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 15:01:35,394 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 15:01:35,394 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 15:01:35,394 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 15:01:35,394 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 15:01:35,394 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 15:01:35,394 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 15:01:35,394 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 15:01:35,394 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 15:01:35,395 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 15:01:35,396 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 15:01:35,396 - INFO - Built diff index with 71 patients
+2025-12-16 15:01:35,396 - INFO - Parsing UPDRS data...
+2025-12-16 15:01:35,410 - INFO - Improvement rate statistics:
+2025-12-16 15:01:35,410 - INFO -   Min: 0.0000
+2025-12-16 15:01:35,410 - INFO -   Max: 0.6970
+2025-12-16 15:01:35,410 - INFO -   Mean: 0.3115
+2025-12-16 15:01:35,410 - INFO -   Std: 0.1750
+2025-12-16 15:01:35,410 - INFO - Found 55 valid samples
+2025-12-16 15:01:35,410 - INFO - Preparing feature matrices...
+2025-12-16 15:01:35,444 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 15:01:35,444 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 15:01:35,444 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 15:01:35,444 - INFO - 
+============================================================
+2025-12-16 15:01:35,444 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 15:01:35,444 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 15:01:35,444 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 15:01:35,444 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:01:35,445 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 15:01:35,445 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 15:01:36,238 - INFO - Training fold 1 with early stopping (patience=50)...
+2025-12-16 15:01:36,448 - INFO - Epoch 1/200 | Train Loss: 0.738926 | Val Loss: 0.656818 | Best: inf (ep 1)
+2025-12-16 15:01:36,676 - INFO - Epoch 10/200 | Train Loss: 0.255358 | Val Loss: 0.611478 | Best: inf (ep 1)
+2025-12-16 15:01:36,928 - INFO - Epoch 20/200 | Train Loss: 0.265543 | Val Loss: 0.371387 | Best: inf (ep 1)
+2025-12-16 15:01:37,180 - INFO - Epoch 30/200 | Train Loss: 0.222291 | Val Loss: 0.614861 | Best: inf (ep 1)
+2025-12-16 15:01:37,431 - INFO - Epoch 40/200 | Train Loss: 0.189318 | Val Loss: 0.432626 | Best: inf (ep 1)
+2025-12-16 15:01:37,683 - INFO - Epoch 50/200 | Train Loss: 0.166967 | Val Loss: 0.856181 | Best: inf (ep 1)
+2025-12-16 15:01:38,186 - INFO - Epoch 60/200 | Train Loss: 0.148189 | Val Loss: 0.510624 | Best: 0.450661 (ep 55)
+2025-12-16 15:01:38,493 - INFO - Epoch 70/200 | Train Loss: 0.155651 | Val Loss: 0.552910 | Best: 0.386817 (ep 65)
+2025-12-16 15:01:38,746 - INFO - Epoch 80/200 | Train Loss: 0.148759 | Val Loss: 0.435173 | Best: 0.386817 (ep 65)
+2025-12-16 15:01:38,998 - INFO - Epoch 90/200 | Train Loss: 0.161580 | Val Loss: 0.489222 | Best: 0.386817 (ep 65)
+2025-12-16 15:01:39,250 - INFO - Epoch 100/200 | Train Loss: 0.158906 | Val Loss: 0.534660 | Best: 0.386817 (ep 65)
+2025-12-16 15:01:39,504 - INFO - Epoch 110/200 | Train Loss: 0.148587 | Val Loss: 0.418668 | Best: 0.386817 (ep 65)
+2025-12-16 15:01:39,630 - INFO - Early stopping at epoch 115! Best val loss: 0.386817 at epoch 65
+2025-12-16 15:01:39,644 - INFO - Loaded best model from epoch 65
+2025-12-16 15:01:39,660 - INFO - Fold 1 Results - MSE: 0.0449, MAE: 0.1730, R²: -0.5071, Pearson r: 0.6254 (p=3.9601e-02), Spearman r: 0.6364 (p=3.5287e-02)
+2025-12-16 15:01:39,660 - INFO - 
+--- Fold 2/5 ---
+2025-12-16 15:01:39,660 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:01:39,660 - INFO - Train target - Mean: 0.3079, Std: 0.1712
+2025-12-16 15:01:39,660 - INFO - Test target  - Mean: 0.3255, Std: 0.1887
+2025-12-16 15:01:39,683 - INFO - Training fold 2 with early stopping (patience=50)...
+2025-12-16 15:01:39,710 - INFO - Epoch 1/200 | Train Loss: 0.859426 | Val Loss: 0.329658 | Best: inf (ep 1)
+2025-12-16 15:01:39,938 - INFO - Epoch 10/200 | Train Loss: 0.288573 | Val Loss: 0.388591 | Best: inf (ep 1)
+2025-12-16 15:01:40,190 - INFO - Epoch 20/200 | Train Loss: 0.213835 | Val Loss: 0.420788 | Best: inf (ep 1)
+2025-12-16 15:01:40,446 - INFO - Epoch 30/200 | Train Loss: 0.205722 | Val Loss: 0.465166 | Best: inf (ep 1)
+2025-12-16 15:01:40,697 - INFO - Epoch 40/200 | Train Loss: 0.156973 | Val Loss: 0.402130 | Best: inf (ep 1)
+2025-12-16 15:01:40,950 - INFO - Epoch 50/200 | Train Loss: 0.206458 | Val Loss: 0.524137 | Best: inf (ep 1)
+2025-12-16 15:01:41,380 - INFO - Epoch 60/200 | Train Loss: 0.161250 | Val Loss: 0.440779 | Best: 0.440779 (ep 60)
+2025-12-16 15:01:41,667 - INFO - Epoch 70/200 | Train Loss: 0.176877 | Val Loss: 0.471625 | Best: 0.394432 (ep 68)
+2025-12-16 15:01:41,919 - INFO - Epoch 80/200 | Train Loss: 0.154487 | Val Loss: 0.439908 | Best: 0.394432 (ep 68)
+2025-12-16 15:01:42,175 - INFO - Epoch 90/200 | Train Loss: 0.150568 | Val Loss: 0.421527 | Best: 0.394432 (ep 68)
+2025-12-16 15:01:42,427 - INFO - Epoch 100/200 | Train Loss: 0.144621 | Val Loss: 0.435036 | Best: 0.394432 (ep 68)
+2025-12-16 15:01:42,679 - INFO - Epoch 110/200 | Train Loss: 0.144094 | Val Loss: 0.445844 | Best: 0.394432 (ep 68)
+2025-12-16 15:01:42,882 - INFO - Early stopping at epoch 118! Best val loss: 0.394432 at epoch 68
+2025-12-16 15:01:42,896 - INFO - Loaded best model from epoch 68
+2025-12-16 15:01:42,907 - INFO - Fold 2 Results - MSE: 0.0496, MAE: 0.1684, R²: -0.3933, Pearson r: 0.5091 (p=1.0976e-01), Spearman r: 0.5909 (p=5.5576e-02)
+2025-12-16 15:01:42,907 - INFO - 
+--- Fold 3/5 ---
+2025-12-16 15:01:42,908 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:01:42,908 - INFO - Train target - Mean: 0.3210, Std: 0.1827
+2025-12-16 15:01:42,908 - INFO - Test target  - Mean: 0.2734, Std: 0.1335
+2025-12-16 15:01:42,931 - INFO - Training fold 3 with early stopping (patience=50)...
+2025-12-16 15:01:42,957 - INFO - Epoch 1/200 | Train Loss: 0.808938 | Val Loss: 0.503998 | Best: inf (ep 1)
+2025-12-16 15:01:43,187 - INFO - Epoch 10/200 | Train Loss: 0.282238 | Val Loss: 0.394257 | Best: inf (ep 1)
+2025-12-16 15:01:43,439 - INFO - Epoch 20/200 | Train Loss: 0.188058 | Val Loss: 0.314333 | Best: inf (ep 1)
+2025-12-16 15:01:43,691 - INFO - Epoch 30/200 | Train Loss: 0.225639 | Val Loss: 0.380507 | Best: inf (ep 1)
+2025-12-16 15:01:43,943 - INFO - Epoch 40/200 | Train Loss: 0.393541 | Val Loss: 0.421167 | Best: inf (ep 1)
+2025-12-16 15:01:44,195 - INFO - Epoch 50/200 | Train Loss: 0.157702 | Val Loss: 0.348974 | Best: inf (ep 1)
+2025-12-16 15:01:44,546 - INFO - Epoch 60/200 | Train Loss: 0.171543 | Val Loss: 0.334219 | Best: 0.311547 (ep 56)
+2025-12-16 15:01:44,800 - INFO - Epoch 70/200 | Train Loss: 0.154944 | Val Loss: 0.329085 | Best: 0.311547 (ep 56)
+2025-12-16 15:01:45,053 - INFO - Epoch 80/200 | Train Loss: 0.188606 | Val Loss: 0.326729 | Best: 0.311547 (ep 56)
+2025-12-16 15:01:45,338 - INFO - Epoch 90/200 | Train Loss: 0.160119 | Val Loss: 0.315004 | Best: 0.296557 (ep 86)
+2025-12-16 15:01:45,591 - INFO - Epoch 100/200 | Train Loss: 0.147889 | Val Loss: 0.357329 | Best: 0.296557 (ep 86)
+2025-12-16 15:01:45,843 - INFO - Epoch 110/200 | Train Loss: 0.144814 | Val Loss: 0.335024 | Best: 0.296557 (ep 86)
+2025-12-16 15:01:46,095 - INFO - Epoch 120/200 | Train Loss: 0.141351 | Val Loss: 0.332395 | Best: 0.296557 (ep 86)
+2025-12-16 15:01:46,386 - INFO - Epoch 130/200 | Train Loss: 0.150405 | Val Loss: 0.292726 | Best: 0.290897 (ep 129)
+2025-12-16 15:01:46,705 - INFO - Epoch 140/200 | Train Loss: 0.151993 | Val Loss: 0.313666 | Best: 0.289946 (ep 135)
+2025-12-16 15:01:46,961 - INFO - Epoch 150/200 | Train Loss: 0.158913 | Val Loss: 0.296641 | Best: 0.289946 (ep 135)
+2025-12-16 15:01:47,268 - INFO - Epoch 160/200 | Train Loss: 0.164611 | Val Loss: 0.299979 | Best: 0.239328 (ep 154)
+2025-12-16 15:01:47,523 - INFO - Epoch 170/200 | Train Loss: 0.146044 | Val Loss: 0.327558 | Best: 0.239328 (ep 154)
+2025-12-16 15:01:47,779 - INFO - Epoch 180/200 | Train Loss: 0.148670 | Val Loss: 0.306481 | Best: 0.239328 (ep 154)
+2025-12-16 15:01:48,035 - INFO - Epoch 190/200 | Train Loss: 0.150770 | Val Loss: 0.274929 | Best: 0.239328 (ep 154)
+2025-12-16 15:01:48,291 - INFO - Epoch 200/200 | Train Loss: 0.140722 | Val Loss: 0.271205 | Best: 0.239328 (ep 154)
+2025-12-16 15:01:48,306 - INFO - Loaded best model from epoch 154
+2025-12-16 15:01:48,321 - INFO - Fold 3 Results - MSE: 0.0942, MAE: 0.2403, R²: -4.2856, Pearson r: 0.7885 (p=3.9316e-03), Spearman r: 0.7909 (p=3.7461e-03)
+2025-12-16 15:01:48,321 - INFO - 
+--- Fold 4/5 ---
+2025-12-16 15:01:48,322 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:01:48,322 - INFO - Train target - Mean: 0.3217, Std: 0.1731
+2025-12-16 15:01:48,322 - INFO - Test target  - Mean: 0.2706, Std: 0.1765
+2025-12-16 15:01:48,345 - INFO - Training fold 4 with early stopping (patience=50)...
+2025-12-16 15:01:48,373 - INFO - Epoch 1/200 | Train Loss: 0.830170 | Val Loss: 0.784341 | Best: inf (ep 1)
+2025-12-16 15:01:48,601 - INFO - Epoch 10/200 | Train Loss: 0.231311 | Val Loss: 0.897523 | Best: inf (ep 1)
+2025-12-16 15:01:48,853 - INFO - Epoch 20/200 | Train Loss: 0.254988 | Val Loss: 0.916196 | Best: inf (ep 1)
+2025-12-16 15:01:49,105 - INFO - Epoch 30/200 | Train Loss: 0.222576 | Val Loss: 0.732428 | Best: inf (ep 1)
+2025-12-16 15:01:49,358 - INFO - Epoch 40/200 | Train Loss: 0.247205 | Val Loss: 0.832691 | Best: inf (ep 1)
+2025-12-16 15:01:49,612 - INFO - Epoch 50/200 | Train Loss: 0.287287 | Val Loss: 0.567491 | Best: inf (ep 1)
+2025-12-16 15:01:49,917 - INFO - Epoch 60/200 | Train Loss: 0.204742 | Val Loss: 0.604654 | Best: 0.604654 (ep 60)
+2025-12-16 15:01:50,207 - INFO - Epoch 70/200 | Train Loss: 0.213930 | Val Loss: 0.616690 | Best: 0.579396 (ep 68)
+2025-12-16 15:01:50,460 - INFO - Epoch 80/200 | Train Loss: 0.169744 | Val Loss: 0.646941 | Best: 0.579396 (ep 68)
+2025-12-16 15:01:50,715 - INFO - Epoch 90/200 | Train Loss: 0.167147 | Val Loss: 0.665958 | Best: 0.579396 (ep 68)
+2025-12-16 15:01:50,967 - INFO - Epoch 100/200 | Train Loss: 0.168959 | Val Loss: 0.692019 | Best: 0.579396 (ep 68)
+2025-12-16 15:01:51,219 - INFO - Epoch 110/200 | Train Loss: 0.160889 | Val Loss: 0.660582 | Best: 0.579396 (ep 68)
+2025-12-16 15:01:51,421 - INFO - Early stopping at epoch 118! Best val loss: 0.579396 at epoch 68
+2025-12-16 15:01:51,435 - INFO - Loaded best model from epoch 68
+2025-12-16 15:01:51,447 - INFO - Fold 4 Results - MSE: 0.0543, MAE: 0.1898, R²: -0.7435, Pearson r: 0.5710 (p=6.6556e-02), Spearman r: 0.5182 (p=1.0249e-01)
+2025-12-16 15:01:51,448 - INFO - 
+--- Fold 5/5 ---
+2025-12-16 15:01:51,448 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:01:51,448 - INFO - Train target - Mean: 0.2994, Std: 0.1713
+2025-12-16 15:01:51,448 - INFO - Test target  - Mean: 0.3598, Std: 0.1812
+2025-12-16 15:01:51,470 - INFO - Training fold 5 with early stopping (patience=50)...
+2025-12-16 15:01:51,496 - INFO - Epoch 1/200 | Train Loss: 0.788938 | Val Loss: 0.328435 | Best: inf (ep 1)
+2025-12-16 15:01:51,723 - INFO - Epoch 10/200 | Train Loss: 0.295147 | Val Loss: 0.244379 | Best: inf (ep 1)
+2025-12-16 15:01:51,975 - INFO - Epoch 20/200 | Train Loss: 0.205486 | Val Loss: 0.337633 | Best: inf (ep 1)
+2025-12-16 15:01:52,227 - INFO - Epoch 30/200 | Train Loss: 0.182720 | Val Loss: 0.302616 | Best: inf (ep 1)
+2025-12-16 15:01:52,480 - INFO - Epoch 40/200 | Train Loss: 0.177986 | Val Loss: 0.282114 | Best: inf (ep 1)
+2025-12-16 15:01:52,733 - INFO - Epoch 50/200 | Train Loss: 0.155446 | Val Loss: 0.407934 | Best: inf (ep 1)
+2025-12-16 15:01:53,052 - INFO - Epoch 60/200 | Train Loss: 0.147769 | Val Loss: 0.348278 | Best: 0.309023 (ep 57)
+2025-12-16 15:01:53,342 - INFO - Epoch 70/200 | Train Loss: 0.154942 | Val Loss: 0.297845 | Best: 0.289269 (ep 68)
+2025-12-16 15:01:53,598 - INFO - Epoch 80/200 | Train Loss: 0.157487 | Val Loss: 0.295906 | Best: 0.289269 (ep 68)
+2025-12-16 15:01:53,885 - INFO - Epoch 90/200 | Train Loss: 0.146967 | Val Loss: 0.314211 | Best: 0.262380 (ep 82)
+2025-12-16 15:01:54,137 - INFO - Epoch 100/200 | Train Loss: 0.142677 | Val Loss: 0.289638 | Best: 0.262380 (ep 82)
+2025-12-16 15:01:54,389 - INFO - Epoch 110/200 | Train Loss: 0.148288 | Val Loss: 0.306315 | Best: 0.262380 (ep 82)
+2025-12-16 15:01:54,642 - INFO - Epoch 120/200 | Train Loss: 0.149580 | Val Loss: 0.271338 | Best: 0.262380 (ep 82)
+2025-12-16 15:01:54,894 - INFO - Epoch 130/200 | Train Loss: 0.152365 | Val Loss: 0.293714 | Best: 0.262380 (ep 82)
+2025-12-16 15:01:54,945 - INFO - Early stopping at epoch 132! Best val loss: 0.262380 at epoch 82
+2025-12-16 15:01:54,958 - INFO - Loaded best model from epoch 82
+2025-12-16 15:01:54,968 - INFO - Fold 5 Results - MSE: 0.0237, MAE: 0.1306, R²: 0.2794, Pearson r: 0.7173 (p=1.2955e-02), Spearman r: 0.6091 (p=4.6696e-02)
+2025-12-16 15:01:54,971 - INFO - 
+============================================================
+2025-12-16 15:01:54,971 - INFO - FINAL CROSS-VALIDATION RESULTS FOR: Treatment_Regression_ALL
+2025-12-16 15:01:54,971 - INFO - ----------------------------------------
+2025-12-16 15:01:54,971 - INFO - MSE         : 0.0533 ± 0.0230
+2025-12-16 15:01:54,971 - INFO - RMSE        : 0.2257 ± 0.0490
+2025-12-16 15:01:54,971 - INFO - MAE         : 0.1804 ± 0.0356
+2025-12-16 15:01:54,971 - INFO - R2          : -1.1300 ± 1.6140
+2025-12-16 15:01:54,971 - INFO - PEARSON_R   : 0.6423 ± 0.1001
+2025-12-16 15:01:54,971 - INFO - PEARSON_P   : 0.0466 ± 0.0384
+2025-12-16 15:01:54,971 - INFO - SPEARMAN_R  : 0.6291 ± 0.0899
+2025-12-16 15:01:54,971 - INFO - SPEARMAN_P  : 0.0488 ± 0.0321
+2025-12-16 15:01:54,971 - INFO - ============================================================
+
+2025-12-16 15:01:54,977 - INFO - Results saved to final_results_Treatment_Regression_ALL.json
+2025-12-16 15:01:54,977 - INFO - Total execution time: 19.59 seconds
+2025-12-16 15:43:17,292 - INFO - Using device: cuda
+2025-12-16 15:43:17,293 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 15:43:17,293 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 15:43:17,293 - INFO - Building diff file index...
+2025-12-16 15:43:17,370 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 15:43:17,370 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 15:43:17,370 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 15:43:17,371 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 15:43:17,371 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 15:43:17,371 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 15:43:17,371 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 15:43:17,371 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 15:43:17,371 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 15:43:17,372 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 15:43:17,372 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 15:43:17,372 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 15:43:17,372 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 15:43:17,372 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 15:43:17,372 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 15:43:17,372 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 15:43:17,372 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 15:43:17,372 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 15:43:17,372 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 15:43:17,373 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 15:43:17,373 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 15:43:17,373 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 15:43:17,373 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 15:43:17,373 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 15:43:17,373 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 15:43:17,373 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 15:43:17,374 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 15:43:17,375 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 15:43:17,376 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 15:43:17,376 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 15:43:17,376 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 15:43:17,376 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 15:43:17,376 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 15:43:17,376 - INFO - Built diff index with 71 patients
+2025-12-16 15:43:17,376 - INFO - Parsing UPDRS data...
+2025-12-16 15:43:17,390 - INFO - Improvement rate statistics:
+2025-12-16 15:43:17,390 - INFO -   Min: 0.0000
+2025-12-16 15:43:17,390 - INFO -   Max: 0.6970
+2025-12-16 15:43:17,390 - INFO -   Mean: 0.3115
+2025-12-16 15:43:17,390 - INFO -   Std: 0.1750
+2025-12-16 15:43:17,390 - INFO - Found 55 valid samples
+2025-12-16 15:43:17,390 - INFO - Preparing feature matrices...
+2025-12-16 15:43:17,425 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 15:43:17,425 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 15:43:17,425 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 15:43:17,425 - INFO - 
+============================================================
+2025-12-16 15:43:17,425 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 15:43:17,425 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 15:43:17,426 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 15:43:17,426 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:43:17,426 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 15:43:17,426 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 15:43:18,209 - INFO - Training fold 1 with early stopping (patience=50)...
+2025-12-16 15:43:18,419 - INFO - Epoch 1/200 | Train Loss: 0.738926 | Val Loss: 0.656818 | Best: inf (ep 1)
+2025-12-16 15:43:18,646 - INFO - Epoch 10/200 | Train Loss: 0.255358 | Val Loss: 0.611478 | Best: inf (ep 1)
+2025-12-16 15:43:18,897 - INFO - Epoch 20/200 | Train Loss: 0.265543 | Val Loss: 0.371387 | Best: inf (ep 1)
+2025-12-16 15:43:19,148 - INFO - Epoch 30/200 | Train Loss: 0.222291 | Val Loss: 0.614861 | Best: inf (ep 1)
+2025-12-16 15:43:19,398 - INFO - Epoch 40/200 | Train Loss: 0.189318 | Val Loss: 0.432626 | Best: inf (ep 1)
+2025-12-16 15:43:19,649 - INFO - Epoch 50/200 | Train Loss: 0.166967 | Val Loss: 0.856181 | Best: inf (ep 1)
+2025-12-16 15:43:19,985 - INFO - Epoch 60/200 | Train Loss: 0.148189 | Val Loss: 0.510624 | Best: 0.450661 (ep 55)
+2025-12-16 15:43:20,291 - INFO - Epoch 70/200 | Train Loss: 0.155651 | Val Loss: 0.552910 | Best: 0.386817 (ep 65)
+2025-12-16 15:43:20,543 - INFO - Epoch 80/200 | Train Loss: 0.148759 | Val Loss: 0.435173 | Best: 0.386817 (ep 65)
+2025-12-16 15:43:20,794 - INFO - Epoch 90/200 | Train Loss: 0.161580 | Val Loss: 0.489222 | Best: 0.386817 (ep 65)
+2025-12-16 15:43:21,046 - INFO - Epoch 100/200 | Train Loss: 0.158906 | Val Loss: 0.534660 | Best: 0.386817 (ep 65)
+2025-12-16 15:43:21,300 - INFO - Epoch 110/200 | Train Loss: 0.148587 | Val Loss: 0.418668 | Best: 0.386817 (ep 65)
+2025-12-16 15:43:21,426 - INFO - Early stopping at epoch 115! Best val loss: 0.386817 at epoch 65
+2025-12-16 15:43:21,440 - INFO - Loaded best model from epoch 65
+2025-12-16 15:43:21,457 - INFO - Fold 1 Test Results - MSE: 0.0449, MAE: 0.1730, R²: -0.5071, Pearson r: 0.6254 (p=3.9601e-02), Spearman r: 0.6364 (p=3.5287e-02)
+2025-12-16 15:43:21,473 - INFO - Fold 1 In-Sample Results - MSE: 0.0337, MAE: 0.1446, R²: -0.0959, Pearson r: 0.9742 (p=9.0502e-29), Spearman r: 0.9817 (p=6.6325e-32)
+2025-12-16 15:43:21,473 - INFO - 
+--- Fold 2/5 ---
+2025-12-16 15:43:21,473 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:43:21,473 - INFO - Train target - Mean: 0.3079, Std: 0.1712
+2025-12-16 15:43:21,473 - INFO - Test target  - Mean: 0.3255, Std: 0.1887
+2025-12-16 15:43:21,496 - INFO - Training fold 2 with early stopping (patience=50)...
+2025-12-16 15:43:21,524 - INFO - Epoch 1/200 | Train Loss: 0.821044 | Val Loss: 0.576950 | Best: inf (ep 1)
+2025-12-16 15:43:21,750 - INFO - Epoch 10/200 | Train Loss: 0.302678 | Val Loss: 0.527491 | Best: inf (ep 1)
+2025-12-16 15:43:22,001 - INFO - Epoch 20/200 | Train Loss: 0.234296 | Val Loss: 0.453244 | Best: inf (ep 1)
+2025-12-16 15:43:22,252 - INFO - Epoch 30/200 | Train Loss: 0.193789 | Val Loss: 0.458491 | Best: inf (ep 1)
+2025-12-16 15:43:22,501 - INFO - Epoch 40/200 | Train Loss: 0.207359 | Val Loss: 0.526107 | Best: inf (ep 1)
+2025-12-16 15:43:22,750 - INFO - Epoch 50/200 | Train Loss: 0.219522 | Val Loss: 0.459281 | Best: inf (ep 1)
+2025-12-16 15:43:23,034 - INFO - Epoch 60/200 | Train Loss: 0.189488 | Val Loss: 0.438335 | Best: 0.411690 (ep 52)
+2025-12-16 15:43:23,285 - INFO - Epoch 70/200 | Train Loss: 0.150943 | Val Loss: 0.477520 | Best: 0.411690 (ep 52)
+2025-12-16 15:43:23,535 - INFO - Epoch 80/200 | Train Loss: 0.154581 | Val Loss: 0.459516 | Best: 0.411690 (ep 52)
+2025-12-16 15:43:23,803 - INFO - Epoch 90/200 | Train Loss: 0.159468 | Val Loss: 0.410925 | Best: 0.410925 (ep 90)
+2025-12-16 15:43:24,053 - INFO - Epoch 100/200 | Train Loss: 0.145568 | Val Loss: 0.462794 | Best: 0.410925 (ep 90)
+2025-12-16 15:43:24,304 - INFO - Epoch 110/200 | Train Loss: 0.145707 | Val Loss: 0.433396 | Best: 0.410925 (ep 90)
+2025-12-16 15:43:24,554 - INFO - Epoch 120/200 | Train Loss: 0.154740 | Val Loss: 0.460932 | Best: 0.410925 (ep 90)
+2025-12-16 15:43:24,806 - INFO - Epoch 130/200 | Train Loss: 0.142237 | Val Loss: 0.480556 | Best: 0.410925 (ep 90)
+2025-12-16 15:43:25,056 - INFO - Early stopping at epoch 140! Best val loss: 0.410925 at epoch 90
+2025-12-16 15:43:25,072 - INFO - Loaded best model from epoch 90
+2025-12-16 15:43:25,088 - INFO - Fold 2 Test Results - MSE: 0.0238, MAE: 0.1252, R²: 0.3322, Pearson r: 0.5802 (p=6.1335e-02), Spearman r: 0.6636 (p=2.5984e-02)
+2025-12-16 15:43:25,104 - INFO - Fold 2 In-Sample Results - MSE: 0.0132, MAE: 0.0956, R²: 0.5513, Pearson r: 0.9914 (p=1.1028e-38), Spearman r: 0.9945 (p=9.7271e-43)
+2025-12-16 15:43:25,104 - INFO - 
+--- Fold 3/5 ---
+2025-12-16 15:43:25,105 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:43:25,105 - INFO - Train target - Mean: 0.3210, Std: 0.1827
+2025-12-16 15:43:25,105 - INFO - Test target  - Mean: 0.2734, Std: 0.1335
+2025-12-16 15:43:25,128 - INFO - Training fold 3 with early stopping (patience=50)...
+2025-12-16 15:43:25,155 - INFO - Epoch 1/200 | Train Loss: 0.909785 | Val Loss: 0.677451 | Best: inf (ep 1)
+2025-12-16 15:43:25,384 - INFO - Epoch 10/200 | Train Loss: 0.264220 | Val Loss: 0.259841 | Best: inf (ep 1)
+2025-12-16 15:43:25,636 - INFO - Epoch 20/200 | Train Loss: 0.197928 | Val Loss: 0.304064 | Best: inf (ep 1)
+2025-12-16 15:43:25,888 - INFO - Epoch 30/200 | Train Loss: 0.190795 | Val Loss: 0.312677 | Best: inf (ep 1)
+2025-12-16 15:43:26,142 - INFO - Epoch 40/200 | Train Loss: 0.160383 | Val Loss: 0.326144 | Best: inf (ep 1)
+2025-12-16 15:43:26,393 - INFO - Epoch 50/200 | Train Loss: 0.146889 | Val Loss: 0.325797 | Best: inf (ep 1)
+2025-12-16 15:43:26,744 - INFO - Epoch 60/200 | Train Loss: 0.176495 | Val Loss: 0.299483 | Best: 0.283151 (ep 59)
+2025-12-16 15:43:27,012 - INFO - Epoch 70/200 | Train Loss: 0.154459 | Val Loss: 0.346401 | Best: 0.281895 (ep 64)
+2025-12-16 15:43:27,300 - INFO - Epoch 80/200 | Train Loss: 0.240264 | Val Loss: 0.266485 | Best: 0.255188 (ep 79)
+2025-12-16 15:43:27,586 - INFO - Epoch 90/200 | Train Loss: 0.185340 | Val Loss: 0.320527 | Best: 0.248346 (ep 88)
+2025-12-16 15:43:27,836 - INFO - Epoch 100/200 | Train Loss: 0.164632 | Val Loss: 0.352241 | Best: 0.248346 (ep 88)
+2025-12-16 15:43:28,087 - INFO - Epoch 110/200 | Train Loss: 0.153172 | Val Loss: 0.329111 | Best: 0.248346 (ep 88)
+2025-12-16 15:43:28,339 - INFO - Epoch 120/200 | Train Loss: 0.145104 | Val Loss: 0.301854 | Best: 0.248346 (ep 88)
+2025-12-16 15:43:28,591 - INFO - Epoch 130/200 | Train Loss: 0.145520 | Val Loss: 0.309013 | Best: 0.248346 (ep 88)
+2025-12-16 15:43:28,793 - INFO - Early stopping at epoch 138! Best val loss: 0.248346 at epoch 88
+2025-12-16 15:43:28,807 - INFO - Loaded best model from epoch 88
+2025-12-16 15:43:28,819 - INFO - Fold 3 Test Results - MSE: 0.1574, MAE: 0.3411, R²: -7.8334, Pearson r: 0.8020 (p=2.9807e-03), Spearman r: 0.7364 (p=9.7595e-03)
+2025-12-16 15:43:28,835 - INFO - Fold 3 In-Sample Results - MSE: 0.0564, MAE: 0.2027, R²: -0.6912, Pearson r: 0.9426 (p=1.2958e-21), Spearman r: 0.9805 (p=2.4915e-31)
+2025-12-16 15:43:28,835 - INFO - 
+--- Fold 4/5 ---
+2025-12-16 15:43:28,835 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:43:28,835 - INFO - Train target - Mean: 0.3217, Std: 0.1731
+2025-12-16 15:43:28,835 - INFO - Test target  - Mean: 0.2706, Std: 0.1765
+2025-12-16 15:43:28,859 - INFO - Training fold 4 with early stopping (patience=50)...
+2025-12-16 15:43:28,887 - INFO - Epoch 1/200 | Train Loss: 0.755427 | Val Loss: 0.551813 | Best: inf (ep 1)
+2025-12-16 15:43:29,113 - INFO - Epoch 10/200 | Train Loss: 0.314004 | Val Loss: 0.582151 | Best: inf (ep 1)
+2025-12-16 15:43:29,365 - INFO - Epoch 20/200 | Train Loss: 0.209398 | Val Loss: 0.646032 | Best: inf (ep 1)
+2025-12-16 15:43:29,617 - INFO - Epoch 30/200 | Train Loss: 0.194018 | Val Loss: 0.630273 | Best: inf (ep 1)
+2025-12-16 15:43:29,869 - INFO - Epoch 40/200 | Train Loss: 0.187109 | Val Loss: 0.580449 | Best: inf (ep 1)
+2025-12-16 15:43:30,120 - INFO - Epoch 50/200 | Train Loss: 0.192084 | Val Loss: 0.716827 | Best: inf (ep 1)
+2025-12-16 15:43:30,440 - INFO - Epoch 60/200 | Train Loss: 0.174527 | Val Loss: 0.655842 | Best: 0.629898 (ep 58)
+2025-12-16 15:43:30,753 - INFO - Epoch 70/200 | Train Loss: 0.152258 | Val Loss: 0.686213 | Best: 0.589696 (ep 65)
+2025-12-16 15:43:31,005 - INFO - Epoch 80/200 | Train Loss: 0.170747 | Val Loss: 0.622496 | Best: 0.589696 (ep 65)
+2025-12-16 15:43:31,257 - INFO - Epoch 90/200 | Train Loss: 0.150748 | Val Loss: 0.732864 | Best: 0.589696 (ep 65)
+2025-12-16 15:43:31,507 - INFO - Epoch 100/200 | Train Loss: 0.153923 | Val Loss: 0.662983 | Best: 0.589696 (ep 65)
+2025-12-16 15:43:31,756 - INFO - Epoch 110/200 | Train Loss: 0.148770 | Val Loss: 0.741650 | Best: 0.589696 (ep 65)
+2025-12-16 15:43:31,880 - INFO - Early stopping at epoch 115! Best val loss: 0.589696 at epoch 65
+2025-12-16 15:43:31,895 - INFO - Loaded best model from epoch 65
+2025-12-16 15:43:31,905 - INFO - Fold 4 Test Results - MSE: 0.0418, MAE: 0.1549, R²: -0.3407, Pearson r: 0.5632 (p=7.1199e-02), Spearman r: 0.3636 (p=2.7164e-01)
+2025-12-16 15:43:31,921 - INFO - Fold 4 In-Sample Results - MSE: 0.0299, MAE: 0.1475, R²: 0.0015, Pearson r: 0.9672 (p=1.2593e-26), Spearman r: 0.9740 (p=1.0114e-28)
+2025-12-16 15:43:31,921 - INFO - 
+--- Fold 5/5 ---
+2025-12-16 15:43:31,921 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:43:31,921 - INFO - Train target - Mean: 0.2994, Std: 0.1713
+2025-12-16 15:43:31,921 - INFO - Test target  - Mean: 0.3598, Std: 0.1812
+2025-12-16 15:43:31,944 - INFO - Training fold 5 with early stopping (patience=50)...
+2025-12-16 15:43:31,970 - INFO - Epoch 1/200 | Train Loss: 0.885466 | Val Loss: 0.422709 | Best: inf (ep 1)
+2025-12-16 15:43:32,195 - INFO - Epoch 10/200 | Train Loss: 0.295959 | Val Loss: 0.409096 | Best: inf (ep 1)
+2025-12-16 15:43:32,447 - INFO - Epoch 20/200 | Train Loss: 0.248546 | Val Loss: 0.380019 | Best: inf (ep 1)
+2025-12-16 15:43:32,695 - INFO - Epoch 30/200 | Train Loss: 0.215211 | Val Loss: 0.328693 | Best: inf (ep 1)
+2025-12-16 15:43:32,944 - INFO - Epoch 40/200 | Train Loss: 0.195090 | Val Loss: 0.303656 | Best: inf (ep 1)
+2025-12-16 15:43:33,194 - INFO - Epoch 50/200 | Train Loss: 0.186490 | Val Loss: 0.452055 | Best: inf (ep 1)
+2025-12-16 15:43:33,511 - INFO - Epoch 60/200 | Train Loss: 0.178944 | Val Loss: 0.299916 | Best: 0.254901 (ep 58)
+2025-12-16 15:43:33,761 - INFO - Epoch 70/200 | Train Loss: 0.167138 | Val Loss: 0.360153 | Best: 0.254901 (ep 58)
+2025-12-16 15:43:34,012 - INFO - Epoch 80/200 | Train Loss: 0.159893 | Val Loss: 0.297474 | Best: 0.254901 (ep 58)
+2025-12-16 15:43:34,261 - INFO - Epoch 90/200 | Train Loss: 0.157859 | Val Loss: 0.297416 | Best: 0.254901 (ep 58)
+2025-12-16 15:43:34,511 - INFO - Epoch 100/200 | Train Loss: 0.150001 | Val Loss: 0.299359 | Best: 0.254901 (ep 58)
+2025-12-16 15:43:34,711 - INFO - Early stopping at epoch 108! Best val loss: 0.254901 at epoch 58
+2025-12-16 15:43:34,725 - INFO - Loaded best model from epoch 58
+2025-12-16 15:43:34,736 - INFO - Fold 5 Test Results - MSE: 0.0443, MAE: 0.1616, R²: -0.3493, Pearson r: 0.7277 (p=1.1139e-02), Spearman r: 0.5273 (p=9.5565e-02)
+2025-12-16 15:43:34,752 - INFO - Fold 5 In-Sample Results - MSE: 0.0444, MAE: 0.1747, R²: -0.5122, Pearson r: 0.9504 (p=6.5372e-23), Spearman r: 0.9633 (p=1.2868e-25)
+2025-12-16 15:43:34,752 - INFO - 
+============================================================
+2025-12-16 15:43:34,752 - INFO - BEST IN-SAMPLE FOLD: Fold 2 (Spearman r = 0.9945)
+2025-12-16 15:43:34,752 - INFO - ============================================================
+2025-12-16 15:43:34,760 - INFO - 
+============================================================
+2025-12-16 15:43:34,760 - INFO - FINAL CROSS-VALIDATION RESULTS FOR: Treatment_Regression_ALL
+2025-12-16 15:43:34,760 - INFO - ----------------------------------------
+2025-12-16 15:43:34,761 - INFO - OUT-OF-SAMPLE (Test) Metrics:
+2025-12-16 15:43:34,761 - INFO -   MSE         : 0.0624 ± 0.0481
+2025-12-16 15:43:34,761 - INFO -   RMSE        : 0.2355 ± 0.0834
+2025-12-16 15:43:34,761 - INFO -   MAE         : 0.1912 ± 0.0766
+2025-12-16 15:43:34,761 - INFO -   R2          : -1.7397 ± 3.0605
+2025-12-16 15:43:34,761 - INFO -   PEARSON_R   : 0.6597 ± 0.0913
+2025-12-16 15:43:34,761 - INFO -   PEARSON_P   : 0.0373 ± 0.0268
+2025-12-16 15:43:34,761 - INFO -   SPEARMAN_R  : 0.5855 ± 0.1297
+2025-12-16 15:43:34,761 - INFO -   SPEARMAN_P  : 0.0876 ± 0.0965
+2025-12-16 15:43:34,761 - INFO - ----------------------------------------
+2025-12-16 15:43:34,761 - INFO - IN-SAMPLE (Train) Metrics:
+2025-12-16 15:43:34,761 - INFO -   MSE         : 0.0355 ± 0.0145
+2025-12-16 15:43:34,761 - INFO -   RMSE        : 0.1839 ± 0.0412
+2025-12-16 15:43:34,761 - INFO -   MAE         : 0.1530 ± 0.0356
+2025-12-16 15:43:34,761 - INFO -   R2          : -0.1493 ± 0.4340
+2025-12-16 15:43:34,761 - INFO -   PEARSON_R   : 0.9651 ± 0.0173
+2025-12-16 15:43:34,761 - INFO -   PEARSON_P   : 0.0000 ± 0.0000
+2025-12-16 15:43:34,761 - INFO -   SPEARMAN_R  : 0.9788 ± 0.0102
+2025-12-16 15:43:34,761 - INFO -   SPEARMAN_P  : 0.0000 ± 0.0000
+2025-12-16 15:43:34,761 - INFO - ----------------------------------------
+2025-12-16 15:43:34,761 - INFO - BEST IN-SAMPLE FOLD: Fold 2
+2025-12-16 15:43:34,761 - INFO -   MSE         : 0.0132
+2025-12-16 15:43:34,761 - INFO -   RMSE        : 0.1147
+2025-12-16 15:43:34,761 - INFO -   MAE         : 0.0956
+2025-12-16 15:43:34,761 - INFO -   R2          : 0.5513
+2025-12-16 15:43:34,761 - INFO -   PEARSON_R   : 0.9914
+2025-12-16 15:43:34,761 - INFO -   PEARSON_P   : 0.0000
+2025-12-16 15:43:34,761 - INFO -   SPEARMAN_R  : 0.9945
+2025-12-16 15:43:34,761 - INFO -   SPEARMAN_P  : 0.0000
+2025-12-16 15:43:34,761 - INFO - ============================================================
+
+2025-12-16 15:45:40,212 - INFO - Using device: cuda
+2025-12-16 15:45:40,213 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 15:45:40,213 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 15:45:40,213 - INFO - Building diff file index...
+2025-12-16 15:45:40,214 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 15:45:40,214 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 15:45:40,215 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 15:45:40,215 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 15:45:40,215 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 15:45:40,215 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 15:45:40,215 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 15:45:40,215 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 15:45:40,216 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 15:45:40,216 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 15:45:40,216 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 15:45:40,216 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 15:45:40,216 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 15:45:40,216 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 15:45:40,216 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 15:45:40,216 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 15:45:40,216 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 15:45:40,216 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 15:45:40,217 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 15:45:40,217 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 15:45:40,217 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 15:45:40,217 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 15:45:40,217 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 15:45:40,217 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 15:45:40,217 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 15:45:40,217 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 15:45:40,218 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 15:45:40,219 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 15:45:40,220 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 15:45:40,220 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 15:45:40,220 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 15:45:40,220 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 15:45:40,220 - INFO - Built diff index with 71 patients
+2025-12-16 15:45:40,220 - INFO - Parsing UPDRS data...
+2025-12-16 15:45:40,233 - INFO - Improvement rate statistics:
+2025-12-16 15:45:40,234 - INFO -   Min: 0.0000
+2025-12-16 15:45:40,234 - INFO -   Max: 0.6970
+2025-12-16 15:45:40,234 - INFO -   Mean: 0.3115
+2025-12-16 15:45:40,234 - INFO -   Std: 0.1750
+2025-12-16 15:45:40,234 - INFO - Found 55 valid samples
+2025-12-16 15:45:40,234 - INFO - Preparing feature matrices...
+2025-12-16 15:45:40,267 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 15:45:40,268 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 15:45:40,268 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 15:45:40,268 - INFO - 
+============================================================
+2025-12-16 15:45:40,268 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 15:45:40,268 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 15:45:40,268 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 15:45:40,268 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:45:40,268 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 15:45:40,269 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 15:45:41,081 - INFO - Training fold 1 with early stopping (patience=50)...
+2025-12-16 15:45:41,293 - INFO - Epoch 1/200 | Train Loss: 0.738926 | Val Loss: 0.656818 | Best: inf (ep 1)
+2025-12-16 15:45:41,521 - INFO - Epoch 10/200 | Train Loss: 0.255358 | Val Loss: 0.611478 | Best: inf (ep 1)
+2025-12-16 15:45:41,774 - INFO - Epoch 20/200 | Train Loss: 0.265543 | Val Loss: 0.371387 | Best: inf (ep 1)
+2025-12-16 15:45:42,026 - INFO - Epoch 30/200 | Train Loss: 0.222291 | Val Loss: 0.614861 | Best: inf (ep 1)
+2025-12-16 15:45:42,278 - INFO - Epoch 40/200 | Train Loss: 0.189318 | Val Loss: 0.432626 | Best: inf (ep 1)
+2025-12-16 15:45:42,529 - INFO - Epoch 50/200 | Train Loss: 0.166967 | Val Loss: 0.856181 | Best: inf (ep 1)
+2025-12-16 15:45:42,874 - INFO - Epoch 60/200 | Train Loss: 0.148189 | Val Loss: 0.510624 | Best: 0.450661 (ep 55)
+2025-12-16 15:45:43,188 - INFO - Epoch 70/200 | Train Loss: 0.155651 | Val Loss: 0.552910 | Best: 0.386817 (ep 65)
+2025-12-16 15:45:43,441 - INFO - Epoch 80/200 | Train Loss: 0.148759 | Val Loss: 0.435173 | Best: 0.386817 (ep 65)
+2025-12-16 15:45:43,694 - INFO - Epoch 90/200 | Train Loss: 0.161580 | Val Loss: 0.489222 | Best: 0.386817 (ep 65)
+2025-12-16 15:45:43,947 - INFO - Epoch 100/200 | Train Loss: 0.158906 | Val Loss: 0.534660 | Best: 0.386817 (ep 65)
+2025-12-16 15:45:44,201 - INFO - Epoch 110/200 | Train Loss: 0.148587 | Val Loss: 0.418668 | Best: 0.386817 (ep 65)
+2025-12-16 15:45:44,328 - INFO - Early stopping at epoch 115! Best val loss: 0.386817 at epoch 65
+2025-12-16 15:45:44,343 - INFO - Loaded best model from epoch 65
+2025-12-16 15:45:44,358 - INFO - Fold 1 Test Results - MSE: 0.0449, MAE: 0.1730, R²: -0.5071, Pearson r: 0.6254 (p=3.9601e-02), Spearman r: 0.6364 (p=3.5287e-02)
+2025-12-16 15:45:44,376 - INFO - Fold 1 In-Sample Results - MSE: 0.0337, MAE: 0.1446, R²: -0.0959, Pearson r: 0.9742 (p=9.0502e-29), Spearman r: 0.9817 (p=6.6325e-32)
+2025-12-16 15:45:44,376 - INFO - 
+--- Fold 2/5 ---
+2025-12-16 15:45:44,376 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:45:44,376 - INFO - Train target - Mean: 0.3079, Std: 0.1712
+2025-12-16 15:45:44,376 - INFO - Test target  - Mean: 0.3255, Std: 0.1887
+2025-12-16 15:45:44,399 - INFO - Training fold 2 with early stopping (patience=50)...
+2025-12-16 15:45:44,425 - INFO - Epoch 1/200 | Train Loss: 0.821044 | Val Loss: 0.576950 | Best: inf (ep 1)
+2025-12-16 15:45:44,653 - INFO - Epoch 10/200 | Train Loss: 0.302678 | Val Loss: 0.527491 | Best: inf (ep 1)
+2025-12-16 15:45:44,905 - INFO - Epoch 20/200 | Train Loss: 0.234296 | Val Loss: 0.453244 | Best: inf (ep 1)
+2025-12-16 15:45:45,160 - INFO - Epoch 30/200 | Train Loss: 0.193789 | Val Loss: 0.458491 | Best: inf (ep 1)
+2025-12-16 15:45:45,412 - INFO - Epoch 40/200 | Train Loss: 0.207359 | Val Loss: 0.526107 | Best: inf (ep 1)
+2025-12-16 15:45:45,666 - INFO - Epoch 50/200 | Train Loss: 0.219522 | Val Loss: 0.459281 | Best: inf (ep 1)
+2025-12-16 15:45:45,952 - INFO - Epoch 60/200 | Train Loss: 0.189488 | Val Loss: 0.438335 | Best: 0.411690 (ep 52)
+2025-12-16 15:45:46,204 - INFO - Epoch 70/200 | Train Loss: 0.150943 | Val Loss: 0.477520 | Best: 0.411690 (ep 52)
+2025-12-16 15:45:46,456 - INFO - Epoch 80/200 | Train Loss: 0.154581 | Val Loss: 0.459516 | Best: 0.411690 (ep 52)
+2025-12-16 15:45:46,729 - INFO - Epoch 90/200 | Train Loss: 0.159468 | Val Loss: 0.410925 | Best: 0.410925 (ep 90)
+2025-12-16 15:45:46,981 - INFO - Epoch 100/200 | Train Loss: 0.145568 | Val Loss: 0.462794 | Best: 0.410925 (ep 90)
+2025-12-16 15:45:47,234 - INFO - Epoch 110/200 | Train Loss: 0.145707 | Val Loss: 0.433396 | Best: 0.410925 (ep 90)
+2025-12-16 15:45:47,486 - INFO - Epoch 120/200 | Train Loss: 0.154740 | Val Loss: 0.460932 | Best: 0.410925 (ep 90)
+2025-12-16 15:45:47,738 - INFO - Epoch 130/200 | Train Loss: 0.142237 | Val Loss: 0.480556 | Best: 0.410925 (ep 90)
+2025-12-16 15:45:47,993 - INFO - Early stopping at epoch 140! Best val loss: 0.410925 at epoch 90
+2025-12-16 15:45:48,007 - INFO - Loaded best model from epoch 90
+2025-12-16 15:45:48,020 - INFO - Fold 2 Test Results - MSE: 0.0238, MAE: 0.1252, R²: 0.3322, Pearson r: 0.5802 (p=6.1335e-02), Spearman r: 0.6636 (p=2.5984e-02)
+2025-12-16 15:45:48,037 - INFO - Fold 2 In-Sample Results - MSE: 0.0132, MAE: 0.0956, R²: 0.5513, Pearson r: 0.9914 (p=1.1028e-38), Spearman r: 0.9945 (p=9.7271e-43)
+2025-12-16 15:45:48,037 - INFO - 
+--- Fold 3/5 ---
+2025-12-16 15:45:48,037 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:45:48,038 - INFO - Train target - Mean: 0.3210, Std: 0.1827
+2025-12-16 15:45:48,038 - INFO - Test target  - Mean: 0.2734, Std: 0.1335
+2025-12-16 15:45:48,061 - INFO - Training fold 3 with early stopping (patience=50)...
+2025-12-16 15:45:48,088 - INFO - Epoch 1/200 | Train Loss: 0.909785 | Val Loss: 0.677451 | Best: inf (ep 1)
+2025-12-16 15:45:48,315 - INFO - Epoch 10/200 | Train Loss: 0.264220 | Val Loss: 0.259841 | Best: inf (ep 1)
+2025-12-16 15:45:48,567 - INFO - Epoch 20/200 | Train Loss: 0.197928 | Val Loss: 0.304064 | Best: inf (ep 1)
+2025-12-16 15:45:48,819 - INFO - Epoch 30/200 | Train Loss: 0.190795 | Val Loss: 0.312677 | Best: inf (ep 1)
+2025-12-16 15:45:49,070 - INFO - Epoch 40/200 | Train Loss: 0.160383 | Val Loss: 0.326144 | Best: inf (ep 1)
+2025-12-16 15:45:49,323 - INFO - Epoch 50/200 | Train Loss: 0.146889 | Val Loss: 0.325797 | Best: inf (ep 1)
+2025-12-16 15:45:49,682 - INFO - Epoch 60/200 | Train Loss: 0.176495 | Val Loss: 0.299483 | Best: 0.283151 (ep 59)
+2025-12-16 15:45:49,953 - INFO - Epoch 70/200 | Train Loss: 0.154459 | Val Loss: 0.346401 | Best: 0.281895 (ep 64)
+2025-12-16 15:45:50,243 - INFO - Epoch 80/200 | Train Loss: 0.240264 | Val Loss: 0.266485 | Best: 0.255188 (ep 79)
+2025-12-16 15:45:50,532 - INFO - Epoch 90/200 | Train Loss: 0.185340 | Val Loss: 0.320527 | Best: 0.248346 (ep 88)
+2025-12-16 15:45:50,784 - INFO - Epoch 100/200 | Train Loss: 0.164632 | Val Loss: 0.352241 | Best: 0.248346 (ep 88)
+2025-12-16 15:45:51,035 - INFO - Epoch 110/200 | Train Loss: 0.153172 | Val Loss: 0.329111 | Best: 0.248346 (ep 88)
+2025-12-16 15:45:51,287 - INFO - Epoch 120/200 | Train Loss: 0.145104 | Val Loss: 0.301854 | Best: 0.248346 (ep 88)
+2025-12-16 15:45:51,540 - INFO - Epoch 130/200 | Train Loss: 0.145520 | Val Loss: 0.309013 | Best: 0.248346 (ep 88)
+2025-12-16 15:45:51,742 - INFO - Early stopping at epoch 138! Best val loss: 0.248346 at epoch 88
+2025-12-16 15:45:51,756 - INFO - Loaded best model from epoch 88
+2025-12-16 15:45:51,767 - INFO - Fold 3 Test Results - MSE: 0.1574, MAE: 0.3411, R²: -7.8334, Pearson r: 0.8020 (p=2.9807e-03), Spearman r: 0.7364 (p=9.7595e-03)
+2025-12-16 15:45:51,784 - INFO - Fold 3 In-Sample Results - MSE: 0.0564, MAE: 0.2027, R²: -0.6912, Pearson r: 0.9426 (p=1.2958e-21), Spearman r: 0.9805 (p=2.4915e-31)
+2025-12-16 15:45:51,785 - INFO - 
+--- Fold 4/5 ---
+2025-12-16 15:45:51,785 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:45:51,785 - INFO - Train target - Mean: 0.3217, Std: 0.1731
+2025-12-16 15:45:51,785 - INFO - Test target  - Mean: 0.2706, Std: 0.1765
+2025-12-16 15:45:51,807 - INFO - Training fold 4 with early stopping (patience=50)...
+2025-12-16 15:45:51,833 - INFO - Epoch 1/200 | Train Loss: 0.755427 | Val Loss: 0.551813 | Best: inf (ep 1)
+2025-12-16 15:45:52,059 - INFO - Epoch 10/200 | Train Loss: 0.314004 | Val Loss: 0.582151 | Best: inf (ep 1)
+2025-12-16 15:45:52,311 - INFO - Epoch 20/200 | Train Loss: 0.209398 | Val Loss: 0.646032 | Best: inf (ep 1)
+2025-12-16 15:45:52,562 - INFO - Epoch 30/200 | Train Loss: 0.194018 | Val Loss: 0.630273 | Best: inf (ep 1)
+2025-12-16 15:45:52,813 - INFO - Epoch 40/200 | Train Loss: 0.187109 | Val Loss: 0.580449 | Best: inf (ep 1)
+2025-12-16 15:45:53,064 - INFO - Epoch 50/200 | Train Loss: 0.192084 | Val Loss: 0.716827 | Best: inf (ep 1)
+2025-12-16 15:45:53,383 - INFO - Epoch 60/200 | Train Loss: 0.174527 | Val Loss: 0.655842 | Best: 0.629898 (ep 58)
+2025-12-16 15:45:53,671 - INFO - Epoch 70/200 | Train Loss: 0.152258 | Val Loss: 0.686213 | Best: 0.589696 (ep 65)
+2025-12-16 15:45:53,922 - INFO - Epoch 80/200 | Train Loss: 0.170747 | Val Loss: 0.622496 | Best: 0.589696 (ep 65)
+2025-12-16 15:45:54,173 - INFO - Epoch 90/200 | Train Loss: 0.150748 | Val Loss: 0.732864 | Best: 0.589696 (ep 65)
+2025-12-16 15:45:54,424 - INFO - Epoch 100/200 | Train Loss: 0.153923 | Val Loss: 0.662983 | Best: 0.589696 (ep 65)
+2025-12-16 15:45:54,675 - INFO - Epoch 110/200 | Train Loss: 0.148770 | Val Loss: 0.741650 | Best: 0.589696 (ep 65)
+2025-12-16 15:45:54,800 - INFO - Early stopping at epoch 115! Best val loss: 0.589696 at epoch 65
+2025-12-16 15:45:54,815 - INFO - Loaded best model from epoch 65
+2025-12-16 15:45:54,826 - INFO - Fold 4 Test Results - MSE: 0.0418, MAE: 0.1549, R²: -0.3407, Pearson r: 0.5632 (p=7.1199e-02), Spearman r: 0.3636 (p=2.7164e-01)
+2025-12-16 15:45:54,844 - INFO - Fold 4 In-Sample Results - MSE: 0.0299, MAE: 0.1475, R²: 0.0015, Pearson r: 0.9672 (p=1.2593e-26), Spearman r: 0.9740 (p=1.0114e-28)
+2025-12-16 15:45:54,844 - INFO - 
+--- Fold 5/5 ---
+2025-12-16 15:45:54,844 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:45:54,844 - INFO - Train target - Mean: 0.2994, Std: 0.1713
+2025-12-16 15:45:54,845 - INFO - Test target  - Mean: 0.3598, Std: 0.1812
+2025-12-16 15:45:54,867 - INFO - Training fold 5 with early stopping (patience=50)...
+2025-12-16 15:45:54,894 - INFO - Epoch 1/200 | Train Loss: 0.885466 | Val Loss: 0.422709 | Best: inf (ep 1)
+2025-12-16 15:45:55,120 - INFO - Epoch 10/200 | Train Loss: 0.295959 | Val Loss: 0.409096 | Best: inf (ep 1)
+2025-12-16 15:45:55,371 - INFO - Epoch 20/200 | Train Loss: 0.248546 | Val Loss: 0.380019 | Best: inf (ep 1)
+2025-12-16 15:45:55,622 - INFO - Epoch 30/200 | Train Loss: 0.215211 | Val Loss: 0.328693 | Best: inf (ep 1)
+2025-12-16 15:45:55,873 - INFO - Epoch 40/200 | Train Loss: 0.195090 | Val Loss: 0.303656 | Best: inf (ep 1)
+2025-12-16 15:45:56,124 - INFO - Epoch 50/200 | Train Loss: 0.186490 | Val Loss: 0.452055 | Best: inf (ep 1)
+2025-12-16 15:45:56,446 - INFO - Epoch 60/200 | Train Loss: 0.178944 | Val Loss: 0.299916 | Best: 0.254901 (ep 58)
+2025-12-16 15:45:56,697 - INFO - Epoch 70/200 | Train Loss: 0.167138 | Val Loss: 0.360153 | Best: 0.254901 (ep 58)
+2025-12-16 15:45:56,948 - INFO - Epoch 80/200 | Train Loss: 0.159893 | Val Loss: 0.297474 | Best: 0.254901 (ep 58)
+2025-12-16 15:45:57,199 - INFO - Epoch 90/200 | Train Loss: 0.157859 | Val Loss: 0.297416 | Best: 0.254901 (ep 58)
+2025-12-16 15:45:57,450 - INFO - Epoch 100/200 | Train Loss: 0.150001 | Val Loss: 0.299359 | Best: 0.254901 (ep 58)
+2025-12-16 15:45:57,652 - INFO - Early stopping at epoch 108! Best val loss: 0.254901 at epoch 58
+2025-12-16 15:45:57,665 - INFO - Loaded best model from epoch 58
+2025-12-16 15:45:57,675 - INFO - Fold 5 Test Results - MSE: 0.0443, MAE: 0.1616, R²: -0.3493, Pearson r: 0.7277 (p=1.1139e-02), Spearman r: 0.5273 (p=9.5565e-02)
+2025-12-16 15:45:57,693 - INFO - Fold 5 In-Sample Results - MSE: 0.0444, MAE: 0.1747, R²: -0.5122, Pearson r: 0.9504 (p=6.5372e-23), Spearman r: 0.9633 (p=1.2868e-25)
+2025-12-16 15:45:57,694 - INFO - 
+============================================================
+2025-12-16 15:45:57,694 - INFO - BEST IN-SAMPLE FOLD: Fold 2 (Spearman r = 0.9945)
+2025-12-16 15:45:57,694 - INFO - ============================================================
+2025-12-16 15:45:57,703 - INFO - 
+============================================================
+2025-12-16 15:45:57,703 - INFO - FINAL CROSS-VALIDATION RESULTS FOR: Treatment_Regression_ALL
+2025-12-16 15:45:57,703 - INFO - ----------------------------------------
+2025-12-16 15:45:57,703 - INFO - OUT-OF-SAMPLE (Test) Metrics:
+2025-12-16 15:45:57,703 - INFO -   MSE         : 0.0624 ± 0.0481
+2025-12-16 15:45:57,703 - INFO -   RMSE        : 0.2355 ± 0.0834
+2025-12-16 15:45:57,703 - INFO -   MAE         : 0.1912 ± 0.0766
+2025-12-16 15:45:57,703 - INFO -   R2          : -1.7397 ± 3.0605
+2025-12-16 15:45:57,704 - INFO -   PEARSON_R   : 0.6597 ± 0.0913
+2025-12-16 15:45:57,704 - INFO -   PEARSON_P   : 0.0373 ± 0.0268
+2025-12-16 15:45:57,704 - INFO -   SPEARMAN_R  : 0.5855 ± 0.1297
+2025-12-16 15:45:57,704 - INFO -   SPEARMAN_P  : 0.0876 ± 0.0965
+2025-12-16 15:45:57,704 - INFO - ----------------------------------------
+2025-12-16 15:45:57,704 - INFO - IN-SAMPLE (Train) Metrics:
+2025-12-16 15:45:57,704 - INFO -   MSE         : 0.0355 ± 0.0145
+2025-12-16 15:45:57,704 - INFO -   RMSE        : 0.1839 ± 0.0412
+2025-12-16 15:45:57,704 - INFO -   MAE         : 0.1530 ± 0.0356
+2025-12-16 15:45:57,704 - INFO -   R2          : -0.1493 ± 0.4340
+2025-12-16 15:45:57,704 - INFO -   PEARSON_R   : 0.9651 ± 0.0173
+2025-12-16 15:45:57,704 - INFO -   PEARSON_P   : 0.0000 ± 0.0000
+2025-12-16 15:45:57,704 - INFO -   SPEARMAN_R  : 0.9788 ± 0.0102
+2025-12-16 15:45:57,704 - INFO -   SPEARMAN_P  : 0.0000 ± 0.0000
+2025-12-16 15:45:57,704 - INFO - ----------------------------------------
+2025-12-16 15:45:57,704 - INFO - BEST IN-SAMPLE FOLD: Fold 2
+2025-12-16 15:45:57,704 - INFO -   MSE         : 0.0132
+2025-12-16 15:45:57,704 - INFO -   RMSE        : 0.1147
+2025-12-16 15:45:57,704 - INFO -   MAE         : 0.0956
+2025-12-16 15:45:57,704 - INFO -   R2          : 0.5513
+2025-12-16 15:45:57,704 - INFO -   PEARSON_R   : 0.9914
+2025-12-16 15:45:57,704 - INFO -   PEARSON_P   : 0.0000
+2025-12-16 15:45:57,704 - INFO -   SPEARMAN_R  : 0.9945
+2025-12-16 15:45:57,704 - INFO -   SPEARMAN_P  : 0.0000
+2025-12-16 15:45:57,704 - INFO - ============================================================
+
+2025-12-16 15:45:57,708 - INFO - Results saved to final_results_Treatment_Regression_ALL.json
+2025-12-16 15:45:57,708 - INFO - Total execution time: 17.50 seconds
+2025-12-16 15:51:15,638 - INFO - Using device: cuda
+2025-12-16 15:51:15,674 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 15:51:15,674 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 15:51:15,674 - INFO - Building diff file index...
+2025-12-16 15:51:15,676 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 15:51:15,676 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 15:51:15,676 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 15:51:15,676 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 15:51:15,676 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 15:51:15,677 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 15:51:15,677 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 15:51:15,677 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 15:51:15,677 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 15:51:15,677 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 15:51:15,678 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 15:51:15,678 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 15:51:15,678 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 15:51:15,678 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 15:51:15,678 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 15:51:15,678 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 15:51:15,678 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 15:51:15,678 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 15:51:15,678 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 15:51:15,678 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 15:51:15,679 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 15:51:15,679 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 15:51:15,679 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 15:51:15,679 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 15:51:15,679 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 15:51:15,679 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 15:51:15,679 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 15:51:15,680 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 15:51:15,681 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 15:51:15,682 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 15:51:15,682 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 15:51:15,682 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 15:51:15,682 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 15:51:15,682 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 15:51:15,682 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 15:51:15,682 - INFO - Built diff index with 71 patients
+2025-12-16 15:51:15,682 - INFO - Parsing UPDRS data...
+2025-12-16 15:51:15,695 - INFO - Improvement rate statistics:
+2025-12-16 15:51:15,695 - INFO -   Min: 0.0000
+2025-12-16 15:51:15,695 - INFO -   Max: 0.6970
+2025-12-16 15:51:15,695 - INFO -   Mean: 0.3115
+2025-12-16 15:51:15,696 - INFO -   Std: 0.1750
+2025-12-16 15:51:15,696 - INFO - Found 55 valid samples
+2025-12-16 15:51:15,696 - INFO - Preparing feature matrices...
+2025-12-16 15:51:15,730 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 15:51:15,730 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 15:51:15,730 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 15:51:15,730 - INFO - 
+============================================================
+2025-12-16 15:51:15,730 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 15:51:15,730 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 15:51:15,731 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 15:51:15,731 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:51:15,731 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 15:51:15,731 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 15:51:16,534 - INFO - Training fold 1 with early stopping (patience=50)...
+2025-12-16 15:51:16,748 - INFO - Epoch 1/200 | Train Loss: 0.738926 | Val Loss: 0.656818 | Train Spearman: 0.7690 | Best Val: inf (ep 1)
+2025-12-16 15:51:16,983 - INFO - Epoch 10/200 | Train Loss: 0.231442 | Val Loss: 0.515261 | Train Spearman: 0.9077 | Best Val: inf (ep 1)
+2025-12-16 15:51:17,243 - INFO - Epoch 20/200 | Train Loss: 0.201321 | Val Loss: 0.486827 | Train Spearman: 0.9082 | Best Val: inf (ep 1)
+2025-12-16 15:51:17,504 - INFO - Epoch 30/200 | Train Loss: 0.183523 | Val Loss: 0.438904 | Train Spearman: 0.9573 | Best Val: inf (ep 1)
+2025-12-16 15:51:17,764 - INFO - Epoch 40/200 | Train Loss: 0.172294 | Val Loss: 0.453142 | Train Spearman: 0.9668 | Best Val: inf (ep 1)
+2025-12-16 15:51:18,022 - INFO - Epoch 50/200 | Train Loss: 0.164748 | Val Loss: 0.553310 | Train Spearman: 0.9765 | Best Val: inf (ep 1)
+2025-12-16 15:51:18,430 - INFO - Epoch 60/200 | Train Loss: 0.154565 | Val Loss: 0.467709 | Train Spearman: 0.9808 | Best Val: 0.401943 (ep 56)
+2025-12-16 15:51:18,692 - INFO - Epoch 70/200 | Train Loss: 0.164159 | Val Loss: 0.415887 | Train Spearman: 0.9834 | Best Val: 0.401943 (ep 56)
+2025-12-16 15:51:18,977 - INFO - Epoch 80/200 | Train Loss: 0.153139 | Val Loss: 0.501788 | Train Spearman: 0.9880 | Best Val: 0.398133 (ep 71)
+2025-12-16 15:51:19,290 - INFO - Epoch 90/200 | Train Loss: 0.161974 | Val Loss: 0.427123 | Train Spearman: 0.9822 | Best Val: 0.389098 (ep 86)
+2025-12-16 15:51:19,549 - INFO - Epoch 100/200 | Train Loss: 0.157096 | Val Loss: 0.430453 | Train Spearman: 0.9923 | Best Val: 0.389098 (ep 86)
+2025-12-16 15:51:19,811 - INFO - Epoch 110/200 | Train Loss: 0.152913 | Val Loss: 0.437702 | Train Spearman: 0.9930 | Best Val: 0.389098 (ep 86)
+2025-12-16 15:51:20,070 - INFO - Epoch 120/200 | Train Loss: 0.156944 | Val Loss: 0.565856 | Train Spearman: 0.9720 | Best Val: 0.389098 (ep 86)
+2025-12-16 15:51:20,355 - INFO - Epoch 130/200 | Train Loss: 0.158935 | Val Loss: 0.457940 | Train Spearman: 0.9868 | Best Val: 0.373106 (ep 125)
+2025-12-16 15:51:20,613 - INFO - Epoch 140/200 | Train Loss: 0.154688 | Val Loss: 0.484403 | Train Spearman: 0.9934 | Best Val: 0.373106 (ep 125)
+2025-12-16 15:51:20,872 - INFO - Epoch 150/200 | Train Loss: 0.141158 | Val Loss: 0.456335 | Train Spearman: 0.9937 | Best Val: 0.373106 (ep 125)
+2025-12-16 15:51:21,132 - INFO - Epoch 160/200 | Train Loss: 0.147912 | Val Loss: 0.426132 | Train Spearman: 0.9939 | Best Val: 0.373106 (ep 125)
+2025-12-16 15:51:21,390 - INFO - Epoch 170/200 | Train Loss: 0.144514 | Val Loss: 0.425159 | Train Spearman: 0.9973 | Best Val: 0.373106 (ep 125)
+2025-12-16 15:51:21,515 - INFO - Early stopping at epoch 175! Best val loss: 0.373106 at epoch 125
+2025-12-16 15:51:21,530 - INFO - Loaded best model from epoch 125
+2025-12-16 15:51:21,541 - INFO - Fold 1 TEST Results (best epoch 125) - MSE: 0.0282, MAE: 0.1438, R²: 0.0538, Pearson r: 0.5608 (p=7.2681e-02), Spearman r: 0.6818 (p=2.0843e-02)
+2025-12-16 15:51:21,550 - INFO - Fold 1 IN-SAMPLE @ best epoch 125 - MSE: 0.0344, MAE: 0.1518, R²: -0.1181, Pearson r: 0.9830 (p=1.4450e-32), Spearman r: 0.9788 (p=1.5132e-30)
+2025-12-16 15:51:21,550 - INFO - Fold 1 Overfit Gap (In-sample - Test Spearman): 0.2970
+2025-12-16 15:51:21,551 - INFO - 
+--- Fold 2/5 ---
+2025-12-16 15:51:21,551 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:51:21,551 - INFO - Train target - Mean: 0.3079, Std: 0.1712
+2025-12-16 15:51:21,551 - INFO - Test target  - Mean: 0.3255, Std: 0.1887
+2025-12-16 15:51:21,574 - INFO - Training fold 2 with early stopping (patience=50)...
+2025-12-16 15:51:21,607 - INFO - Epoch 1/200 | Train Loss: 0.815026 | Val Loss: 0.555897 | Train Spearman: 0.7119 | Best Val: inf (ep 1)
+2025-12-16 15:51:21,840 - INFO - Epoch 10/200 | Train Loss: 0.292302 | Val Loss: 0.379446 | Train Spearman: 0.8853 | Best Val: inf (ep 1)
+2025-12-16 15:51:22,099 - INFO - Epoch 20/200 | Train Loss: 0.252162 | Val Loss: 0.626487 | Train Spearman: 0.9296 | Best Val: inf (ep 1)
+2025-12-16 15:51:22,359 - INFO - Epoch 30/200 | Train Loss: 0.199159 | Val Loss: 0.540270 | Train Spearman: 0.9745 | Best Val: inf (ep 1)
+2025-12-16 15:51:22,618 - INFO - Epoch 40/200 | Train Loss: 0.182113 | Val Loss: 0.562773 | Train Spearman: 0.9866 | Best Val: inf (ep 1)
+2025-12-16 15:51:22,875 - INFO - Epoch 50/200 | Train Loss: 0.159634 | Val Loss: 0.517458 | Train Spearman: 0.9905 | Best Val: inf (ep 1)
+2025-12-16 15:51:23,452 - INFO - Epoch 60/200 | Train Loss: 0.157549 | Val Loss: 0.515176 | Train Spearman: 0.9905 | Best Val: 0.511406 (ep 59)
+2025-12-16 15:51:23,764 - INFO - Epoch 70/200 | Train Loss: 0.150820 | Val Loss: 0.508854 | Train Spearman: 0.9931 | Best Val: 0.490030 (ep 68)
+2025-12-16 15:51:24,077 - INFO - Epoch 80/200 | Train Loss: 0.181417 | Val Loss: 0.497621 | Train Spearman: 0.9963 | Best Val: 0.467825 (ep 74)
+2025-12-16 15:51:24,362 - INFO - Epoch 90/200 | Train Loss: 0.153205 | Val Loss: 0.477743 | Train Spearman: 0.9905 | Best Val: 0.460903 (ep 87)
+2025-12-16 15:51:24,674 - INFO - Epoch 100/200 | Train Loss: 0.149315 | Val Loss: 0.496821 | Train Spearman: 0.9947 | Best Val: 0.453766 (ep 97)
+2025-12-16 15:51:24,932 - INFO - Epoch 110/200 | Train Loss: 0.144771 | Val Loss: 0.511071 | Train Spearman: 0.9893 | Best Val: 0.453766 (ep 97)
+2025-12-16 15:51:25,190 - INFO - Epoch 120/200 | Train Loss: 0.144435 | Val Loss: 0.514456 | Train Spearman: 0.9968 | Best Val: 0.453766 (ep 97)
+2025-12-16 15:51:25,504 - INFO - Epoch 130/200 | Train Loss: 0.151990 | Val Loss: 0.465800 | Train Spearman: 0.9945 | Best Val: 0.448803 (ep 129)
+2025-12-16 15:51:25,761 - INFO - Epoch 140/200 | Train Loss: 0.144282 | Val Loss: 0.476664 | Train Spearman: 0.9954 | Best Val: 0.448803 (ep 129)
+2025-12-16 15:51:26,018 - INFO - Epoch 150/200 | Train Loss: 0.142037 | Val Loss: 0.500861 | Train Spearman: 0.9951 | Best Val: 0.448803 (ep 129)
+2025-12-16 15:51:26,274 - INFO - Epoch 160/200 | Train Loss: 0.146697 | Val Loss: 0.494760 | Train Spearman: 0.9971 | Best Val: 0.448803 (ep 129)
+2025-12-16 15:51:26,533 - INFO - Epoch 170/200 | Train Loss: 0.142637 | Val Loss: 0.536162 | Train Spearman: 0.9974 | Best Val: 0.448803 (ep 129)
+2025-12-16 15:51:26,762 - INFO - Early stopping at epoch 179! Best val loss: 0.448803 at epoch 129
+2025-12-16 15:51:26,775 - INFO - Loaded best model from epoch 129
+2025-12-16 15:51:26,785 - INFO - Fold 2 TEST Results (best epoch 129) - MSE: 0.0359, MAE: 0.1343, R²: -0.0076, Pearson r: 0.4898 (p=1.2624e-01), Spearman r: 0.5727 (p=6.5543e-02)
+2025-12-16 15:51:26,795 - INFO - Fold 2 IN-SAMPLE @ best epoch 129 - MSE: 0.0311, MAE: 0.1452, R²: -0.0616, Pearson r: 0.9852 (p=8.4673e-34), Spearman r: 0.9924 (p=7.0275e-40)
+2025-12-16 15:51:26,795 - INFO - Fold 2 Overfit Gap (In-sample - Test Spearman): 0.4197
+2025-12-16 15:51:26,795 - INFO - 
+--- Fold 3/5 ---
+2025-12-16 15:51:26,795 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:51:26,795 - INFO - Train target - Mean: 0.3210, Std: 0.1827
+2025-12-16 15:51:26,795 - INFO - Test target  - Mean: 0.2734, Std: 0.1335
+2025-12-16 15:51:26,819 - INFO - Training fold 3 with early stopping (patience=50)...
+2025-12-16 15:51:26,853 - INFO - Epoch 1/200 | Train Loss: 0.958963 | Val Loss: 0.181835 | Train Spearman: 0.6361 | Best Val: inf (ep 1)
+2025-12-16 15:51:27,091 - INFO - Epoch 10/200 | Train Loss: 0.422180 | Val Loss: 0.316999 | Train Spearman: 0.8892 | Best Val: inf (ep 1)
+2025-12-16 15:51:27,352 - INFO - Epoch 20/200 | Train Loss: 0.247360 | Val Loss: 0.255546 | Train Spearman: 0.9445 | Best Val: inf (ep 1)
+2025-12-16 15:51:27,610 - INFO - Epoch 30/200 | Train Loss: 0.167623 | Val Loss: 0.308562 | Train Spearman: 0.9664 | Best Val: inf (ep 1)
+2025-12-16 15:51:27,868 - INFO - Epoch 40/200 | Train Loss: 0.166256 | Val Loss: 0.298762 | Train Spearman: 0.9636 | Best Val: inf (ep 1)
+2025-12-16 15:51:28,126 - INFO - Epoch 50/200 | Train Loss: 0.158809 | Val Loss: 0.284594 | Train Spearman: 0.9779 | Best Val: inf (ep 1)
+2025-12-16 15:51:28,435 - INFO - Epoch 60/200 | Train Loss: 0.160658 | Val Loss: 0.343362 | Train Spearman: 0.9899 | Best Val: 0.291176 (ep 58)
+2025-12-16 15:51:28,693 - INFO - Epoch 70/200 | Train Loss: 0.141441 | Val Loss: 0.336069 | Train Spearman: 0.9915 | Best Val: 0.291176 (ep 58)
+2025-12-16 15:51:28,978 - INFO - Epoch 80/200 | Train Loss: 0.161162 | Val Loss: 0.330291 | Train Spearman: 0.9887 | Best Val: 0.287998 (ep 77)
+2025-12-16 15:51:29,238 - INFO - Epoch 90/200 | Train Loss: 0.151677 | Val Loss: 0.340956 | Train Spearman: 0.9943 | Best Val: 0.287998 (ep 77)
+2025-12-16 15:51:29,495 - INFO - Epoch 100/200 | Train Loss: 0.169340 | Val Loss: 0.317895 | Train Spearman: 0.9947 | Best Val: 0.287998 (ep 77)
+2025-12-16 15:51:29,806 - INFO - Epoch 110/200 | Train Loss: 0.147282 | Val Loss: 0.313402 | Train Spearman: 0.9872 | Best Val: 0.274165 (ep 102)
+2025-12-16 15:51:30,122 - INFO - Epoch 120/200 | Train Loss: 0.148156 | Val Loss: 0.284603 | Train Spearman: 0.9903 | Best Val: 0.268082 (ep 117)
+2025-12-16 15:51:30,382 - INFO - Epoch 130/200 | Train Loss: 0.139944 | Val Loss: 0.306686 | Train Spearman: 0.9911 | Best Val: 0.268082 (ep 117)
+2025-12-16 15:51:30,641 - INFO - Epoch 140/200 | Train Loss: 0.140946 | Val Loss: 0.292666 | Train Spearman: 0.9942 | Best Val: 0.268082 (ep 117)
+2025-12-16 15:51:30,927 - INFO - Epoch 150/200 | Train Loss: 0.142039 | Val Loss: 0.294251 | Train Spearman: 0.9961 | Best Val: 0.267253 (ep 143)
+2025-12-16 15:51:31,235 - INFO - Epoch 160/200 | Train Loss: 0.149049 | Val Loss: 0.264664 | Train Spearman: 0.9934 | Best Val: 0.252237 (ep 155)
+2025-12-16 15:51:31,495 - INFO - Epoch 170/200 | Train Loss: 0.142961 | Val Loss: 0.268515 | Train Spearman: 0.9948 | Best Val: 0.252237 (ep 155)
+2025-12-16 15:51:31,756 - INFO - Epoch 180/200 | Train Loss: 0.143205 | Val Loss: 0.260435 | Train Spearman: 0.9943 | Best Val: 0.252237 (ep 155)
+2025-12-16 15:51:32,016 - INFO - Epoch 190/200 | Train Loss: 0.145395 | Val Loss: 0.271798 | Train Spearman: 0.9937 | Best Val: 0.252237 (ep 155)
+2025-12-16 15:51:32,303 - INFO - Epoch 200/200 | Train Loss: 0.152344 | Val Loss: 0.260399 | Train Spearman: 0.9901 | Best Val: 0.238514 (ep 195)
+2025-12-16 15:51:32,317 - INFO - Loaded best model from epoch 195
+2025-12-16 15:51:32,327 - INFO - Fold 3 TEST Results (best epoch 195) - MSE: 0.0864, MAE: 0.2397, R²: -3.8496, Pearson r: 0.8237 (p=1.8287e-03), Spearman r: 0.7909 (p=3.7461e-03)
+2025-12-16 15:51:32,336 - INFO - Fold 3 IN-SAMPLE @ best epoch 195 - MSE: 0.0278, MAE: 0.1252, R²: 0.1653, Pearson r: 0.9875 (p=2.3253e-35), Spearman r: 0.9882 (p=7.0225e-36)
+2025-12-16 15:51:32,336 - INFO - Fold 3 Overfit Gap (In-sample - Test Spearman): 0.1973
+2025-12-16 15:51:32,336 - INFO - 
+--- Fold 4/5 ---
+2025-12-16 15:51:32,336 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:51:32,336 - INFO - Train target - Mean: 0.3217, Std: 0.1731
+2025-12-16 15:51:32,337 - INFO - Test target  - Mean: 0.2706, Std: 0.1765
+2025-12-16 15:51:32,360 - INFO - Training fold 4 with early stopping (patience=50)...
+2025-12-16 15:51:32,394 - INFO - Epoch 1/200 | Train Loss: 0.930661 | Val Loss: 0.674694 | Train Spearman: 0.6857 | Best Val: inf (ep 1)
+2025-12-16 15:51:32,626 - INFO - Epoch 10/200 | Train Loss: 0.284098 | Val Loss: 0.649833 | Train Spearman: 0.8669 | Best Val: inf (ep 1)
+2025-12-16 15:51:32,885 - INFO - Epoch 20/200 | Train Loss: 0.260749 | Val Loss: 0.577834 | Train Spearman: 0.9513 | Best Val: inf (ep 1)
+2025-12-16 15:51:33,142 - INFO - Epoch 30/200 | Train Loss: 0.200287 | Val Loss: 0.561566 | Train Spearman: 0.9558 | Best Val: inf (ep 1)
+2025-12-16 15:51:33,400 - INFO - Epoch 40/200 | Train Loss: 0.203277 | Val Loss: 0.603136 | Train Spearman: 0.9418 | Best Val: inf (ep 1)
+2025-12-16 15:51:33,658 - INFO - Epoch 50/200 | Train Loss: 0.176288 | Val Loss: 0.587028 | Train Spearman: 0.9783 | Best Val: inf (ep 1)
+2025-12-16 15:51:34,008 - INFO - Epoch 60/200 | Train Loss: 0.155839 | Val Loss: 0.589872 | Train Spearman: 0.9761 | Best Val: 0.543872 (ep 54)
+2025-12-16 15:51:34,266 - INFO - Epoch 70/200 | Train Loss: 0.173449 | Val Loss: 0.636106 | Train Spearman: 0.9726 | Best Val: 0.543872 (ep 54)
+2025-12-16 15:51:34,524 - INFO - Epoch 80/200 | Train Loss: 0.159564 | Val Loss: 0.554844 | Train Spearman: 0.9813 | Best Val: 0.543872 (ep 54)
+2025-12-16 15:51:34,782 - INFO - Epoch 90/200 | Train Loss: 0.149707 | Val Loss: 0.575242 | Train Spearman: 0.9953 | Best Val: 0.543872 (ep 54)
+2025-12-16 15:51:35,040 - INFO - Epoch 100/200 | Train Loss: 0.145020 | Val Loss: 0.614665 | Train Spearman: 0.9905 | Best Val: 0.543872 (ep 54)
+2025-12-16 15:51:35,325 - INFO - Epoch 110/200 | Train Loss: 0.154070 | Val Loss: 0.553727 | Train Spearman: 0.9850 | Best Val: 0.535773 (ep 102)
+2025-12-16 15:51:35,583 - INFO - Epoch 120/200 | Train Loss: 0.143606 | Val Loss: 0.658298 | Train Spearman: 0.9874 | Best Val: 0.535773 (ep 102)
+2025-12-16 15:51:35,844 - INFO - Epoch 130/200 | Train Loss: 0.151063 | Val Loss: 0.564095 | Train Spearman: 0.9945 | Best Val: 0.535773 (ep 102)
+2025-12-16 15:51:36,103 - INFO - Epoch 140/200 | Train Loss: 0.145569 | Val Loss: 0.610337 | Train Spearman: 0.9925 | Best Val: 0.535773 (ep 102)
+2025-12-16 15:51:36,361 - INFO - Epoch 150/200 | Train Loss: 0.146504 | Val Loss: 0.698067 | Train Spearman: 0.9964 | Best Val: 0.535773 (ep 102)
+2025-12-16 15:51:36,411 - INFO - Early stopping at epoch 152! Best val loss: 0.535773 at epoch 102
+2025-12-16 15:51:36,425 - INFO - Loaded best model from epoch 102
+2025-12-16 15:51:36,434 - INFO - Fold 4 TEST Results (best epoch 102) - MSE: 0.0486, MAE: 0.1687, R²: -0.5607, Pearson r: 0.5910 (p=5.5505e-02), Spearman r: 0.4273 (p=1.8994e-01)
+2025-12-16 15:51:36,443 - INFO - Fold 4 IN-SAMPLE @ best epoch 102 - MSE: 0.0176, MAE: 0.1192, R²: 0.4122, Pearson r: 0.9817 (p=6.7015e-32), Spearman r: 0.9918 (p=3.7739e-39)
+2025-12-16 15:51:36,443 - INFO - Fold 4 Overfit Gap (In-sample - Test Spearman): 0.5645
+2025-12-16 15:51:36,443 - INFO - 
+--- Fold 5/5 ---
+2025-12-16 15:51:36,443 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:51:36,443 - INFO - Train target - Mean: 0.2994, Std: 0.1713
+2025-12-16 15:51:36,444 - INFO - Test target  - Mean: 0.3598, Std: 0.1812
+2025-12-16 15:51:36,466 - INFO - Training fold 5 with early stopping (patience=50)...
+2025-12-16 15:51:36,501 - INFO - Epoch 1/200 | Train Loss: 0.937558 | Val Loss: 0.394365 | Train Spearman: 0.5589 | Best Val: inf (ep 1)
+2025-12-16 15:51:36,733 - INFO - Epoch 10/200 | Train Loss: 0.413956 | Val Loss: 0.380812 | Train Spearman: 0.9151 | Best Val: inf (ep 1)
+2025-12-16 15:51:36,991 - INFO - Epoch 20/200 | Train Loss: 0.206331 | Val Loss: 0.370581 | Train Spearman: 0.9520 | Best Val: inf (ep 1)
+2025-12-16 15:51:37,250 - INFO - Epoch 30/200 | Train Loss: 0.161225 | Val Loss: 0.407276 | Train Spearman: 0.9766 | Best Val: inf (ep 1)
+2025-12-16 15:51:37,508 - INFO - Epoch 40/200 | Train Loss: 0.181864 | Val Loss: 0.371052 | Train Spearman: 0.9789 | Best Val: inf (ep 1)
+2025-12-16 15:51:37,766 - INFO - Epoch 50/200 | Train Loss: 0.175637 | Val Loss: 0.357855 | Train Spearman: 0.9831 | Best Val: inf (ep 1)
+2025-12-16 15:51:38,096 - INFO - Epoch 60/200 | Train Loss: 0.232754 | Val Loss: 0.321051 | Train Spearman: 0.9902 | Best Val: 0.321051 (ep 60)
+2025-12-16 15:51:38,379 - INFO - Epoch 70/200 | Train Loss: 0.155561 | Val Loss: 0.371362 | Train Spearman: 0.9872 | Best Val: 0.311714 (ep 67)
+2025-12-16 15:51:38,637 - INFO - Epoch 80/200 | Train Loss: 0.155085 | Val Loss: 0.312942 | Train Spearman: 0.9932 | Best Val: 0.311714 (ep 67)
+2025-12-16 15:51:38,976 - INFO - Epoch 90/200 | Train Loss: 0.151100 | Val Loss: 0.291659 | Train Spearman: 0.9955 | Best Val: 0.291174 (ep 89)
+2025-12-16 15:51:39,464 - INFO - Epoch 100/200 | Train Loss: 0.151265 | Val Loss: 0.260321 | Train Spearman: 0.9938 | Best Val: 0.260321 (ep 100)
+2025-12-16 15:51:39,721 - INFO - Epoch 110/200 | Train Loss: 0.150143 | Val Loss: 0.288452 | Train Spearman: 0.9933 | Best Val: 0.260321 (ep 100)
+2025-12-16 15:51:39,979 - INFO - Epoch 120/200 | Train Loss: 0.158040 | Val Loss: 0.265297 | Train Spearman: 0.9953 | Best Val: 0.260321 (ep 100)
+2025-12-16 15:51:40,236 - INFO - Epoch 130/200 | Train Loss: 0.147125 | Val Loss: 0.285208 | Train Spearman: 0.9971 | Best Val: 0.260321 (ep 100)
+2025-12-16 15:51:40,493 - INFO - Epoch 140/200 | Train Loss: 0.151775 | Val Loss: 0.273922 | Train Spearman: 0.9934 | Best Val: 0.260321 (ep 100)
+2025-12-16 15:51:40,743 - INFO - Early stopping at epoch 150! Best val loss: 0.260321 at epoch 100
+2025-12-16 15:51:40,757 - INFO - Loaded best model from epoch 100
+2025-12-16 15:51:40,767 - INFO - Fold 5 TEST Results (best epoch 100) - MSE: 0.0215, MAE: 0.1224, R²: 0.3447, Pearson r: 0.7835 (p=4.3309e-03), Spearman r: 0.5909 (p=5.5576e-02)
+2025-12-16 15:51:40,777 - INFO - Fold 5 IN-SAMPLE @ best epoch 100 - MSE: 0.0228, MAE: 0.1101, R²: 0.2236, Pearson r: 0.9882 (p=7.4116e-36), Spearman r: 0.9938 (p=9.4324e-42)
+2025-12-16 15:51:40,777 - INFO - Fold 5 Overfit Gap (In-sample - Test Spearman): 0.4029
+2025-12-16 15:51:40,781 - INFO - 
+============================================================
+2025-12-16 15:51:40,781 - INFO - FINAL CROSS-VALIDATION RESULTS FOR: Treatment_Regression_ALL
+2025-12-16 15:51:40,781 - INFO - ----------------------------------------
+2025-12-16 15:51:40,781 - INFO - OUT-OF-SAMPLE (Test) Metrics:
+2025-12-16 15:51:40,781 - INFO -   MSE         : 0.0441 ± 0.0230
+2025-12-16 15:51:40,781 - INFO -   RMSE        : 0.2037 ± 0.0513
+2025-12-16 15:51:40,781 - INFO -   MAE         : 0.1618 ± 0.0418
+2025-12-16 15:51:40,781 - INFO -   R2          : -0.8039 ± 1.5508
+2025-12-16 15:51:40,781 - INFO -   PEARSON_R   : 0.6498 ± 0.1305
+2025-12-16 15:51:40,781 - INFO -   PEARSON_P   : 0.0521 ± 0.0463
+2025-12-16 15:51:40,781 - INFO -   SPEARMAN_R  : 0.6127 ± 0.1208
+2025-12-16 15:51:40,781 - INFO -   SPEARMAN_P  : 0.0671 ± 0.0654
+2025-12-16 15:51:40,781 - INFO - ----------------------------------------
+2025-12-16 15:51:40,781 - INFO - IN-SAMPLE @ Test-Best-Epoch Metrics:
+2025-12-16 15:51:40,781 - INFO -   MSE         : 0.0267 ± 0.0060
+2025-12-16 15:51:40,781 - INFO -   RMSE        : 0.1625 ± 0.0188
+2025-12-16 15:51:40,781 - INFO -   MAE         : 0.1303 ± 0.0158
+2025-12-16 15:51:40,781 - INFO -   R2          : 0.1243 ± 0.1938
+2025-12-16 15:51:40,781 - INFO -   PEARSON_R   : 0.9851 ± 0.0025
+2025-12-16 15:51:40,781 - INFO -   PEARSON_P   : 0.0000 ± 0.0000
+2025-12-16 15:51:40,781 - INFO -   SPEARMAN_R  : 0.9890 ± 0.0054
+2025-12-16 15:51:40,781 - INFO -   SPEARMAN_P  : 0.0000 ± 0.0000
+2025-12-16 15:51:40,781 - INFO -   Best Epochs: [125, 129, 195, 102, 100]
+2025-12-16 15:51:40,781 - INFO - ----------------------------------------
+2025-12-16 15:51:40,782 - INFO - OVERFIT GAP (In-sample - Test Spearman): 0.3763 ± 0.1236
+2025-12-16 15:51:40,782 - INFO -   Per-fold gaps: ['0.2970', '0.4197', '0.1973', '0.5645', '0.4029']
+2025-12-16 15:51:40,782 - INFO - ============================================================
+
+2025-12-16 15:51:40,786 - INFO - Results saved to final_results_Treatment_Regression_ALL.json
+2025-12-16 15:51:40,786 - INFO - Total execution time: 25.11 seconds
+2025-12-16 15:57:26,962 - INFO - Using device: cuda
+2025-12-16 15:57:26,963 - INFO - Hyperparameters: {
+  "batch_size": 8,
+  "learning_rate": 0.0005,
+  "num_epochs": 200,
+  "hidden_dim": 512,
+  "num_blocks": 6,
+  "dropout": 0.3,
+  "feature_type": "ALL",
+  "normalize_target": true,
+  "target_min": 0.0,
+  "target_max": 1.0
+}
+2025-12-16 15:57:26,963 - INFO - Starting treatment response REGRESSION pipeline
+2025-12-16 15:57:26,963 - INFO - Building diff file index...
+2025-12-16 15:57:26,968 - WARNING - Duplicate patient ID found: stn02, skipping additional entry
+2025-12-16 15:57:26,970 - WARNING - Duplicate patient ID found: gpi11, skipping additional entry
+2025-12-16 15:57:26,972 - WARNING - Duplicate patient ID found: gpi02, skipping additional entry
+2025-12-16 15:57:26,972 - WARNING - Duplicate patient ID found: gpi19, skipping additional entry
+2025-12-16 15:57:26,973 - WARNING - Duplicate patient ID found: stn23, skipping additional entry
+2025-12-16 15:57:26,974 - WARNING - Duplicate patient ID found: stn03, skipping additional entry
+2025-12-16 15:57:26,975 - WARNING - Duplicate patient ID found: gpi20, skipping additional entry
+2025-12-16 15:57:26,976 - WARNING - Duplicate patient ID found: stn04, skipping additional entry
+2025-12-16 15:57:26,978 - WARNING - Duplicate patient ID found: stn24, skipping additional entry
+2025-12-16 15:57:26,978 - WARNING - Duplicate patient ID found: gpi04, skipping additional entry
+2025-12-16 15:57:26,979 - WARNING - Duplicate patient ID found: gpi15, skipping additional entry
+2025-12-16 15:57:26,979 - WARNING - Duplicate patient ID found: stn19, skipping additional entry
+2025-12-16 15:57:26,979 - WARNING - Duplicate patient ID found: stn08, skipping additional entry
+2025-12-16 15:57:26,980 - WARNING - Duplicate patient ID found: stn11, skipping additional entry
+2025-12-16 15:57:26,980 - WARNING - Duplicate patient ID found: gpi07, skipping additional entry
+2025-12-16 15:57:26,981 - WARNING - Duplicate patient ID found: gpi26, skipping additional entry
+2025-12-16 15:57:26,981 - WARNING - Duplicate patient ID found: stn13, skipping additional entry
+2025-12-16 15:57:26,982 - WARNING - Duplicate patient ID found: gpi06, skipping additional entry
+2025-12-16 15:57:26,983 - WARNING - Duplicate patient ID found: stn30, skipping additional entry
+2025-12-16 15:57:26,983 - WARNING - Duplicate patient ID found: stn18, skipping additional entry
+2025-12-16 15:57:26,984 - WARNING - Duplicate patient ID found: gpi24, skipping additional entry
+2025-12-16 15:57:26,984 - WARNING - Duplicate patient ID found: gpi13, skipping additional entry
+2025-12-16 15:57:26,985 - WARNING - Duplicate patient ID found: stn07, skipping additional entry
+2025-12-16 15:57:26,985 - WARNING - Duplicate patient ID found: stn20, skipping additional entry
+2025-12-16 15:57:26,987 - WARNING - Duplicate patient ID found: gpi12, skipping additional entry
+2025-12-16 15:57:26,988 - WARNING - Duplicate patient ID found: stn01, skipping additional entry
+2025-12-16 15:57:26,989 - WARNING - Duplicate patient ID found: gpi22, skipping additional entry
+2025-12-16 15:57:26,989 - WARNING - Duplicate patient ID found: gpi18, skipping additional entry
+2025-12-16 15:57:26,990 - WARNING - Duplicate patient ID found: gpi09, skipping additional entry
+2025-12-16 15:57:26,990 - WARNING - Duplicate patient ID found: gpi25, skipping additional entry
+2025-12-16 15:57:26,991 - WARNING - Duplicate patient ID found: stn29, skipping additional entry
+2025-12-16 15:57:26,991 - WARNING - Duplicate patient ID found: gpi31, skipping additional entry
+2025-12-16 15:57:26,991 - WARNING - Duplicate patient ID found: stn10, skipping additional entry
+2025-12-16 15:57:26,992 - WARNING - Duplicate patient ID found: gpi28, skipping additional entry
+2025-12-16 15:57:26,992 - WARNING - Duplicate patient ID found: stn31, skipping additional entry
+2025-12-16 15:57:26,992 - WARNING - Duplicate patient ID found: gpi03, skipping additional entry
+2025-12-16 15:57:26,993 - WARNING - Duplicate patient ID found: gpi05, skipping additional entry
+2025-12-16 15:57:26,993 - WARNING - Duplicate patient ID found: stn25, skipping additional entry
+2025-12-16 15:57:26,994 - WARNING - Duplicate patient ID found: gpi08, skipping additional entry
+2025-12-16 15:57:26,994 - WARNING - Duplicate patient ID found: gpi27, skipping additional entry
+2025-12-16 15:57:26,994 - WARNING - Duplicate patient ID found: stn16, skipping additional entry
+2025-12-16 15:57:26,995 - WARNING - Duplicate patient ID found: gpi23, skipping additional entry
+2025-12-16 15:57:26,996 - WARNING - Duplicate patient ID found: stn09, skipping additional entry
+2025-12-16 15:57:26,996 - WARNING - Duplicate patient ID found: stn28, skipping additional entry
+2025-12-16 15:57:26,997 - WARNING - Duplicate patient ID found: stn06, skipping additional entry
+2025-12-16 15:57:26,997 - WARNING - Duplicate patient ID found: stn12, skipping additional entry
+2025-12-16 15:57:26,997 - WARNING - Duplicate patient ID found: gpi16, skipping additional entry
+2025-12-16 15:57:26,998 - WARNING - Duplicate patient ID found: gpi30, skipping additional entry
+2025-12-16 15:57:26,998 - WARNING - Duplicate patient ID found: stn21, skipping additional entry
+2025-12-16 15:57:26,998 - WARNING - Duplicate patient ID found: stn22, skipping additional entry
+2025-12-16 15:57:26,999 - WARNING - Duplicate patient ID found: stn14, skipping additional entry
+2025-12-16 15:57:26,999 - WARNING - Duplicate patient ID found: gpi17, skipping additional entry
+2025-12-16 15:57:26,999 - WARNING - Duplicate patient ID found: gpi21, skipping additional entry
+2025-12-16 15:57:27,000 - WARNING - Duplicate patient ID found: gpi32, skipping additional entry
+2025-12-16 15:57:27,000 - WARNING - Duplicate patient ID found: stn15, skipping additional entry
+2025-12-16 15:57:27,000 - INFO - Built diff index with 71 patients
+2025-12-16 15:57:27,000 - INFO - Parsing UPDRS data...
+2025-12-16 15:57:27,014 - INFO - Improvement rate statistics:
+2025-12-16 15:57:27,014 - INFO -   Min: 0.0000
+2025-12-16 15:57:27,014 - INFO -   Max: 0.6970
+2025-12-16 15:57:27,014 - INFO -   Mean: 0.3115
+2025-12-16 15:57:27,014 - INFO -   Std: 0.1750
+2025-12-16 15:57:27,014 - INFO - Found 55 valid samples
+2025-12-16 15:57:27,014 - INFO - Preparing feature matrices...
+2025-12-16 15:57:27,048 - INFO - Normalized target values to [0, 1], original range: [0.0, 1.0]
+2025-12-16 15:57:27,049 - INFO - Feature matrix shape: (55, 365)
+2025-12-16 15:57:27,049 - INFO - Target range: [0.0000, 0.6970], Mean: 0.3115
+2025-12-16 15:57:27,049 - INFO - 
+============================================================
+2025-12-16 15:57:27,049 - INFO - Starting Regression Cross-Validation: Treatment_Regression_ALL
+2025-12-16 15:57:27,049 - INFO - Total samples: 55 | Target range: [0.0000, 0.6970]
+2025-12-16 15:57:27,049 - INFO - 
+--- Fold 1/5 ---
+2025-12-16 15:57:27,049 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:57:27,049 - INFO - Train target - Mean: 0.3073, Std: 0.1753
+2025-12-16 15:57:27,050 - INFO - Test target  - Mean: 0.3280, Std: 0.1725
+2025-12-16 15:57:27,846 - INFO - Training fold 1 with early stopping (patience=50)...
+2025-12-16 15:57:28,055 - INFO - Epoch 1/200 | Train Loss: 0.738926 | Val Loss: 0.656818 | Best: inf (ep 1)
+2025-12-16 15:57:28,282 - INFO - Epoch 10/200 | Train Loss: 0.255358 | Val Loss: 0.611478 | Best: inf (ep 1)
+2025-12-16 15:57:28,534 - INFO - Epoch 20/200 | Train Loss: 0.265543 | Val Loss: 0.371387 | Best: inf (ep 1)
+2025-12-16 15:57:28,785 - INFO - Epoch 30/200 | Train Loss: 0.222291 | Val Loss: 0.614861 | Best: inf (ep 1)
+2025-12-16 15:57:29,036 - INFO - Epoch 40/200 | Train Loss: 0.189318 | Val Loss: 0.432626 | Best: inf (ep 1)
+2025-12-16 15:57:29,287 - INFO - Epoch 50/200 | Train Loss: 0.166967 | Val Loss: 0.856181 | Best: inf (ep 1)
+2025-12-16 15:57:29,634 - INFO - Epoch 60/200 | Train Loss: 0.148189 | Val Loss: 0.510624 | Best: 0.450661 (ep 55)
+2025-12-16 15:57:30,030 - INFO - Epoch 70/200 | Train Loss: 0.155651 | Val Loss: 0.552910 | Best: 0.386817 (ep 65)
+2025-12-16 15:57:30,280 - INFO - Epoch 80/200 | Train Loss: 0.148759 | Val Loss: 0.435173 | Best: 0.386817 (ep 65)
+2025-12-16 15:57:30,528 - INFO - Epoch 90/200 | Train Loss: 0.161580 | Val Loss: 0.489222 | Best: 0.386817 (ep 65)
+2025-12-16 15:57:30,777 - INFO - Epoch 100/200 | Train Loss: 0.158906 | Val Loss: 0.534660 | Best: 0.386817 (ep 65)
+2025-12-16 15:57:31,027 - INFO - Epoch 110/200 | Train Loss: 0.148587 | Val Loss: 0.418668 | Best: 0.386817 (ep 65)
+2025-12-16 15:57:31,151 - INFO - Early stopping at epoch 115! Best val loss: 0.386817 at epoch 65
+2025-12-16 15:57:31,165 - INFO - Loaded best model from epoch 65
+2025-12-16 15:57:31,189 - INFO - Fold 1 Results - MSE: 0.0449, MAE: 0.1730, R²: -0.5071, Pearson r: 0.6254 (p=3.9601e-02), Spearman r: 0.6364 (p=3.5287e-02)
+2025-12-16 15:57:31,189 - INFO - 
+--- Fold 2/5 ---
+2025-12-16 15:57:31,189 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:57:31,189 - INFO - Train target - Mean: 0.3079, Std: 0.1712
+2025-12-16 15:57:31,189 - INFO - Test target  - Mean: 0.3255, Std: 0.1887
+2025-12-16 15:57:31,211 - INFO - Training fold 2 with early stopping (patience=50)...
+2025-12-16 15:57:31,238 - INFO - Epoch 1/200 | Train Loss: 0.859426 | Val Loss: 0.329658 | Best: inf (ep 1)
+2025-12-16 15:57:31,466 - INFO - Epoch 10/200 | Train Loss: 0.288573 | Val Loss: 0.388591 | Best: inf (ep 1)
+2025-12-16 15:57:31,716 - INFO - Epoch 20/200 | Train Loss: 0.213835 | Val Loss: 0.420788 | Best: inf (ep 1)
+2025-12-16 15:57:31,966 - INFO - Epoch 30/200 | Train Loss: 0.205722 | Val Loss: 0.465166 | Best: inf (ep 1)
+2025-12-16 15:57:32,216 - INFO - Epoch 40/200 | Train Loss: 0.156973 | Val Loss: 0.402130 | Best: inf (ep 1)
+2025-12-16 15:57:32,466 - INFO - Epoch 50/200 | Train Loss: 0.206458 | Val Loss: 0.524137 | Best: inf (ep 1)
+2025-12-16 15:57:32,848 - INFO - Epoch 60/200 | Train Loss: 0.161250 | Val Loss: 0.440779 | Best: 0.440779 (ep 60)
+2025-12-16 15:57:33,223 - INFO - Epoch 70/200 | Train Loss: 0.176877 | Val Loss: 0.471625 | Best: 0.394432 (ep 68)
+2025-12-16 15:57:33,472 - INFO - Epoch 80/200 | Train Loss: 0.154487 | Val Loss: 0.439908 | Best: 0.394432 (ep 68)
+2025-12-16 15:57:33,722 - INFO - Epoch 90/200 | Train Loss: 0.150568 | Val Loss: 0.421527 | Best: 0.394432 (ep 68)
+2025-12-16 15:57:33,971 - INFO - Epoch 100/200 | Train Loss: 0.144621 | Val Loss: 0.435036 | Best: 0.394432 (ep 68)
+2025-12-16 15:57:34,221 - INFO - Epoch 110/200 | Train Loss: 0.144094 | Val Loss: 0.445844 | Best: 0.394432 (ep 68)
+2025-12-16 15:57:34,421 - INFO - Early stopping at epoch 118! Best val loss: 0.394432 at epoch 68
+2025-12-16 15:57:34,436 - INFO - Loaded best model from epoch 68
+2025-12-16 15:57:34,446 - INFO - Fold 2 Results - MSE: 0.0496, MAE: 0.1684, R²: -0.3933, Pearson r: 0.5091 (p=1.0976e-01), Spearman r: 0.5909 (p=5.5576e-02)
+2025-12-16 15:57:34,447 - INFO - 
+--- Fold 3/5 ---
+2025-12-16 15:57:34,447 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:57:34,447 - INFO - Train target - Mean: 0.3210, Std: 0.1827
+2025-12-16 15:57:34,447 - INFO - Test target  - Mean: 0.2734, Std: 0.1335
+2025-12-16 15:57:34,470 - INFO - Training fold 3 with early stopping (patience=50)...
+2025-12-16 15:57:34,496 - INFO - Epoch 1/200 | Train Loss: 0.808938 | Val Loss: 0.503998 | Best: inf (ep 1)
+2025-12-16 15:57:34,722 - INFO - Epoch 10/200 | Train Loss: 0.282238 | Val Loss: 0.394257 | Best: inf (ep 1)
+2025-12-16 15:57:34,974 - INFO - Epoch 20/200 | Train Loss: 0.188058 | Val Loss: 0.314333 | Best: inf (ep 1)
+2025-12-16 15:57:35,224 - INFO - Epoch 30/200 | Train Loss: 0.225639 | Val Loss: 0.380507 | Best: inf (ep 1)
+2025-12-16 15:57:35,474 - INFO - Epoch 40/200 | Train Loss: 0.393541 | Val Loss: 0.421167 | Best: inf (ep 1)
+2025-12-16 15:57:35,723 - INFO - Epoch 50/200 | Train Loss: 0.157702 | Val Loss: 0.348974 | Best: inf (ep 1)
+2025-12-16 15:57:36,126 - INFO - Epoch 60/200 | Train Loss: 0.171543 | Val Loss: 0.334219 | Best: 0.311547 (ep 56)
+2025-12-16 15:57:36,377 - INFO - Epoch 70/200 | Train Loss: 0.154944 | Val Loss: 0.329085 | Best: 0.311547 (ep 56)
+2025-12-16 15:57:36,626 - INFO - Epoch 80/200 | Train Loss: 0.188606 | Val Loss: 0.326729 | Best: 0.311547 (ep 56)
+2025-12-16 15:57:36,921 - INFO - Epoch 90/200 | Train Loss: 0.160119 | Val Loss: 0.315004 | Best: 0.296557 (ep 86)
+2025-12-16 15:57:37,171 - INFO - Epoch 100/200 | Train Loss: 0.147889 | Val Loss: 0.357329 | Best: 0.296557 (ep 86)
+2025-12-16 15:57:37,420 - INFO - Epoch 110/200 | Train Loss: 0.144814 | Val Loss: 0.335024 | Best: 0.296557 (ep 86)
+2025-12-16 15:57:37,670 - INFO - Epoch 120/200 | Train Loss: 0.141351 | Val Loss: 0.332395 | Best: 0.296557 (ep 86)
+2025-12-16 15:57:38,068 - INFO - Epoch 130/200 | Train Loss: 0.150405 | Val Loss: 0.292726 | Best: 0.290897 (ep 129)
+2025-12-16 15:57:38,354 - INFO - Epoch 140/200 | Train Loss: 0.151993 | Val Loss: 0.313666 | Best: 0.289946 (ep 135)
+2025-12-16 15:57:38,602 - INFO - Epoch 150/200 | Train Loss: 0.158913 | Val Loss: 0.296641 | Best: 0.289946 (ep 135)
+2025-12-16 15:57:39,004 - INFO - Epoch 160/200 | Train Loss: 0.164611 | Val Loss: 0.299979 | Best: 0.239328 (ep 154)
+2025-12-16 15:57:39,253 - INFO - Epoch 170/200 | Train Loss: 0.146044 | Val Loss: 0.327558 | Best: 0.239328 (ep 154)
+2025-12-16 15:57:39,502 - INFO - Epoch 180/200 | Train Loss: 0.148670 | Val Loss: 0.306481 | Best: 0.239328 (ep 154)
+2025-12-16 15:57:39,751 - INFO - Epoch 190/200 | Train Loss: 0.150770 | Val Loss: 0.274929 | Best: 0.239328 (ep 154)
+2025-12-16 15:57:39,999 - INFO - Epoch 200/200 | Train Loss: 0.140722 | Val Loss: 0.271205 | Best: 0.239328 (ep 154)
+2025-12-16 15:57:40,014 - INFO - Loaded best model from epoch 154
+2025-12-16 15:57:40,026 - INFO - Fold 3 Results - MSE: 0.0942, MAE: 0.2403, R²: -4.2856, Pearson r: 0.7885 (p=3.9316e-03), Spearman r: 0.7909 (p=3.7461e-03)
+2025-12-16 15:57:40,027 - INFO - 
+--- Fold 4/5 ---
+2025-12-16 15:57:40,027 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:57:40,027 - INFO - Train target - Mean: 0.3217, Std: 0.1731
+2025-12-16 15:57:40,027 - INFO - Test target  - Mean: 0.2706, Std: 0.1765
+2025-12-16 15:57:40,052 - INFO - Training fold 4 with early stopping (patience=50)...
+2025-12-16 15:57:40,079 - INFO - Epoch 1/200 | Train Loss: 0.830170 | Val Loss: 0.784341 | Best: inf (ep 1)
+2025-12-16 15:57:40,304 - INFO - Epoch 10/200 | Train Loss: 0.231311 | Val Loss: 0.897523 | Best: inf (ep 1)
+2025-12-16 15:57:40,553 - INFO - Epoch 20/200 | Train Loss: 0.254988 | Val Loss: 0.916196 | Best: inf (ep 1)
+2025-12-16 15:57:40,802 - INFO - Epoch 30/200 | Train Loss: 0.222576 | Val Loss: 0.732428 | Best: inf (ep 1)
+2025-12-16 15:57:41,054 - INFO - Epoch 40/200 | Train Loss: 0.247205 | Val Loss: 0.832691 | Best: inf (ep 1)
+2025-12-16 15:57:41,304 - INFO - Epoch 50/200 | Train Loss: 0.287287 | Val Loss: 0.567491 | Best: inf (ep 1)
+2025-12-16 15:57:41,703 - INFO - Epoch 60/200 | Train Loss: 0.204742 | Val Loss: 0.604654 | Best: 0.604654 (ep 60)
+2025-12-16 15:57:42,004 - INFO - Epoch 70/200 | Train Loss: 0.213930 | Val Loss: 0.616690 | Best: 0.579396 (ep 68)
+2025-12-16 15:57:42,255 - INFO - Epoch 80/200 | Train Loss: 0.169744 | Val Loss: 0.646941 | Best: 0.579396 (ep 68)
+2025-12-16 15:57:42,505 - INFO - Epoch 90/200 | Train Loss: 0.167147 | Val Loss: 0.665958 | Best: 0.579396 (ep 68)
+2025-12-16 15:57:42,755 - INFO - Epoch 100/200 | Train Loss: 0.168959 | Val Loss: 0.692019 | Best: 0.579396 (ep 68)
+2025-12-16 15:57:43,005 - INFO - Epoch 110/200 | Train Loss: 0.160889 | Val Loss: 0.660582 | Best: 0.579396 (ep 68)
+2025-12-16 15:57:43,206 - INFO - Early stopping at epoch 118! Best val loss: 0.579396 at epoch 68
+2025-12-16 15:57:43,220 - INFO - Loaded best model from epoch 68
+2025-12-16 15:57:43,312 - INFO - Fold 4 Results - MSE: 0.0543, MAE: 0.1898, R²: -0.7435, Pearson r: 0.5710 (p=6.6556e-02), Spearman r: 0.5182 (p=1.0249e-01)
+2025-12-16 15:57:43,313 - INFO - 
+--- Fold 5/5 ---
+2025-12-16 15:57:43,313 - INFO - Train size: 44, Test size: 11
+2025-12-16 15:57:43,313 - INFO - Train target - Mean: 0.2994, Std: 0.1713
+2025-12-16 15:57:43,313 - INFO - Test target  - Mean: 0.3598, Std: 0.1812
+2025-12-16 15:57:43,336 - INFO - Training fold 5 with early stopping (patience=50)...
+2025-12-16 15:57:43,363 - INFO - Epoch 1/200 | Train Loss: 0.788938 | Val Loss: 0.328435 | Best: inf (ep 1)
+2025-12-16 15:57:43,589 - INFO - Epoch 10/200 | Train Loss: 0.295147 | Val Loss: 0.244379 | Best: inf (ep 1)
+2025-12-16 15:57:43,842 - INFO - Epoch 20/200 | Train Loss: 0.205486 | Val Loss: 0.337633 | Best: inf (ep 1)
+2025-12-16 15:57:44,092 - INFO - Epoch 30/200 | Train Loss: 0.182720 | Val Loss: 0.302616 | Best: inf (ep 1)
+2025-12-16 15:57:44,343 - INFO - Epoch 40/200 | Train Loss: 0.177986 | Val Loss: 0.282114 | Best: inf (ep 1)
+2025-12-16 15:57:44,593 - INFO - Epoch 50/200 | Train Loss: 0.155446 | Val Loss: 0.407934 | Best: inf (ep 1)
+2025-12-16 15:57:45,011 - INFO - Epoch 60/200 | Train Loss: 0.147769 | Val Loss: 0.348278 | Best: 0.309023 (ep 57)
+2025-12-16 15:57:45,396 - INFO - Epoch 70/200 | Train Loss: 0.154942 | Val Loss: 0.297845 | Best: 0.289269 (ep 68)
+2025-12-16 15:57:45,646 - INFO - Epoch 80/200 | Train Loss: 0.157487 | Val Loss: 0.295906 | Best: 0.289269 (ep 68)
+2025-12-16 15:57:45,952 - INFO - Epoch 90/200 | Train Loss: 0.146967 | Val Loss: 0.314211 | Best: 0.262380 (ep 82)
+2025-12-16 15:57:46,202 - INFO - Epoch 100/200 | Train Loss: 0.142677 | Val Loss: 0.289638 | Best: 0.262380 (ep 82)
+2025-12-16 15:57:46,452 - INFO - Epoch 110/200 | Train Loss: 0.148288 | Val Loss: 0.306315 | Best: 0.262380 (ep 82)
+2025-12-16 15:57:46,701 - INFO - Epoch 120/200 | Train Loss: 0.149580 | Val Loss: 0.271338 | Best: 0.262380 (ep 82)
+2025-12-16 15:57:46,951 - INFO - Epoch 130/200 | Train Loss: 0.152365 | Val Loss: 0.293714 | Best: 0.262380 (ep 82)
+2025-12-16 15:57:47,001 - INFO - Early stopping at epoch 132! Best val loss: 0.262380 at epoch 82
+2025-12-16 15:57:47,015 - INFO - Loaded best model from epoch 82
+2025-12-16 15:57:47,026 - INFO - Fold 5 Results - MSE: 0.0237, MAE: 0.1306, R²: 0.2794, Pearson r: 0.7173 (p=1.2955e-02), Spearman r: 0.6091 (p=4.6696e-02)
+2025-12-16 15:57:47,028 - INFO - 
+============================================================
+2025-12-16 15:57:47,028 - INFO - FINAL CROSS-VALIDATION RESULTS FOR: Treatment_Regression_ALL
+2025-12-16 15:57:47,028 - INFO - ----------------------------------------
+2025-12-16 15:57:47,028 - INFO - MSE         : 0.0533 ± 0.0230
+2025-12-16 15:57:47,029 - INFO - RMSE        : 0.2257 ± 0.0490
+2025-12-16 15:57:47,029 - INFO - MAE         : 0.1804 ± 0.0356
+2025-12-16 15:57:47,029 - INFO - R2          : -1.1300 ± 1.6140
+2025-12-16 15:57:47,029 - INFO - PEARSON_R   : 0.6423 ± 0.1001
+2025-12-16 15:57:47,029 - INFO - PEARSON_P   : 0.0466 ± 0.0384
+2025-12-16 15:57:47,029 - INFO - SPEARMAN_R  : 0.6291 ± 0.0899
+2025-12-16 15:57:47,029 - INFO - SPEARMAN_P  : 0.0488 ± 0.0321
+2025-12-16 15:57:47,029 - INFO - ============================================================
+
+2025-12-16 15:57:47,033 - INFO - Results saved to final_results_Treatment_Regression_ALL.json
+2025-12-16 15:57:47,033 - INFO - Total execution time: 20.07 seconds

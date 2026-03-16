@@ -1,0 +1,23 @@
+id,fc_file,clinical_features,label,improvement_rate,updrs_total_off,true_label,pred_prob,pred_label,threshold
+GPi03,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/gpi03_fmri_20190901_163618_835000/fine_tune/gpi03_fmri_20190901_163618_835000/patient_gpi03_fmri_20190901_163618_835000_empirical_FC.npy,"[1. 2. 4. 2. 2. 4. 4. 3. 3. 3. 3. 2. 4. 3. 3. 1. 1. 1. 3. 0. 3. 2. 3. 1.
+ 0. 1. 1. 3. 1. 0. 0. 2. 4.]",1,0.357142857142857,70,1,0.6920117,0,0.9669495
+GPi05,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/gpi05_fmri_20191013_162433_897000/fine_tune/gpi05_fmri_20191013_162433_897000/patient_gpi05_fmri_20191013_162433_897000_empirical_FC.npy,"[0. 3. 4. 1. 1. 1. 1. 2. 2. 2. 3. 2. 2. 3. 3. 3. 3. 1. 2. 4. 2. 2. 3. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0.]",0,0.12,50,0,0.9001179,0,0.9669495
+GPi11,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/gpi11_fmri_20191027_120216_656000/fine_tune/gpi11_fmri_20191027_120216_656000/patient_gpi11_fmri_20191027_120216_656000_empirical_FC.npy,"[1. 4. 3. 1. 1. 1. 1. 2. 2. 2. 1. 2. 2. 2. 1. 1. 1. 1. 1. 0. 3. 3. 2. 0.
+ 1. 0. 0. 0. 2. 0. 0. 0. 4.]",0,0.177777777777778,45,0,0.94899994,0,0.9669495
+GPi24,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/gpi24_fmri_OFF/fine_tune/gpi24_fmri_OFF/patient_gpi24_fmri_OFF_empirical_FC.npy,"[1. 2. 3. 2. 2. 2. 2. 0. 0. 0. 2. 0. 0. 3. 1. 2. 1. 1. 2. 2. 0. 1. 4. 0.
+ 0. 0. 0. 3. 0. 0. 0. 0. 1.]",1,0.594594594594595,37,1,0.47756317,0,0.9669495
+GPi27,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/gpi27_fmri_20200627_094220_405000/fine_tune/gpi27_fmri_20200627_094220_405000/patient_gpi27_fmri_20200627_094220_405000_empirical_FC.npy,"[0. 3. 3. 3. 2. 3. 3. 3. 3. 3. 3. 3. 3. 2. 2. 2. 1. 1. 1. 0. 2. 1. 2. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0.]",0,0.183673469387755,49,0,0.34656176,0,0.9669495
+STN02,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/stn02_fmri_20191013_090750_028000/fine_tune/stn02_fmri_20191013_090750_028000/patient_stn02_fmri_20191013_090750_028000_empirical_FC.npy,"[1. 1. 2. 1. 2. 3. 3. 1. 2. 1. 1. 2. 4. 3. 3. 2. 2. 1. 1. 0. 2. 1. 2. 0.
+ 1. 0. 1. 0. 3. 3. 3. 0. 4.]",1,0.553571428571429,56,1,0.9669495,1,0.9669495
+STN10,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/stn10_fmri_20200112_120655_881000/fine_tune/stn10_fmri_20200112_120655_881000/patient_stn10_fmri_20200112_120655_881000_empirical_FC.npy,"[0. 3. 2. 1. 1. 1. 2. 1. 2. 1. 1. 0. 0. 2. 1. 1. 2. 1. 1. 0. 1. 1. 1. 0.
+ 0. 0. 1. 0. 0. 2. 0. 0. 1.]",1,0.3,30,1,0.7360641,0,0.9669495
+STN12,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/stn12_fmri_ON/fine_tune/stn12_fmri_ON/patient_stn12_fmri_ON_empirical_FC.npy,"[1. 2. 2. 2. 1. 1. 1. 3. 1. 3. 1. 4. 2. 4. 1. 2. 1. 2. 2. 2. 2. 1. 2. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0.]",1,0.372093023255814,43,1,0.15275791,0,0.9669495
+STN19,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/stn19_fmri_20201011_114240_966000/fine_tune/stn19_fmri_20201011_114240_966000/patient_stn19_fmri_20201011_114240_966000_empirical_FC.npy,"[2. 4. 3. 3. 3. 2. 3. 4. 3. 3. 4. 3. 3. 3. 3. 3. 3. 1. 2. 1. 2. 0. 3. 1.
+ 1. 1. 1. 0. 0. 0. 0. 0. 0.]",1,0.415384615384615,65,1,0.41364092,0,0.9669495
+STN21,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/stn21_fmri_20201011_140235_929000/fine_tune/stn21_fmri_20201011_140235_929000/patient_stn21_fmri_20201011_140235_929000_empirical_FC.npy,"[4. 4. 4. 3. 3. 1. 1. 2. 2. 3. 3. 1. 2. 4. 4. 3. 3. 0. 2. 2. 2. 4. 4. 1.
+ 1. 1. 1. 0. 0. 0. 2. 0. 3.]",1,0.485714285714286,70,1,0.13656878,0,0.9669495
+STN25,/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB/stn25_fmri_ON/fine_tune/stn25_fmri_ON/patient_stn25_fmri_ON_empirical_FC.npy,"[3. 3. 2. 0. 0. 1. 1. 3. 2. 2. 2. 3. 3. 3. 3. 2. 2. 3. 1. 3. 2. 0. 3. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0.]",0,0.170212765957447,47,0,0.6467249,0,0.9669495

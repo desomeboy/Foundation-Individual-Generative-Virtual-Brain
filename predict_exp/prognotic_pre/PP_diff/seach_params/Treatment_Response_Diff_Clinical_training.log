@@ -1,0 +1,438 @@
+2026-01-15 16:41:16,089 - INFO - Using device: cuda
+2026-01-15 16:41:16,089 - INFO - Starting experiment with parameters:
+2026-01-15 16:41:16,090 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 16:41:16,090 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 16:41:16,090 - INFO - Sample type: all
+2026-01-15 16:41:16,090 - INFO - Z-score normalize: False
+2026-01-15 16:41:16,090 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 16:41:16,090 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 16:41:16,090 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[1..999], resume=True
+2026-01-15 16:41:16,215 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 16:41:16,282 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 16:41:16,284 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 16:41:16,295 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 16:41:16,296 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 16:41:16,327 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 16:41:16,327 - INFO - Class distribution: [30 21]
+2026-01-15 16:41:16,327 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[1..999]
+2026-01-15 16:41:16,327 - INFO - Total combinations (including skipped): 4995
+2026-01-15 16:45:21,782 - INFO - Using device: cuda
+2026-01-15 16:45:21,792 - INFO - Starting experiment with parameters:
+2026-01-15 16:45:21,793 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 16:45:21,793 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 16:45:21,793 - INFO - Sample type: all
+2026-01-15 16:45:21,793 - INFO - Z-score normalize: False
+2026-01-15 16:45:21,793 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 16:45:21,793 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 16:45:21,793 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[1..500], resume=True
+2026-01-15 16:45:21,918 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 16:45:21,987 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 16:45:21,989 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 16:45:22,001 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 16:45:22,001 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 16:45:22,030 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 16:45:22,031 - INFO - Class distribution: [30 21]
+2026-01-15 16:45:22,034 - INFO - Resume enabled: 9 combinations already in CSV, will skip them.
+2026-01-15 16:45:22,034 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[1..500]
+2026-01-15 16:45:22,034 - INFO - Total combinations (including skipped): 2500
+2026-01-15 16:45:40,498 - INFO - Using device: cuda
+2026-01-15 16:45:40,498 - INFO - Starting experiment with parameters:
+2026-01-15 16:45:40,498 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 16:45:40,498 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 16:45:40,498 - INFO - Sample type: all
+2026-01-15 16:45:40,498 - INFO - Z-score normalize: False
+2026-01-15 16:45:40,498 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 16:45:40,498 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 16:45:40,499 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[501..1000], resume=True
+2026-01-15 16:45:40,618 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 16:45:40,685 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 16:45:40,686 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 16:45:40,699 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 16:45:40,699 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 16:45:40,729 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 16:45:40,729 - INFO - Class distribution: [30 21]
+2026-01-15 16:45:40,732 - INFO - Resume enabled: 20 combinations already in CSV, will skip them.
+2026-01-15 16:45:40,732 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[501..1000]
+2026-01-15 16:45:40,732 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:10,745 - INFO - Using device: cuda
+2026-01-15 18:12:10,745 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,745 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,745 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,745 - INFO - Sample type: all
+2026-01-15 18:12:10,745 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,745 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,745 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,746 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[7001..7500], resume=True
+2026-01-15 18:12:10,750 - INFO - Using device: cuda
+2026-01-15 18:12:10,750 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,750 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,750 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,750 - INFO - Sample type: all
+2026-01-15 18:12:10,750 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,751 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,751 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,751 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[2001..2500], resume=True
+2026-01-15 18:12:10,754 - INFO - Using device: cuda
+2026-01-15 18:12:10,754 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,754 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,754 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,754 - INFO - Sample type: all
+2026-01-15 18:12:10,754 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,754 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,754 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,754 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[7501..8000], resume=True
+2026-01-15 18:12:10,760 - INFO - Using device: cuda
+2026-01-15 18:12:10,761 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,761 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,761 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,761 - INFO - Sample type: all
+2026-01-15 18:12:10,761 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,761 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,761 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,761 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[3501..4000], resume=True
+2026-01-15 18:12:10,768 - INFO - Using device: cuda
+2026-01-15 18:12:10,768 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,768 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,768 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,768 - INFO - Sample type: all
+2026-01-15 18:12:10,768 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,768 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,768 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,769 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[6501..7000], resume=True
+2026-01-15 18:12:10,769 - INFO - Using device: cuda
+2026-01-15 18:12:10,769 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,769 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,769 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,769 - INFO - Sample type: all
+2026-01-15 18:12:10,769 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,770 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,770 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,770 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[9001..9500], resume=True
+2026-01-15 18:12:10,770 - INFO - Using device: cuda
+2026-01-15 18:12:10,770 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,770 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,770 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,770 - INFO - Sample type: all
+2026-01-15 18:12:10,770 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,770 - INFO - Using device: cuda
+2026-01-15 18:12:10,770 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,770 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,770 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,770 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[4501..5000], resume=True
+2026-01-15 18:12:10,771 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,771 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,771 - INFO - Sample type: all
+2026-01-15 18:12:10,771 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,771 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,771 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,771 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[1001..1500], resume=True
+2026-01-15 18:12:10,772 - INFO - Using device: cuda
+2026-01-15 18:12:10,772 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,772 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,772 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,772 - INFO - Sample type: all
+2026-01-15 18:12:10,772 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,772 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,772 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,772 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[8001..8500], resume=True
+2026-01-15 18:12:10,773 - INFO - Using device: cuda
+2026-01-15 18:12:10,773 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,773 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,773 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,773 - INFO - Sample type: all
+2026-01-15 18:12:10,774 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,773 - INFO - Using device: cuda
+2026-01-15 18:12:10,774 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,774 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,774 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,774 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,774 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,774 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[9501..9999], resume=True
+2026-01-15 18:12:10,774 - INFO - Sample type: all
+2026-01-15 18:12:10,774 - INFO - Using device: cuda
+2026-01-15 18:12:10,775 - INFO - Using device: cuda
+2026-01-15 18:12:10,775 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,775 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,775 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,775 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,775 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,775 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,775 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,776 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[1501..2000], resume=True
+2026-01-15 18:12:10,776 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,776 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,776 - INFO - Sample type: all
+2026-01-15 18:12:10,776 - INFO - Sample type: all
+2026-01-15 18:12:10,776 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,776 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,776 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,776 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,776 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,776 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,776 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[8501..9000], resume=True
+2026-01-15 18:12:10,776 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[5001..5500], resume=True
+2026-01-15 18:12:10,777 - INFO - Using device: cuda
+2026-01-15 18:12:10,778 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,778 - INFO - Using device: cuda
+2026-01-15 18:12:10,779 - INFO - Using device: cuda
+2026-01-15 18:12:10,780 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,780 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,780 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,780 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,780 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,780 - INFO - Sample type: all
+2026-01-15 18:12:10,780 - INFO - Sample type: all
+2026-01-15 18:12:10,781 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,781 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,781 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,781 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,781 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,781 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,781 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,781 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[2501..3000], resume=True
+2026-01-15 18:12:10,781 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,781 - INFO - Using device: cuda
+2026-01-15 18:12:10,782 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[3001..3500], resume=True
+2026-01-15 18:12:10,782 - INFO - Using device: cuda
+2026-01-15 18:12:10,782 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,782 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,782 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,782 - INFO - Sample type: all
+2026-01-15 18:12:10,782 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,782 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,782 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,782 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[6001..6500], resume=True
+2026-01-15 18:12:10,784 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,785 - INFO - Sample type: all
+2026-01-15 18:12:10,785 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,785 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,785 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,785 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[5501..6000], resume=True
+2026-01-15 18:12:10,789 - INFO - Starting experiment with parameters:
+2026-01-15 18:12:10,789 - INFO - Base directory: /ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB
+2026-01-15 18:12:10,789 - INFO - Excel path: /ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx
+2026-01-15 18:12:10,789 - INFO - Sample type: all
+2026-01-15 18:12:10,789 - INFO - Z-score normalize: False
+2026-01-15 18:12:10,789 - INFO - Model: hidden_dim=512, num_blocks=4, dropout=0.1
+2026-01-15 18:12:10,789 - INFO - Train: lr=0.001, batch_size=8, n_splits=5, use_young=True
+2026-01-15 18:12:10,789 - INFO - Search: epochs=[20, 25, 30, 40, 50], seeds=[4001..4500], resume=True
+2026-01-15 18:12:11,111 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,119 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,120 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,120 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,120 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,120 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,121 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,129 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,133 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,140 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,142 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,146 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,149 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,157 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,158 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,159 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,165 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:11,171 - INFO - Parsing patient data from Excel (grouped by 姓名 + 日期)...
+2026-01-15 18:12:13,791 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,791 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,791 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,792 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,793 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,794 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,794 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,794 - WARNING - Missing diff files for name=鞠喆, date=2025-11-24 00:00:00
+2026-01-15 18:12:13,795 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,795 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,795 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,795 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,795 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,795 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,795 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,795 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,795 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,796 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,796 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,797 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,797 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,799 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,799 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,799 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,799 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:13,799 - WARNING - Missing diff files for name=鞠喆, date=2025-12-08 00:00:00
+2026-01-15 18:12:14,209 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,209 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,209 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,209 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,209 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,209 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,209 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,209 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,209 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,209 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,209 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,209 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,209 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,209 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,209 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,210 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,210 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,210 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,210 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,210 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,210 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,210 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,210 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,210 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,210 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,210 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,210 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,210 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,210 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,210 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,210 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,210 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,210 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,211 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:14,212 - INFO - Found 51 valid pre-treatment samples with complete data
+2026-01-15 18:12:14,212 - INFO - Preparing features and labels (sample_type=all, zscore_normalize=False)...
+2026-01-15 18:12:15,615 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,615 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,615 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,615 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,615 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,615 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,616 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,616 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,616 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,616 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,616 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,616 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,616 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,616 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,616 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,616 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,616 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,616 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,616 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,616 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,616 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,616 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,617 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,617 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,617 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,617 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,617 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,617 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,617 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,617 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,617 - INFO - Final dataset: 51 samples, 366 features
+2026-01-15 18:12:15,617 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,617 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,617 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,617 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,617 - INFO - Class distribution: [30 21]
+2026-01-15 18:12:15,638 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,638 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[2001..2500]
+2026-01-15 18:12:15,638 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,638 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,638 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[8501..9000]
+2026-01-15 18:12:15,638 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,639 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,639 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[5001..5500]
+2026-01-15 18:12:15,639 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,639 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,639 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,640 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[4501..5000]
+2026-01-15 18:12:15,640 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,640 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,640 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[6001..6500]
+2026-01-15 18:12:15,641 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,641 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,641 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,642 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,642 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,642 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,642 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,642 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,642 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[5501..6000]
+2026-01-15 18:12:15,642 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,643 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[2501..3000]
+2026-01-15 18:12:15,643 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[7001..7500]
+2026-01-15 18:12:15,643 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,643 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[9501..9999]
+2026-01-15 18:12:15,643 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,643 - INFO - Total combinations (including skipped): 2495
+2026-01-15 18:12:15,643 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[7501..8000]
+2026-01-15 18:12:15,643 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,644 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[4001..4500]
+2026-01-15 18:12:15,644 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[6501..7000]
+2026-01-15 18:12:15,644 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[9001..9500]
+2026-01-15 18:12:15,644 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[1001..1500]
+2026-01-15 18:12:15,644 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,644 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,645 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[8001..8500]
+2026-01-15 18:12:15,645 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,645 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,647 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,649 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,649 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[1501..2000]
+2026-01-15 18:12:15,649 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,656 - INFO - Resume enabled: 4359 combinations already in CSV, will skip them.
+2026-01-15 18:12:15,664 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,664 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,664 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[3501..4000]
+2026-01-15 18:12:15,665 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,665 - INFO - Search space: num_epochs=[20, 25, 30, 40, 50], random_seed=[3001..3500]
+2026-01-15 18:12:15,665 - INFO - Total combinations (including skipped): 2500
+2026-01-15 18:12:15,665 - INFO - Total combinations (including skipped): 2500
+2026-01-15 19:06:22,286 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 19:06:22,288 - INFO - Best combo so far (by auc_mean then ap_mean): seed=321, epochs=40, auc_mean=0.793333, ap_mean=0.751310
+2026-01-15 19:11:33,129 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 19:11:33,129 - INFO - Best combo so far (by auc_mean then ap_mean): seed=636, epochs=20, auc_mean=0.785000, ap_mean=0.772500
+2026-01-15 22:29:46,384 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:29:46,385 - INFO - Best combo so far (by auc_mean then ap_mean): seed=4396, epochs=25, auc_mean=0.781667, ap_mean=0.788905
+2026-01-15 22:36:03,723 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:36:03,724 - INFO - Best combo so far (by auc_mean then ap_mean): seed=9533, epochs=30, auc_mean=0.776667, ap_mean=0.770516
+2026-01-15 22:36:24,237 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:36:24,237 - INFO - Best combo so far (by auc_mean then ap_mean): seed=1843, epochs=50, auc_mean=0.790000, ap_mean=0.793532
+2026-01-15 22:39:59,447 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:39:59,447 - INFO - Best combo so far (by auc_mean then ap_mean): seed=6704, epochs=30, auc_mean=0.776667, ap_mean=0.756151
+2026-01-15 22:41:31,914 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:41:31,915 - INFO - Best combo so far (by auc_mean then ap_mean): seed=4994, epochs=40, auc_mean=0.788333, ap_mean=0.765333
+2026-01-15 22:42:19,712 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:42:19,713 - INFO - Best combo so far (by auc_mean then ap_mean): seed=1172, epochs=30, auc_mean=0.800000, ap_mean=0.813571
+2026-01-15 22:43:18,872 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:43:18,872 - INFO - Best combo so far (by auc_mean then ap_mean): seed=7493, epochs=40, auc_mean=0.815000, ap_mean=0.773056
+2026-01-15 22:44:28,126 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:44:28,126 - INFO - Best combo so far (by auc_mean then ap_mean): seed=8487, epochs=30, auc_mean=0.795000, ap_mean=0.762619
+2026-01-15 22:44:46,694 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:44:46,694 - INFO - Best combo so far (by auc_mean then ap_mean): seed=2979, epochs=40, auc_mean=0.800000, ap_mean=0.809127
+2026-01-15 22:44:48,648 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:44:48,648 - INFO - Best combo so far (by auc_mean then ap_mean): seed=2320, epochs=20, auc_mean=0.806667, ap_mean=0.793405
+2026-01-15 22:44:51,167 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:44:51,167 - INFO - Best combo so far (by auc_mean then ap_mean): seed=7526, epochs=50, auc_mean=0.820000, ap_mean=0.760000
+2026-01-15 22:45:18,987 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:45:18,987 - INFO - Best combo so far (by auc_mean then ap_mean): seed=5656, epochs=20, auc_mean=0.833333, ap_mean=0.789524
+2026-01-15 22:47:18,063 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:47:18,063 - INFO - Best combo so far (by auc_mean then ap_mean): seed=3922, epochs=30, auc_mean=0.801667, ap_mean=0.772460
+2026-01-15 22:47:27,652 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:47:27,652 - INFO - Best combo so far (by auc_mean then ap_mean): seed=9409, epochs=30, auc_mean=0.823333, ap_mean=0.828571
+2026-01-15 22:48:20,266 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:48:20,267 - INFO - Best combo so far (by auc_mean then ap_mean): seed=8883, epochs=40, auc_mean=0.823333, ap_mean=0.781944
+2026-01-15 22:48:28,066 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:48:28,066 - INFO - Best combo so far (by auc_mean then ap_mean): seed=3150, epochs=40, auc_mean=0.843333, ap_mean=0.819762
+2026-01-15 22:49:11,135 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:49:11,135 - INFO - Best combo so far (by auc_mean then ap_mean): seed=6273, epochs=50, auc_mean=0.810000, ap_mean=0.799167
+2026-01-15 22:55:18,604 - INFO - Saved incremental search results to: Treatment_Response_Diff_Clinical_seed_epoch_search.csv
+2026-01-15 22:55:18,604 - INFO - Best combo so far (by auc_mean then ap_mean): seed=5309, epochs=20, auc_mean=0.823333, ap_mean=0.853167

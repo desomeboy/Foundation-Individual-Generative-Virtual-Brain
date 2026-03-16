@@ -1,0 +1,29 @@
+{
+  "hyperparameters": {
+    "batch_size": 8,
+    "learning_rate": 0.0005,
+    "num_epochs": 200,
+    "hidden_dim": 512,
+    "num_blocks": 6,
+    "dropout": 0.3,
+    "feature_type": "ALL",
+    "improvement_threshold": 0.25,
+    "val_ratio": 0.2,
+    "early_stop_patience": 100,
+    "early_stop_min_epochs": 100
+  },
+  "val_metrics": {
+    "val_threshold": 1.955529114638921e-05,
+    "val_acc": 0.7272727272727273,
+    "val_f1": 0.8,
+    "val_precision": 0.6666666666666666,
+    "val_recall": 1.0,
+    "val_auc": 0.6333333333333333,
+    "val_ap": 0.7041666666666666
+  },
+  "n_total": 55,
+  "class_distribution": [
+    24,
+    31
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "hyperparameters": {
+    "batch_size": 8,
+    "learning_rate": 0.005,
+    "num_epochs": 200,
+    "hidden_dim": 512,
+    "num_blocks": 4,
+    "dropout": 0.1,
+    "feature_type": "DIFF",
+    "zscore_normalize": false,
+    "response_threshold": 5,
+    "val_ratio": 0.2,
+    "early_stop_patience": 150,
+    "early_stop_min_epochs": 1
+  },
+  "val_metrics": {
+    "val_threshold": 0.5800540447235107,
+    "val_acc": 0.9090909090909091,
+    "val_f1": 0.8888888888888888,
+    "val_precision": 0.8,
+    "val_recall": 1.0,
+    "val_auc": 0.9285714285714286,
+    "val_ap": 0.8875
+  },
+  "n_total": 52,
+  "class_distribution": [
+    31,
+    21
+  ]
+}
