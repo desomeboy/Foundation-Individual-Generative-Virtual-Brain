@@ -29,3 +29,9 @@ To set up the environment, please follow these steps:
    git clone git@github.com:desomeboy/Foundation-Individual-Generative-Virtual-Brain.git
    cd FVB2iVB
    ```
+2. set the environment:
+   ```bash
+   conda create -n vtb python=3.9 -y 
+   conda activate vtb
+   pip install -r requirements.txt
+   ```
