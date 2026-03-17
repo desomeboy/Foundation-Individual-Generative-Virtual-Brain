@@ -18,7 +18,7 @@ Architecture of the generative virtual brain model.
 #### 3. Workflow & Counterfactual Analysis
 Schematic illustration of the iVB-based workflow for predicting neuromodulation response and diagram depicting the calculation of the Counterfactual Brain Mismatch.
 
-![iVB-based workflow and CBM calculation](Figure/CBM.jpg)
+![iVB-based workflow and CBM calculation](Figure/CBM.svg)
 
 ## 🛠 Installation
 
