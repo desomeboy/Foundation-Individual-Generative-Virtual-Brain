@@ -27,4 +27,5 @@ To set up the environment, please follow these steps:
 1. Clone this repository:
    ```bash
    git clone git@github.com:desomeboy/Foundation-Individual-Generative-Virtual-Brain.git
-   cd [FVB2iVB]
+   cd FVB2iVB
+   ```

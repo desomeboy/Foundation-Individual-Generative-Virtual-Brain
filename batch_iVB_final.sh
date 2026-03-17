@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CSV_DIR="/ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_csv"
-SCRIPT="scripts/test_ruijin_npi.py"
+SCRIPT="scripts/train_iVB.py"
 MODEL_PATH='/ailab/user/dusiyuan/code/Brain/EC/AAL3/EC_results_num_layer_2/AAL3_lr_5e-05_batch_256_epochs_300_l2_0.0001_patience_100_steps_7_dmodel_256/best_model.pth'
 OUTPUT_BASE="/ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB"
 
