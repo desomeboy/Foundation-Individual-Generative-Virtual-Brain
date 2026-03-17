@@ -35,3 +35,18 @@ To set up the environment, please follow these steps:
    conda activate vtb
    pip install -r requirements.txt
    ```
+
+## 📊 Datasets
+
+### Public Data Sources
+| Dataset | Content | Access |
+|---------|---------|--------|
+| **ADNI / ABIDE / PPMI** | Multimodal neuroimaging & clinical data | [IDA/LONI](https://ida.loni.usc.edu) |
+| **HCP Young Adult** | 1,200 healthy subjects resting-state fMRI | [HCP Portal](https://www.humanconnectome.org/study/hcp-young-adult/document/1200-subjects-data-release) |
+| **AAL3 Atlas** | 166-ROI brain parcellation | [AAL3](https://www.gin.cnrs.fr/en/tools/aal/) |
+
+> Access to ADNI/ABIDE/PPMI requires registration via IDA.
+
+### Preprocessing & Labels
+- **Preprocessing code**: All pipelines (motion correction, normalization, AAL3 parcellation) are implemented in `Data_process/`.
+- **Subject labels**: Clinical outcomes and subject IDs are stored in `Data_process/Data_label.csv`.
