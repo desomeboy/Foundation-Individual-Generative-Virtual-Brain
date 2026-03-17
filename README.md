@@ -1,6 +1,6 @@
 # Predicting Neuromodulation Outcome for Parkinson’s Disease with Generative Virtual Brain Model
 
-Code implementation for the paper "Predicting Neuromodulation Outcome for Parkinson’s Disease with Generative Virtual Brain Model".
+A preliminary code implementation for the paper "Predicting Neuromodulation Outcome for Parkinson’s Disease with Generative Virtual Brain Model".
 
 ## 📖 Overview
 
@@ -9,16 +9,16 @@ This repository contains the source code, pre-trained models, and data processin
 #### 1. Framework Overview
 Overview of the proposed framework: a generative virtual brain paradigm transfers dynamical priors from large-scale data to small clinical cohorts for individualized neuromodulation response prediction.
 
-![Overview of the proposed framework](Figure/framework.svg)
+![Overview of the proposed framework](Figure/framework.png)
 
 #### 2. Model Architecture
 Architecture of the generative virtual brain model.
-![Architecture of the generative virtual brain model](Figure/model_sturcture.svg)
+![Architecture of the generative virtual brain model](Figure/model_sturcture.png)
 
 #### 3. Workflow & Counterfactual Analysis
 Schematic illustration of the iVB-based workflow for predicting neuromodulation response and diagram depicting the calculation of the Counterfactual Brain Mismatch.
 
-![iVB-based workflow and CBM calculation](Figure/CBM.svg)
+![iVB-based workflow and CBM calculation](Figure/CBM.png)
 
 ## 🛠 Installation
 
@@ -48,5 +48,5 @@ To set up the environment, please follow these steps:
 > Access to ADNI/ABIDE/PPMI requires registration via IDA.
 
 ### Preprocessing & Labels
-- **Preprocessing code**: All pipelines (motion correction, normalization, AAL3 parcellation) are implemented in `Data_process/`.
-- **Subject labels**: Clinical outcomes and subject IDs are stored in `Data_process/Data_label.csv`.
+- **Preprocessing code**: All pipelines (motion correction, normalization, AAL3 parcellation) are implemented in [`Data_process/`](https://github.com/desomeboy/Foundation-Individual-Generative-Virtual-Brain/tree/main/Data_process).
+- **Subject labels**: Subject IDs and clinical outcomes are stored in [`Data_process/Data_label.csv`](https://github.com/desomeboy/Foundation-Individual-Generative-Virtual-Brain/blob/main/Data_process/Data_label.csv).
