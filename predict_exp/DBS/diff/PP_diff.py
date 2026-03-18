@@ -5,9 +5,12 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
-from sklearn.model_selection import KFold
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from scipy.stats import pearsonr, spearmanr
+from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import (
+    accuracy_score, roc_auc_score, f1_score,
+    precision_score, recall_score, average_precision_score
+)
+from sklearn.metrics import roc_curve
 import re
 from tqdm import tqdm
 import logging
@@ -15,90 +18,28 @@ import json
 import time
 from datetime import datetime
 
-class SoftSpearmanLoss(nn.Module):
-    """
-    使用可微分的soft ranking近似Spearman相关系数
-    """
-    def __init__(self, temperature=1.0):
-        super().__init__()
-        self.temperature = temperature
-    
-    def soft_rank(self, x):
-        """可微分的软排名"""
-        n = x.size(0)
-        # 计算每个元素比其他元素小的概率之和
-        x_diff = x.unsqueeze(1) - x.unsqueeze(0)  # (n, n)
-        # 使用sigmoid近似阶跃函数
-        ranks = torch.sigmoid(x_diff / self.temperature).sum(dim=1) + 1
-        return ranks
-    
-    def forward(self, pred, target):
-        pred_rank = self.soft_rank(pred)
-        target_rank = self.soft_rank(target)
-        
-        # 计算Spearman相关系数（负值作为损失）
-        pred_centered = pred_rank - pred_rank.mean()
-        target_centered = target_rank - target_rank.mean()
-        
-        cov = (pred_centered * target_centered).mean()
-        pred_std = pred_centered.std() + 1e-8
-        target_std = target_centered.std() + 1e-8
-        
-        spearman = cov / (pred_std * target_std)
-        
-        # 返回负相关作为损失（最大化相关 = 最小化负相关）
-        return 1 - spearman
 
-
-class HybridRegressionLoss(nn.Module):
-    """
-    MSE + 排名损失的组合
-    alpha: MSE权重
-    beta: 排名损失权重
-    """
-    def __init__(self, alpha=0.3, beta=0.7, margin=0.05, temperature=0.5):
-        super().__init__()
-        self.alpha = alpha
-        self.beta = beta
-        self.mse = nn.MSELoss()
-        # self.ranking = PairwiseRankingLoss(margin=margin)
-        # 可选：加入soft spearman
-        self.soft_spearman = SoftSpearmanLoss(temperature=temperature)
-    
-    def forward(self, pred, target):
-        mse_loss = self.mse(pred, target)
-        # rank_loss = self.ranking(pred, target)
-        spearman_loss = self.soft_spearman(pred, target)
-        
-        return self.alpha * mse_loss + self.beta * spearman_loss
-
-
-# ======================
-# 日志配置
-# ======================
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler("treatment_response_regression.log", encoding='utf-8'),
+        logging.FileHandler("treatment_response_prediction.log", encoding='utf-8'),
         logging.StreamHandler()
     ]
 )
 logger = logging.getLogger(__name__)
 
-# ======================
-# 全局配置
-# ======================
-BASE_DIR = "/ailab/group/medai-share/syDu/ruijin/DBS/AAL_VTB"
-UPDRS_CSV_PATH = "/ailab/group/medai-share/syDu/ruijin/DBS/DBS_UPDRS.csv"
-RANDOM_SEED = 17
+
+BASE_DIR = "./ruijin/DBS/AAL_VTB"  # The root directory of the VTB folder obtained after running train_iVB.py
+UPDRS_CSV_PATH = "./ruijin/DBS/DBS_UPDRS.csv" # Clinical information corresponding to the data
+RANDOM_SEED = 42
 N_SPLITS = 5
 torch.manual_seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
 device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 logger.info(f"Using device: {device}")
 
-# 临床子项列名
+# Clinical sub-item column names
 CLINICAL_COLS = [
     '言语', '面部表情', '强直_脖子', '强直_上肢：右', '强直_上肢：左', '强直_下肢：右', '强直_下肢：左',
     '手指拍打_右', '手指拍打_左', '手掌运动_右', '手掌运动_左', '前臂回旋_右', '前臂回旋_左',
@@ -108,31 +49,31 @@ CLINICAL_COLS = [
     '静止型震颤_下肢：左', '静止型震颤_嘴唇/下巴', '静止型震颤_持续性'
 ]
 
-# ======================
-# 超参数配置
-# ======================
+
 HYPERPARAMS = {
-    'batch_size': 8,
-    'learning_rate': 0.0005,
-    'num_epochs': 200,
-    'hidden_dim': 512,
-    'num_blocks': 6,
-    'dropout': 0.3,
-    'feature_type': 'ALL',  # 'DIFF', 'UPDRS', or 'ALL'
-    # 回归任务相关参数
-    'normalize_target': True,  # 是否归一化目标值到0-1
-    'target_min': 0.0,         # 改善率最小值（用于归一化）
-    'target_max': 1.0,         # 改善率最大值（用于归一化，如果改善率是百分比如0.5表示50%，则max=1.0）
+    'batch_size': 8,        
+    'learning_rate': 0.0005, 
+    'num_epochs': 200,       
+    'hidden_dim': 512,       
+    'num_blocks': 6,         
+    'dropout': 0.3,          
+    'feature_type': 'ALL',  # 'DIFF', 'UPDRS', or 'ALL' 
+    'improvement_threshold': 0.25 
 }
 
 logger.info(f"Hyperparameters: {json.dumps(HYPERPARAMS, indent=2)}")
 
-# ======================
-# 辅助函数：构建diff文件索引
-# ======================
+
 def build_diff_index(base_dir):
-    """构建diff文件索引字典"""
+    """
+    Build diff file index dictionary (mean_anomaly & mean_distortion)
+    
+    Returns:
+        dict: {lowercase_id: {'anomaly': file_path, 'distortion': file_path}}
+    """
     diff_index = {}
+    
+    # Rule: Extract patient ID from folder name (e.g., gpi02_fmri_20190901_143922_651000 -> gpi02)
     folder_pattern = re.compile(r'^([a-zA-Z0-9]+)_fmri')
     
     for folder_name in os.listdir(base_dir):
@@ -147,12 +88,14 @@ def build_diff_index(base_dir):
         
         pid = match.group(1).lower()
         
+        # Build file paths
         patient_subfolder = os.path.join(folder_path, 'fine_tune', folder_name)
         file_prefix = f"patient_{folder_name}"
         
         anomaly_file = os.path.join(patient_subfolder, f"{file_prefix}_mean_anomaly.npy")
         distortion_file = os.path.join(patient_subfolder, f"{file_prefix}_mean_distortion.npy")
         
+        # Verify file existence
         if not os.path.exists(anomaly_file):
             logger.warning(f"Anomaly file not found: {anomaly_file}")
             continue
@@ -160,6 +103,7 @@ def build_diff_index(base_dir):
             logger.warning(f"Distortion file not found: {distortion_file}")
             continue
         
+        # Store in index
         if pid not in diff_index:
             diff_index[pid] = {
                 'anomaly': anomaly_file,
@@ -171,52 +115,61 @@ def build_diff_index(base_dir):
     logger.info(f"Built diff index with {len(diff_index)} patients")
     return diff_index
 
-# ======================
-# 解析UPDRS数据 - 回归版本
-# ======================
+
 def parse_updrs_data(csv_path, diff_index):
     """
-    解析UPDRS CSV数据，标签为改善率（连续值）
+    Parse UPDRS CSV data and match with diff files
+    
+    Args:
+        csv_path: Path to UPDRS CSV file
+        diff_index: Dictionary of diff file index
+    
+    Returns:
+        list: List of valid samples
     """
     df = pd.read_csv(csv_path)
     
+    # Verify required columns exist
     required_cols = ['ID', '评估时间', '手术情况', 'UPDRS-III改善率'] + CLINICAL_COLS
     missing_cols = [col for col in required_cols if col not in df.columns]
     if missing_cols:
         logger.error(f"Missing columns in CSV: {missing_cols}")
         raise ValueError(f"Missing required columns: {missing_cols}")
     
+    # Sort by ID and assessment time (ensure DBS off comes first)
     df = df.sort_values(by=['ID', '评估时间'])
     
     samples = []
-    improvement_rates = []  # 收集所有改善率用于统计
+    improvement_threshold = HYPERPARAMS['improvement_threshold']
     
     for pid, group in df.groupby('ID'):
         pid_lower = pid.strip().lower()
         
+        # Check if diff files exist
         if pid_lower not in diff_index:
             logger.warning(f"No diff records found for patient {pid}")
             continue
         
+        # Each patient should have two rows (DBS off, DBS on)
         if len(group) < 2:
             logger.warning(f"Patient {pid} has only {len(group)} records, skipping")
             continue
         
         off_row = group.iloc[0]
         
+        # Verify surgery status
         if off_row['手术情况'] != 'DBS off':
             logger.warning(f"First record for {pid} is not 'DBS off', skipping")
             continue
         
-        # 获取改善率（连续值标签）
+        # Get improvement rate label
         if pd.isna(off_row['UPDRS-III改善率']):
             logger.warning(f"Missing improvement rate for {pid}, skipping")
             continue
         
-        improvement_rate = float(off_row['UPDRS-III改善率'])
-        improvement_rates.append(improvement_rate)
+        label = 1 if off_row['UPDRS-III改善率'] >= improvement_threshold else 0
         
-        # 提取临床特征
+        # Extract clinical features
         clinical_features = []
         for col in CLINICAL_COLS:
             val = off_row[col]
@@ -234,6 +187,7 @@ def parse_updrs_data(csv_path, diff_index):
         if clinical_features is None:
             continue
         
+
         anomaly_file = diff_index[pid_lower]['anomaly']
         distortion_file = diff_index[pid_lower]['distortion']
         
@@ -242,27 +196,26 @@ def parse_updrs_data(csv_path, diff_index):
             'anomaly_file': anomaly_file,
             'distortion_file': distortion_file,
             'clinical_features': np.array(clinical_features, dtype=np.float32),
-            'improvement_rate': improvement_rate,  # 连续值标签
+            'label': label,
+            'improvement_rate': off_row['UPDRS-III改善率'],
             'updrs_total_off': off_row.get('UPDRS总分', None)
         })
-    
-    # 打印改善率统计信息
-    if improvement_rates:
-        logger.info(f"Improvement rate statistics:")
-        logger.info(f"  Min: {min(improvement_rates):.4f}")
-        logger.info(f"  Max: {max(improvement_rates):.4f}")
-        logger.info(f"  Mean: {np.mean(improvement_rates):.4f}")
-        logger.info(f"  Std: {np.std(improvement_rates):.4f}")
     
     logger.info(f"Found {len(samples)} valid samples")
     return samples
 
-# ======================
-# 数据准备 - 回归版本
-# ======================
+
 def prepare_data(samples):
     """
-    准备特征和标签（回归任务）
+    Prepare features and labels - use diff features instead of EC
+    
+    Args:
+        samples: List of samples
+    
+    Returns:
+        X: Feature matrix (diff, UPDRS, or combined)
+        y: Label vector
+        meta: List of metadata
     """
     X_diff_list = []
     X_updrs_list = []
@@ -273,34 +226,42 @@ def prepare_data(samples):
     
     for sample in samples:
         try:
+            # Load PtC feature (166x1x1 -> 166)
             anomaly = np.load(sample['anomaly_file']).flatten().astype(np.float32)
+            # Load CtP feature (166x1x1 -> 166)
             distortion = np.load(sample['distortion_file']).flatten().astype(np.float32)
+            
             diff_combined = np.concatenate([anomaly, distortion])
+            
+                
         except Exception as e:
             logger.error(f"Error loading diff files for {sample['id']}: {str(e)}")
             continue
         
+
         clinical_vec = sample['clinical_features']
+        
+
+        if feature_type == 'DIFF':
+            features = diff_combined
+        elif feature_type == 'UPDRS':
+            features = clinical_vec
+        elif feature_type == 'ALL':
+            features = np.concatenate([diff_combined, clinical_vec])
+        else:
+            raise ValueError(f"Invalid feature_type: {feature_type}. Choose from 'DIFF', 'UPDRS', 'ALL'")
         
         X_diff_list.append(diff_combined)
         X_updrs_list.append(clinical_vec)
-        y_list.append(sample['improvement_rate'])  # 连续值标签
+        y_list.append(sample['label'])
         meta_list.append(sample)
     
+
     X_diff = np.array(X_diff_list, dtype=np.float32)
     X_updrs = np.array(X_updrs_list, dtype=np.float32)
-    y = np.array(y_list, dtype=np.float32)  # 改为float32
+    y = np.array(y_list, dtype=np.int64)
     
-    # 归一化目标值到0-1（如果需要）
-    if HYPERPARAMS['normalize_target']:
-        y_min = HYPERPARAMS['target_min']
-        y_max = HYPERPARAMS['target_max']
-        # 裁剪到指定范围
-        y = np.clip(y, y_min, y_max)
-        # 归一化到0-1
-        y = (y - y_min) / (y_max - y_min + 1e-8)
-        logger.info(f"Normalized target values to [0, 1], original range: [{y_min}, {y_max}]")
-    
+
     if feature_type == 'DIFF':
         X = X_diff
     elif feature_type == 'UPDRS':
@@ -308,17 +269,16 @@ def prepare_data(samples):
     elif feature_type == 'ALL':
         X = np.concatenate([X_diff, X_updrs], axis=1)
     
-    logger.info(f"Feature matrix shape: {X.shape}")
-    logger.info(f"Target range: [{y.min():.4f}, {y.max():.4f}], Mean: {y.mean():.4f}")
+    logger.info(f"Feature matrix shape: {X.shape}, Class distribution: {np.bincount(y)}")
     return X, y, meta_list
 
 # ======================
-# Dataset - 回归版本
+# Dataset
 # ======================
-class RegressionDataset(Dataset):
+class ECMapDataset(Dataset):
     def __init__(self, X, y):
         self.X = torch.tensor(X, dtype=torch.float32)
-        self.y = torch.tensor(y, dtype=torch.float32)  # 改为float
+        self.y = torch.tensor(y, dtype=torch.long)
     
     def __len__(self):
         return len(self.X)
@@ -326,9 +286,7 @@ class RegressionDataset(Dataset):
     def __getitem__(self, idx):
         return self.X[idx], self.y[idx]
 
-# ======================
-# 模型定义 - 回归版本
-# ======================
+
 class ResidualBlock(nn.Module):
     def __init__(self, dim, dropout=0.3):
         super().__init__()
@@ -342,13 +300,13 @@ class ResidualBlock(nn.Module):
         )
     
     def forward(self, x):
-        return x + self.block(x)
+        return x + self.block(x)  # residual connection
 
-class RegressionMLP(nn.Module):
-    """回归模型，输出归一化到0-1的预测值"""
+class DeeperMLP(nn.Module):
     def __init__(self, input_dim, hidden_dim=512, num_blocks=4, dropout=0.3):
-        super(RegressionMLP, self).__init__()
+        super(DeeperMLP, self).__init__()
         
+        # Initial projection
         self.input_proj = nn.Sequential(
             nn.Linear(input_dim, hidden_dim),
             nn.LayerNorm(hidden_dim),
@@ -356,17 +314,18 @@ class RegressionMLP(nn.Module):
             nn.Dropout(dropout)
         )
         
+        # Stack residual blocks
         self.blocks = nn.Sequential(
             *[ResidualBlock(hidden_dim, dropout) for _ in range(num_blocks)]
         )
         
-        # 回归输出头
+        # Final output head
         self.output_head = nn.Sequential(
             nn.Linear(hidden_dim, 256),
             nn.GELU(),
             nn.Dropout(dropout),
             nn.Linear(256, 1),
-            nn.Sigmoid()  # 保持Sigmoid，输出0-1
+            nn.Sigmoid()
         )
     
     def forward(self, x):
@@ -376,67 +335,26 @@ class RegressionMLP(nn.Module):
         return x.squeeze(-1)
 
 # ======================
-# 评估指标计算
-# ======================
-def compute_regression_metrics(y_true, y_pred):
-    """计算回归评估指标"""
-    metrics = {}
-    
-    # MSE & RMSE
-    mse = mean_squared_error(y_true, y_pred)
-    metrics['mse'] = mse
-    metrics['rmse'] = np.sqrt(mse)
-    
-    # MAE
-    metrics['mae'] = mean_absolute_error(y_true, y_pred)
-    
-    # R² (决定系数)
-    metrics['r2'] = r2_score(y_true, y_pred)
-    
-    # Pearson相关系数
-    if len(y_true) > 2:
-        pearson_r, pearson_p = pearsonr(y_true, y_pred)
-        metrics['pearson_r'] = pearson_r
-        metrics['pearson_p'] = pearson_p
-    else:
-        metrics['pearson_r'] = float('nan')
-        metrics['pearson_p'] = float('nan')
-    
-    # Spearman相关系数
-    if len(y_true) > 2:
-        spearman_r, spearman_p = spearmanr(y_true, y_pred)
-        metrics['spearman_r'] = spearman_r
-        metrics['spearman_p'] = spearman_p
-    else:
-        metrics['spearman_r'] = float('nan')
-        metrics['spearman_p'] = float('nan')
-    
-    return metrics
-
-# ======================
-# 交叉验证实验 - 回归版本
+# Cross-Validation Experiment
 # ======================
 def cross_validate_experiment(X, y, meta, experiment_name):
     logger.info(f"\n{'='*60}")
-    logger.info(f"Starting Regression Cross-Validation: {experiment_name}")
-    logger.info(f"Total samples: {len(X)} | Target range: [{y.min():.4f}, {y.max():.4f}]")
+    logger.info(f"Starting Cross-Validation Experiment: {experiment_name}")
+    logger.info(f"Total samples: {len(X)} | Class distribution: {np.bincount(y)}")
     
-    # 使用KFold而不是StratifiedKFold（回归任务）
-    kf = KFold(n_splits=N_SPLITS, shuffle=True, random_state=RANDOM_SEED)
-    
+    skf = StratifiedKFold(n_splits=N_SPLITS, shuffle=True, random_state=RANDOM_SEED)
     fold_metrics = {
-        'mse': [], 'rmse': [], 'mae': [], 'r2': [],
-        'pearson_r': [], 'pearson_p': [], 'spearman_r': [], 'spearman_p': []
+        'acc': [], 'f1': [], 'precision': [], 'recall': [], 'auc': [], 'ap': []
     }
     
+    use_Youden = True
     input_dim = X.shape[1]
     
-    # 早停参数
-    PATIENCE = 50
-    MIN_EPOCHS = 50
-    BEST_MODEL_PATH = "best_model_temp.pth"
-    
-    # 超参数
+
+    PATIENCE = 50  
+    MIN_EPOCHS = 50  
+    BEST_MODEL_PATH = "best_model_temp.pth"  
+
     batch_size = HYPERPARAMS['batch_size']
     lr = HYPERPARAMS['learning_rate']
     num_epochs = HYPERPARAMS['num_epochs']
@@ -444,48 +362,47 @@ def cross_validate_experiment(X, y, meta, experiment_name):
     num_blocks = HYPERPARAMS['num_blocks']
     dropout = HYPERPARAMS['dropout']
     
-    all_predictions = []  # 收集所有预测结果
-    
-    for fold, (train_idx, test_idx) in enumerate(kf.split(X)):
+    for fold, (train_idx, test_idx) in enumerate(skf.split(X, y)):
         logger.info(f"\n--- Fold {fold + 1}/{N_SPLITS} ---")
         X_train, X_test = X[train_idx], X[test_idx]
         y_train, y_test = y[train_idx], y[test_idx]
         
+
         logger.info(f"Train size: {len(y_train)}, Test size: {len(y_test)}")
-        logger.info(f"Train target - Mean: {y_train.mean():.4f}, Std: {y_train.std():.4f}")
-        logger.info(f"Test target  - Mean: {y_test.mean():.4f}, Std: {y_test.std():.4f}")
+        logger.info(f"Train class balance - 0: {np.sum(y_train==0)}, 1: {np.sum(y_train==1)}")
+        logger.info(f"Test class balance  - 0: {np.sum(y_test==0)}, 1: {np.sum(y_test==1)}")
         
-        train_dataset = RegressionDataset(X_train, y_train)
-        test_dataset = RegressionDataset(X_test, y_test)
+
+        train_dataset = ECMapDataset(X_train, y_train)
+        test_dataset = ECMapDataset(X_test, y_test)
         
         train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
         test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
         
-        # 初始化回归模型
-        model = RegressionMLP(
+
+        model = DeeperMLP(
             input_dim=input_dim,
             hidden_dim=hidden_dim,
             num_blocks=num_blocks,
             dropout=dropout
         ).to(device)
         
-        # 使用MSE损失
-        # criterion = nn.MSELoss()
-        criterion = HybridRegressionLoss(alpha=0.1, beta=0.9)
+        criterion = nn.BCELoss()
         optimizer = optim.Adam(model.parameters(), lr=lr)
         
-        # 早停相关变量
+
         best_val_loss = float('inf')
         epochs_no_improve = 0
         best_epoch = 0
+        early_stop = False
         
-        # 训练循环
+
         logger.info(f"Training fold {fold+1} with early stopping (patience={PATIENCE})...")
         for epoch in range(num_epochs):
             model.train()
             epoch_loss = 0.0
             for inputs, labels in train_loader:
-                inputs, labels = inputs.to(device), labels.to(device)
+                inputs, labels = inputs.to(device), labels.to(device).float()
                 
                 optimizer.zero_grad()
                 outputs = model(inputs)
@@ -495,91 +412,111 @@ def cross_validate_experiment(X, y, meta, experiment_name):
                 
                 epoch_loss += loss.item()
             
-            # 验证
+
             model.eval()
             val_loss = 0.0
             with torch.no_grad():
                 for inputs, labels in test_loader:
-                    inputs, labels = inputs.to(device), labels.to(device)
+                    inputs, labels = inputs.to(device), labels.to(device).float()
                     outputs = model(inputs)
                     batch_loss = criterion(outputs, labels)
                     val_loss += batch_loss.item() * inputs.size(0)
             
             val_loss = val_loss / len(test_loader.dataset)
             
-            # 早停逻辑
+
             if epoch >= MIN_EPOCHS:
                 if val_loss < best_val_loss:
                     best_val_loss = val_loss
                     best_epoch = epoch
                     epochs_no_improve = 0
+
                     torch.save(model.state_dict(), BEST_MODEL_PATH)
                 else:
                     epochs_no_improve += 1
                     if epochs_no_improve >= PATIENCE:
-                        logger.info(f"Early stopping at epoch {epoch+1}! "
-                                    f"Best val loss: {best_val_loss:.6f} at epoch {best_epoch+1}")
+                        logger.info(f"Early stopping triggered at epoch {epoch+1}! "
+                                    f"Best validation loss: {best_val_loss:.6f} at epoch {best_epoch+1}")
+                        early_stop = True
                         break
             
-            if (epoch + 1) % 10 == 0 or epoch == 0 or (epoch + 1) == num_epochs:
+            if (epoch + 1) % 10 == 0 or epoch == 0 or (epoch + 1) == num_epochs or early_stop:
                 logger.info(f"Epoch {epoch+1}/{num_epochs} | "
                             f"Train Loss: {epoch_loss/len(train_loader):.6f} | "
                             f"Val Loss: {val_loss:.6f} | "
-                            f"Best: {best_val_loss:.6f} (ep {best_epoch+1})")
+                            f"Best Val Loss: {best_val_loss:.6f} (epoch {best_epoch+1})")
         
-        # 加载最佳模型
+
         if os.path.exists(BEST_MODEL_PATH):
             model.load_state_dict(torch.load(BEST_MODEL_PATH))
-            os.remove(BEST_MODEL_PATH)
+            os.remove(BEST_MODEL_PATH)  
             logger.info(f"Loaded best model from epoch {best_epoch+1}")
+        else:
+            logger.warning("No best model saved, using final model weights")
         
-        # 评估
+        # eval
         model.eval()
-        all_preds = []
+        all_probs = []
         all_labels = []
         
         with torch.no_grad():
             for inputs, labels in test_loader:
                 inputs = inputs.to(device)
                 outputs = model(inputs)
-                all_preds.extend(outputs.cpu().numpy())
+                all_probs.extend(outputs.cpu().numpy())
                 all_labels.extend(labels.cpu().numpy())
         
-        all_preds = np.array(all_preds)
+        all_probs = np.array(all_probs)
         all_labels = np.array(all_labels)
         
-        # 计算回归指标
-        metrics = compute_regression_metrics(all_labels, all_preds)
+        # Determine threshold
+        if use_Youden and len(np.unique(all_labels)) > 1:
+            fpr, tpr, thresholds = roc_curve(all_labels, all_probs)
+            youden_j = tpr - fpr
+            best_idx = np.argmax(youden_j)
+            best_threshold = thresholds[best_idx]
+            logger.info(f"Optimal Youden threshold: {best_threshold:.4f}")
+        else:
+            best_threshold = 0.5
+            logger.info("Using default threshold 0.5")
         
-        # 记录指标
-        for key in fold_metrics.keys():
-            if key in metrics:
-                fold_metrics[key].append(metrics[key])
+        all_preds = (all_probs >= best_threshold).astype(int)
         
-        # 保存预测结果
+        # Calculate metrics
+        acc = accuracy_score(all_labels, all_preds)
+        f1 = f1_score(all_labels, all_preds, zero_division=0)
+        precision = precision_score(all_labels, all_preds, zero_division=0)
+        recall = recall_score(all_labels, all_preds, zero_division=0)
+        
+        if len(np.unique(all_labels)) > 1:
+            auc = roc_auc_score(all_labels, all_probs)
+            ap = average_precision_score(all_labels, all_probs)
+        else:
+            auc = float('nan')
+            ap = float('nan')
+        
+        # Record metrics
+        fold_metrics['acc'].append(acc)
+        fold_metrics['f1'].append(f1)
+        fold_metrics['precision'].append(precision)
+        fold_metrics['recall'].append(recall)
+        fold_metrics['auc'].append(auc)
+        fold_metrics['ap'].append(ap)
+        
+        # Save prediction results
         fold_meta = [meta[i] for i in test_idx]
         result_df = pd.DataFrame(fold_meta)
-        result_df['true_value'] = all_labels
-        result_df['pred_value'] = all_preds
-        result_df['residual'] = all_labels - all_preds
-        result_df['best_epoch'] = best_epoch + 1
+        result_df['true_label'] = all_labels
+        result_df['pred_prob'] = all_probs
+        result_df['pred_label'] = all_preds
+        result_df['threshold'] = best_threshold
+        result_df['best_epoch'] = best_epoch + 1 
         result_df.to_csv(f"{experiment_name}_fold{fold+1}_predictions.csv", index=False)
         
-        # 收集所有预测
-        for i, idx in enumerate(test_idx):
-            all_predictions.append({
-                'id': meta[idx]['id'],
-                'fold': fold + 1,
-                'true_value': all_labels[i],
-                'pred_value': all_preds[i]
-            })
-        
-        logger.info(f"Fold {fold+1} Results - MSE: {metrics['mse']:.4f}, "
-                    f"MAE: {metrics['mae']:.4f}, R²: {metrics['r2']:.4f}, "
-                    f"Pearson r: {metrics['pearson_r']:.4f} (p={metrics['pearson_p']:.4e}), "
-                    f"Spearman r: {metrics['spearman_r']:.4f} (p={metrics['spearman_p']:.4e})")
+        logger.info(f"Fold {fold+1} Results - Acc: {acc:.4f}, F1: {f1:.4f}, AUC: {auc:.4f}, AP: {ap:.4f}")
+
     
-    # 汇总结果
+    # Summarize results
     summary = {}
     for metric, values in fold_metrics.items():
         values = np.array(values)
@@ -591,62 +528,50 @@ def cross_validate_experiment(X, y, meta, experiment_name):
             mean_val, std_val = float('nan'), float('nan')
         summary[metric] = (mean_val, std_val)
     
-    # 保存所有预测结果
-    all_pred_df = pd.DataFrame(all_predictions)
-    all_pred_df.to_csv(f"{experiment_name}_all_predictions.csv", index=False)
-    
     logger.info(f"\n{'='*60}")
     logger.info(f"FINAL CROSS-VALIDATION RESULTS FOR: {experiment_name}")
-    logger.info("-" * 40)
     for metric, (mean, std) in summary.items():
         if np.isnan(mean):
-            logger.info(f"{metric.upper():<12}: N/A")
+            logger.info(f"{metric.upper():<10}: N/A")
         else:
-            logger.info(f"{metric.upper():<12}: {mean:.4f} ± {std:.4f}")
+            logger.info(f"{metric.upper():<10}: {mean:.4f} ± {std:.4f}")
     logger.info(f"{'='*60}\n")
     
     return summary
 
-# ======================
-# 主函数
-# ======================
+
 def main():
     start_time = time.time()
-    logger.info("Starting treatment response REGRESSION pipeline")
+    logger.info("Starting treatment response prediction pipeline")
     
-    # 1. 构建diff文件索引
-    logger.info("Building diff file index...")
-    diff_index = build_diff_index(BASE_DIR)
+    # 1. Build CBM file index (replaces original EC index)
+    logger.info("Building CBM file index (mean_anomaly & mean_distortion)...")
+    diff_index = build_diff_index(BASE_DIR) 
     
-    # 2. 解析UPDRS数据
-    logger.info("Parsing UPDRS data...")
-    samples = parse_updrs_data(UPDRS_CSV_PATH, diff_index)
+    # 2. Parse UPDRS data - use CBM index
+    logger.info("Parsing UPDRS data with CBM features...")
+    samples = parse_updrs_data(UPDRS_CSV_PATH, diff_index)  
     
     if len(samples) == 0:
         logger.error("No valid samples found. Exiting.")
         return
     
-    # 3. 准备数据
-    logger.info("Preparing feature matrices...")
+    # 3. Prepare data - use CBM features
+    logger.info("Preparing feature matrices with CBM features...")
     X, y, meta = prepare_data(samples)
     
-    # 4. 交叉验证
-    experiment_name = f"Treatment_Regression_{HYPERPARAMS['feature_type']}"
+    # 4. Cross-validation
+    experiment_name = f"Treatment_Response_{HYPERPARAMS['feature_type']}_Thresh{HYPERPARAMS['improvement_threshold']}"
     summary = cross_validate_experiment(X, y, meta, experiment_name)
     
-    # 5. 保存最终结果
+    # 5. Save final results
     result_file = f"final_results_{experiment_name}.json"
     with open(result_file, 'w') as f:
         json.dump({
             'summary': {k: [float(v) for v in vs] for k, vs in summary.items()},
             'hyperparameters': HYPERPARAMS,
             'total_samples': len(X),
-            'target_stats': {
-                'min': float(y.min()),
-                'max': float(y.max()),
-                'mean': float(y.mean()),
-                'std': float(y.std())
-            }
+            'class_distribution': np.bincount(y).tolist()
         }, f, indent=2)
     
     logger.info(f"Results saved to {result_file}")

@@ -10,29 +10,30 @@ import torch
 from sklearn.metrics import mean_absolute_error, r2_score
 from vtb.vis_tool import *
 import csv
+from .train import fine_tune_for_patient
+from .data import load_patient_data
+
 
 def safe_corrcoef(matrix):
     corr = np.corrcoef(matrix, rowvar=False)
-    # 将 NaN 替换为 0（或根据需求替换为均值、中位数等）
     corr = np.nan_to_num(corr, nan=0.0, posinf=0.0, neginf=0.0)
     return corr
 
 
 def plot_region_time_series(empirical_targets, predicted_targets, region_dict, patient_id, output_dir, fig_size=(15,12), max_time_steps=200):
     """
-    绘制极简脑区时间序列对比图（最多显示前 max_time_steps 个时间点）：
-    - 仅最底部子图显示 X 轴刻度、刻度标签和 "Time Point" 标题
-    - 上面子图完全隐藏 X 轴元素
-    - 图例保存为单独图像
-    - 预测曲线用虚线
-    - 坐标轴线更粗，X 轴刻度数字更大
-    - 无网格、无标题、Y轴无刻度、无上/右边框
+    Plot a minimalist brain region time series comparison (showing up to max_time_steps time points):
+    - Only the bottom subplot shows X-axis ticks, tick labels, and the "Time Point" title
+    - The upper subplots completely hide the X-axis elements
+    - The legend is saved as a separate image
+    - Prediction curves are drawn with dashed lines
+    - Axis lines are thicker, X-axis tick numbers are larger
+    - No grid, no title, no Y-axis ticks, no top/right borders
     """
     import matplotlib.pyplot as plt
     import numpy as np
     import os
 
-    # 限制最多显示 max_time_steps 个时间点
     T = min(empirical_targets.shape[0], max_time_steps)
     empirical_targets = empirical_targets[:T]
     predicted_targets = predicted_targets[:T]
@@ -43,32 +44,32 @@ def plot_region_time_series(empirical_targets, predicted_targets, region_dict, p
     if num_regions == 1:
         axes = [axes]
 
-    # 用于图例的线条（样式匹配）
+
     line1, = axes[0].plot([], [], label='Ground Truth', linewidth=1.7, color='C0')
     line2, = axes[0].plot([], [], label='Model Prediction', linewidth=1.7,  color='C1')
 
-    # 遍历字典：region_idx 是索引，region_name 是显示名称
+
     for i, (region_idx, region_name) in enumerate(region_dict.items()):
         ax = axes[i]
-        # 绘制曲线（实线 vs 虚线）
+
         ax.plot(time_points, empirical_targets[:, region_idx], linewidth=1.7, color='C0')
         ax.plot(time_points, predicted_targets[:, region_idx], linewidth=1.7, color='C1')
 
-        # 设置 Y 轴标签为区域名称（横向、左对齐）
-        ax.set_ylabel(region_name, rotation=0, labelpad=55, va='center', fontsize=17)
-        ax.set_yticks([])  # 隐藏 Y 轴刻度和数值
 
-        # 去除网格和上/右边框
+        ax.set_ylabel(region_name, rotation=0, labelpad=55, va='center', fontsize=17)
+        ax.set_yticks([])  
+
+
         ax.grid(False)
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
-        # 加粗坐标轴线（left 和 bottom）
+
         ax.spines['left'].set_linewidth(1.5)
         ax.spines['bottom'].set_linewidth(1.5)
 
-    # 仅最底部子图设置 X 轴标题和刻度标签
+
     axes[-1].set_xlabel('Time Point', fontsize=20)
-    axes[-1].tick_params(axis='x', labelsize=16)  # 更大的 X 轴数字
+    axes[-1].tick_params(axis='x', labelsize=16)  
 
     plt.tight_layout()
     fig_path = os.path.join(output_dir, f"patient_{patient_id}_time_series_comparison.pdf")
@@ -76,7 +77,7 @@ def plot_region_time_series(empirical_targets, predicted_targets, region_dict, p
     plt.close()
     print(f"Minimalist plot with x-axis only at bottom (first {T} steps) saved to {fig_path}")
 
-    # === 单独保存图例 ===
+
     legend_fig, legend_ax = plt.subplots(figsize=(3, 1))
     legend_ax.axis('off')
     legend = legend_ax.legend(
@@ -97,13 +98,12 @@ def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, ou
                            max_analysis_steps=1200,
                            healthy_csv_path="/ailab/group/medai-share/syDu/Brain_EC/HCP/HCP_AAL3_csv_out/187547_AAL3_ts.csv",
                            healthy_model_path="/ailab/user/dusiyuan/code/Brain/EC/AAL3/EC_results_num_layer_2/AAL3_lr_5e-05_batch_256_epochs_300_l2_0.0001_patience_100_steps_7_dmodel_256/patient_models/model_187547_AAL3_ts.pth"):
-    from .train import fine_tune_for_patient
-    from .data import load_patient_data  # 新增导入
+ 
     
     ensure_dir(output_dir)
     inputs, targets, label = patient_data
 
-    # ====== 截断过长的时间序列 ======
+    # ====== Truncate long time series ======
     original_T = targets.shape[0]
     if original_T > max_analysis_steps:
         print(f"Truncating patient {patient_id} time series from {original_T} to {max_analysis_steps} steps.")
@@ -116,15 +116,15 @@ def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, ou
 
     
     if fine_tune:
-        # ====== 目标1: 计算病人数据的异常 (使用正常人VTB) ======
+        # ====== Target 1: Calculate patient anomaly using healthy VTB model ======
         print("\n===== TARGET 1: Calculating patient anomaly using healthy VTB model =====")
-        # 1. 加载正常人预训练模型 (固定不变)
+        # 1. Load healthy pre-trained model (kept fixed)
         healthy_model = pretrained_model.__class__(**pretrained_model.init_args)
         healthy_model.load_state_dict(torch.load(healthy_model_path, map_location=device)['model_state_dict'])
         healthy_model = healthy_model.to(device)
         healthy_model.eval()
         
-        # 2. 用健康人模型预测病人数据
+        # 2. Predict patient data using healthy model
         with torch.no_grad():
             label_tensor = torch.tensor(label, dtype=torch.long).to(device)
             healthy_pred_on_patient = healthy_model(
@@ -132,10 +132,11 @@ def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, ou
                 label_tensor
             ).detach().cpu().numpy()
         
-        # 3. 计算差值 (真实 - 预测) 并按时间步平均
+        # 3. Compute difference (ground truth - prediction) and average over time steps
         anomaly_diff = targets - healthy_pred_on_patient  # [T, ROI]
         mean_anomaly = np.mean(anomaly_diff, axis=0)      # [ROI]
-        # 4. 保存结果
+        # 4. Save results
+
         np.save(os.path.join(output_dir, f"patient_{patient_id}_anomaly_diff.npy"), anomaly_diff)
         np.save(os.path.join(output_dir, f"patient_{patient_id}_mean_anomaly.npy"), mean_anomaly)
         print(f"Target 1 results saved to {output_dir}")
@@ -161,8 +162,6 @@ def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, ou
         time_series[i + steps] = targets[i]
         
     empirical_FC = safe_corrcoef(time_series)
-    #这里有点问题，_model_FC的初始状态为全0（不合理），而且我感觉，可以直接用预测的值作为model_FC的输入
-    #model_FC_matrix = _model_FC(model, node_num, steps)
     
     with torch.no_grad():
 
@@ -171,7 +170,6 @@ def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, ou
         
     model_FC_matrix = safe_corrcoef(predicted_targets)
         
-    # 保存预测值
     print(predicted_targets.shape, targets.shape)
     np.save(os.path.join(output_dir, f"patient_{patient_id}_predicted_targets.npy"), predicted_targets)
     np.save(os.path.join(output_dir, f"patient_{patient_id}_GT_targets.npy"), targets)
@@ -248,11 +246,11 @@ def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, ou
     np.save(os.path.join(output_dir, f"patient_{patient_id}_model_FC.npy"), model_FC_matrix)
     np.save(os.path.join(output_dir, f"patient_{patient_id}_NPI_EC.npy"), NPI_EC)
     
-    # ====== 目标2: 计算正常人数据的失真 (使用病人TVB) ======
-    if fine_tune:  # 只有在微调模式下才执行目标2
-        print("\n===== TARGET 2: Calculating healthy distortion using patient TVB model =====")
+    # ====== TARGET 2: Calculate healthy data distortion using patient VTB model ======
+    if fine_tune:  
+        print("\n===== TARGET 2: Calculating healthy distortion using patient VTB model =====")
         
-        # 1. 加载正常人数据 (使用与训练时相同的预处理)
+        # 1. Load healthy subject data (using same preprocessing as during training)
         healthy_inputs, healthy_targets, healthy_labels, _ = load_patient_data(
             patient_file=healthy_csv_path,
             steps=steps,
@@ -261,13 +259,13 @@ def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, ou
             label_map=None
         )
         
-        # 2. 截断到1200步以内
+        # 2. Truncate to within max_analysis_steps
         if healthy_targets.shape[0] > max_analysis_steps:
             healthy_inputs = healthy_inputs[:max_analysis_steps]
             healthy_targets = healthy_targets[:max_analysis_steps]
             healthy_labels = healthy_labels[:max_analysis_steps]
             
-        # 3. 用病人微调模型预测正常人数据
+        # 3. Predict healthy data using patient fine-tuned model
         with torch.no_grad():
             healthy_label_tensor = torch.tensor(healthy_labels, dtype=torch.long).to(device)
             patient_model_pred_on_healthy = model(
@@ -275,11 +273,11 @@ def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, ou
                 healthy_label_tensor
             ).detach().cpu().numpy()
         
-        # 4. 计算差值 (预测 - 真实) 并按时间步平均
+        # 4. Compute difference (prediction - ground truth) and average over time steps
         distortion_diff = patient_model_pred_on_healthy - healthy_targets  # [T, ROI]
         mean_distortion = np.mean(distortion_diff, axis=0)                # [ROI]
         
-        # 5. 保存结果
+        # 5. Save results
         np.save(os.path.join(output_dir, f"patient_{patient_id}_distortion_diff.npy"), distortion_diff)
         np.save(os.path.join(output_dir, f"patient_{patient_id}_mean_distortion.npy"), mean_distortion)
         print(f"Target 2 results saved to {output_dir}")
@@ -296,7 +294,6 @@ def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, ou
         f.write(f"Max EC: {np.max(NPI_EC):.6f}\n")
         f.write(f"Min EC: {np.min(NPI_EC):.6f}\n")
 
-        # 新增保存两个目标的统计信息
         if fine_tune:
             f.write("\n=== TARGET 1 METRICS ===\n")
             f.write(f"Mean Anomaly (abs): {np.mean(np.abs(mean_anomaly)):.6f}\n")
@@ -312,7 +309,6 @@ def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, ou
     print(f"Analysis for patient {patient_id} completed. Results saved to {output_dir}")
     return (empirical_FC, model_FC_matrix, NPI_EC, model) if fine_tune else (empirical_FC, model_FC_matrix, NPI_EC)
 
-    # === 保存所有病人指标到汇总 CSV ===
     summary_csv_path = "/ailab/group/medai-share/syDu/ruijin/Final_data/all_patients_summary.csv"
     file_exists = os.path.isfile(summary_csv_path)
 

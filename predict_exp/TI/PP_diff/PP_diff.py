@@ -15,46 +15,43 @@ import re
 from tqdm import tqdm
 import logging
 import json
-import argparse  # 新增argparse模块
+import argparse  
 
-# ======================
-# 命令行参数解析
-# ======================
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Treatment Response Prediction with Hyperparameter Tuning')
     
-    # 模型参数
+    # Model parameters
     parser.add_argument('--hidden_dim', type=int, default=512, help='Hidden dimension size for MLP')
     parser.add_argument('--num_blocks', type=int, default=4, help='Number of residual blocks')
     parser.add_argument('--dropout', type=float, default=0.1, help='Dropout rate')
     
-    # 训练参数
+    # Training parameters
     parser.add_argument('--lr', type=float, default=0.001, help='Learning rate')
     parser.add_argument('--batch_size', type=int, default=8, help='Batch size for training')
     parser.add_argument('--num_epochs', type=int, default=20, help='Number of training epochs')
     parser.add_argument('--use_young', action='store_true', default=True, help='Use Youden index for threshold selection')
     parser.add_argument('--no_use_young', dest='use_young', action='store_false', help='Disable Youden index (use 0.5 threshold)')
     
-    # 数据与特征参数
+    # Data and feature parameters
     parser.add_argument('--sample_type', type=str, choices=['all', 'diff', 'clinical'], default='all',
-                        help="Feature type: 'all' (diff+clinical), 'diff' (only diff features), 'clinical' (only clinical features)")
+                        help="Feature type: 'all' (diff+clinical), 'diff' (only CBM features), 'clinical' (only clinical features)")
     parser.add_argument('--zscore_normalize', action='store_true', default=False, help='Apply z-score normalization to diff features')
     
-    # 实验设置
-    # parser.add_argument('--random_seed', type=int, default=3150, help='Random seed for reproducibility')
-    parser.add_argument('--random_seed', type=int, default=5309, help='Random seed for reproducibility')
+    # Experimental settings
+    parser.add_argument('--random_seed', type=int, default=42, help='Random seed for reproducibility')
     parser.add_argument('--n_splits', type=int, default=5, help='Number of folds for cross-validation')
     parser.add_argument('--experiment_name', type=str, default='Treatment_Response_Diff_Clinical', help='Experiment name prefix for output files')
     
-    # 路径参数
-    parser.add_argument('--base_dir_diff', type=str, default='/ailab/group/medai-share/syDu/ruijin/Final_data/AAL3_VTB',
-                        help='Base directory for diff features')
-    parser.add_argument('--excel_path', type=str, default='/ailab/user/dusiyuan/code/Brain/EC/ruijin/TI_gt_1_10.xlsx',
-                        help='Path to Excel metadata file')
+    # Path parameters
+    parser.add_argument('--base_dir_diff', type=str, default='./ruijin/TI_data/AAL3_VTB',
+                        help='The root directory of the VTB folder obtained after running train_iVB.py')
+    parser.add_argument('--excel_path', type=str, default='./ruijin/TI_gt.xlsx',
+                        help='Clinical information corresponding to the data')
     
     args = parser.parse_args()
     
-    # 验证参数合理性
+    # Validate parameter reasonableness
     if args.dropout < 0 or args.dropout > 1:
         raise ValueError("Dropout rate must be between 0 and 1")
     if args.lr <= 0:
@@ -68,9 +65,7 @@ def parse_args():
     
     return args
 
-# ======================
-# 日志配置 (在解析参数后初始化)
-# ======================
+
 def setup_logging(experiment_name):
     log_filename = f"{experiment_name}_training.log"
     logging.basicConfig(
@@ -83,23 +78,20 @@ def setup_logging(experiment_name):
     )
     return logging.getLogger(__name__)
 
-# ======================
-# 全局配置 (将替换为命令行参数)
-# ======================
-# 将在main()中动态设置
+
 args = parse_args()
 logger = setup_logging(args.experiment_name)
 
-# 设置随机种子 (在解析参数后立即设置)
+
 torch.manual_seed(args.random_seed)
 np.random.seed(args.random_seed)
 logger.info(f"Random seed set to: {args.random_seed}")
 
-# 设备配置
+
 device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 logger.info(f"Using device: {device}")
 
-# 路径配置 (从命令行参数获取)
+
 BASE_DIR_DIFF = args.base_dir_diff
 EXCEL_PATH = args.excel_path
 TARGET_MAP = {
@@ -111,7 +103,7 @@ TARGET_MAP = {
     'R_GPi': 'R_gpi',    
 }
 
-# 临床子项列名（排除“总分”）
+# Clinical sub-item column names
 CLINICAL_COLS = [
     '3.1_言语', '3.2_面部表情', '3.3a_强直-颈部', '3.3b_强直-右上肢', '3.3c_强直-左上肢',
     '3.3d_强直-右下肢', '3.3e_强直-左下肢', '3.4a_手指拍打-右手', '3.4b_手指拍打-左手',
@@ -124,9 +116,7 @@ CLINICAL_COLS = [
     '3.17e_静止性震颤幅度-嘴唇或下颌', '3.18_静止性震颤持续性','总分'
 ]
 
-# ======================
-# 辅助函数
-# ======================
+
 def clean_check_name(check_val):
     clean = re.sub(r'\s+', '_', str(check_val).strip())
     clean = re.sub(r'[^\w\-_\.]', '_', clean)
@@ -146,11 +136,9 @@ def zscore_normalize(arr):
     else:
         return arr - mean       
 
-# ======================
-# 数据解析函数
-# ======================
+
 def parse_excel_data(excel_path):
-    """解析Excel数据，返回病人级别的记录"""
+    """Parse Excel data, return patient-level records"""
     df = pd.read_excel(excel_path)
     original_check_set = set(df['Check'].dropna().astype(str).str.strip())
 
@@ -228,11 +216,9 @@ def parse_excel_data(excel_path):
     logger.info(f"Found {len(patients)} valid pre-treatment samples with complete data")
     return patients
 
-# ======================
-# 数据准备函数
-# ======================
+
 def prepare_response_data(patients, sample_type='all', zscore_normalize=False):
-    """准备治疗响应预测数据"""
+    """Prepare treatment response prediction data"""
     X_diff, X_clinical, y, meta = [], [], [], []
     
     logger.info(f"Preparing features and labels (sample_type={sample_type}, zscore_normalize={zscore_normalize})...")
@@ -245,7 +231,7 @@ def prepare_response_data(patients, sample_type='all', zscore_normalize=False):
                           f"anomaly={anomaly.shape}, distortion={distortion.shape}")
             continue
         
-        # 应用z-score归一化
+
         if zscore_normalize:
             anomaly = zscore_normalize(anomaly)
             distortion = zscore_normalize(distortion)
@@ -278,9 +264,7 @@ def prepare_response_data(patients, sample_type='all', zscore_normalize=False):
     
     return X, y, meta
 
-# ======================
-# Dataset
-# ======================
+
 class DiffDataset(Dataset):
     def __init__(self, X, y):
         self.X = X
@@ -292,9 +276,7 @@ class DiffDataset(Dataset):
     def __getitem__(self, idx):
         return torch.from_numpy(self.X[idx]), torch.tensor(self.y[idx], dtype=torch.long)
 
-# ======================
-# 模型定义
-# ======================
+
 class ResidualBlock(nn.Module):
     def __init__(self, dim, dropout=0.3):
         super().__init__()
@@ -336,9 +318,7 @@ class DeeperMLP(nn.Module):
         x = self.output_head(x)
         return x.squeeze(-1)
 
-# ======================
-# 交叉验证函数
-# ======================
+
 def cross_validate_experiment(X, y, meta, experiment_name, 
                              batch_size=8, lr=0.001, num_epochs=30,
                              hidden_dim=512, num_blocks=4, dropout=0.1,
@@ -394,7 +374,7 @@ def cross_validate_experiment(X, y, meta, experiment_name,
                 logger.info(f"Fold {fold+1} | Epoch {epoch+1}/{num_epochs} | "
                             f"Train Loss: {epoch_loss/len(train_loader):.4f}")
 
-        # 评估模型
+
         model.eval()
         all_probs, all_labels = [], []
         with torch.no_grad():
@@ -407,7 +387,7 @@ def cross_validate_experiment(X, y, meta, experiment_name,
         all_probs = np.array(all_probs)
         all_labels = np.array(all_labels)
 
-        # 确定阈值
+
         if use_young and len(np.unique(all_labels)) > 1:
             fpr, tpr, thresholds = roc_curve(all_labels, all_probs)
             youden_j = tpr - fpr
@@ -419,7 +399,7 @@ def cross_validate_experiment(X, y, meta, experiment_name,
             best_threshold = 0.5
             all_preds = (all_probs > 0.5).astype(int)
 
-        # 计算指标
+
         acc = accuracy_score(all_labels, all_preds)
         f1 = f1_score(all_labels, all_preds)
         precision = precision_score(all_labels, all_preds, zero_division=0)
@@ -439,7 +419,7 @@ def cross_validate_experiment(X, y, meta, experiment_name,
         fold_metrics['auc'].append(auc)
         fold_metrics['ap'].append(ap)
 
-        # 保存预测结果
+
         result_df = pd.DataFrame({
             'id_date': [m['id_date'] for m in test_meta],
             'name': [m['name'] for m in test_meta],
@@ -458,12 +438,12 @@ def cross_validate_experiment(X, y, meta, experiment_name,
 
         logger.info(f"Fold {fold+1} - Acc: {acc:.4f}, F1: {f1:.4f}, AUC: {auc:.4f}")
 
-    # 合并所有fold结果
+
     combined_df = pd.concat(all_fold_dfs, ignore_index=True)
     combined_df.to_csv(f"{experiment_name}_all_folds_combined.csv", index=False)
     logger.info(f"Combined results saved to {experiment_name}_all_folds_combined.csv")
 
-    # 计算汇总指标
+    # Calculate summary metrics
     summary = {}
     for metric, values in fold_metrics.items():
         values = np.array(values)
@@ -486,11 +466,9 @@ def cross_validate_experiment(X, y, meta, experiment_name,
 
     return summary
 
-# ======================
-# 主函数
-# ======================
+
 def main():
-    # 使用命令行参数
+
     global BASE_DIR_DIFF, EXCEL_PATH
     
     logger.info("Starting experiment with parameters:")

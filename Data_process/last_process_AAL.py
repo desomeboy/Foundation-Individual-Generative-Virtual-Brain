@@ -1,168 +1,224 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-将 4D 的 func_MNI.nii.gz 使用 AAL3 脑谱图提取各脑区 BOLD 时序，导出 CSV。
-依赖:
-  - nibabel
-  - numpy
-  - pandas
-  - nibabel>=3.2（需要 nibabel.processing.resample_from_to）
-示例:
-python extract_roi_ts_aal3.py \
---func func_MNI.nii.gz \
---atlas /ailab/group/medai-share/syDu/Brain_EC/AAL_atlas/AAL3/AAL3v1_1mm.nii.gz \
---out ts_aal3.csv \
---out_sizes roi_sizes.csv \
---tr 0.72
-说明:
-- 默认会将 atlas 最近邻重采样到 func 的体素网格以确保空间一致。
-- 输出 CSV 的列顺序按 AAL3 标签值升序排列 (1,2,...,170)。
-- 输出表格中直接使用 1,2,3,...,170 作为列名（对应 AAL3 的 170 个脑区）。
+Extract regional BOLD time series from a 4D func_MNI.nii.gz file using the AAL3 atlas,
+and export the result to CSV.
+
+Dependencies:
+  - nibabel>=3.2 (requires nibabel.processing.resample_from_to)
+
+Notes:
+- By default, the atlas will be resampled to the functional image grid using
+  nearest-neighbor interpolation to ensure spatial alignment.
+- The output CSV columns are ordered by ascending AAL3 label values.
+- Column names use the atlas label values directly (for example: 1, 2, ..., 170).
+- Although the AAL3 index range is 1-170, the atlas may contain only 166 regions
+  with voxels, meaning a few label IDs may not appear in practice.
 """
+
 import argparse
 import os
 import sys
+
+import nibabel as nib
 import numpy as np
 import pandas as pd
-import nibabel as nib
 
-# ---- 影像 I/O 与重采样 ----
+# ---- Image I/O and resampling ----
 try:
     from nibabel.processing import resample_from_to
 except Exception:
     resample_from_to = None
 
+
 def load_img(path):
     return nib.load(path)
 
+
 def resample_atlas_to_func(atlas_img, func_img):
     if resample_from_to is None:
-        raise RuntimeError("需要 nibabel>=3.2 提供 nibabel.processing.resample_from_to。")
-    # 目标网格 = func 的 (shape, affine)；使用最近邻保持整数标签
-    atlas_resamp = resample_from_to(
+        raise RuntimeError(
+            "nibabel>=3.2 is required for nibabel.processing.resample_from_to."
+        )
+
+    # Target grid = functional image spatial grid; nearest-neighbor preserves labels.
+    atlas_resampled = resample_from_to(
         atlas_img,
         (func_img.shape[:3], func_img.affine),
-        order=0
+        order=0,
     )
-    return atlas_resamp
+    return atlas_resampled
 
-# ---- 提取时序 ----
+
+# ---- Time series extraction ----
 def extract_timeseries(func_img, atlas_img, labels_keep=None, nan_policy="omit"):
     """
-    从 4D func 中按 atlas 分区提取均值时序
-    返回:
-      ts: np.ndarray (T, n_rois)
-      roi_indices: List[int] (实际提取的标签值)
-      roi_sizes: Dict[index, n_vox]
+    Extract mean ROI time series from a 4D functional image using a 3D atlas.
+
+    Returns:
+        ts: np.ndarray, shape (T, n_rois)
+        roi_indices: list[int], extracted atlas label values
+        roi_sizes: dict[int, int], number of voxels per ROI
     """
     func_data = func_img.get_fdata(dtype=np.float32)
     if func_data.ndim != 4:
-        raise ValueError("功能像应为 4D NIfTI。")
-    X, Y, Z, T = func_data.shape
+        raise ValueError("Functional image must be a 4D NIfTI image.")
+
+    x_dim, y_dim, z_dim, n_timepoints = func_data.shape
+
     atlas_data = atlas_img.get_fdata()
     if atlas_data.ndim != 3:
-        raise ValueError("分区图应为 3D NIfTI。")
+        raise ValueError("Atlas image must be a 3D NIfTI image.")
+
     atlas_labels = np.rint(atlas_data).astype(np.int32)
-    if atlas_labels.shape != (X, Y, Z):
-        raise ValueError(f"atlas 空间与 func 不一致：atlas {atlas_labels.shape} vs func {(X, Y, Z)}")
-    
+    if atlas_labels.shape != (x_dim, y_dim, z_dim):
+        raise ValueError(
+            f"Atlas space does not match functional image space: "
+            f"atlas {atlas_labels.shape} vs func {(x_dim, y_dim, z_dim)}"
+        )
+
     func_data = np.where(np.isfinite(func_data), func_data, np.nan)
-    func_2d = func_data.reshape(-1, T)
+    func_2d = func_data.reshape(-1, n_timepoints)
     atlas_1d = atlas_labels.reshape(-1)
-    
-    # 确定要提取的标签：跳过0（背景），按升序排列
+
+    # Determine labels to extract: exclude 0 (background), sort in ascending order.
     if labels_keep is None:
-        uniq = np.unique(atlas_1d)
-        labels_keep = [int(l) for l in uniq if l != 0]
-        labels_keep.sort()  # 按数值升序排序
-    
+        unique_labels = np.unique(atlas_1d)
+        labels_keep = [int(label) for label in unique_labels if label != 0]
+        labels_keep.sort()
+
     ts_list = []
     roi_sizes = {}
     kept_indices = []
-    for lab in labels_keep:
-        idx_mask = (atlas_1d == lab)
-        nvox = int(idx_mask.sum())
-        if nvox == 0:
+
+    for label in labels_keep:
+        roi_mask = atlas_1d == label
+        n_voxels = int(roi_mask.sum())
+        if n_voxels == 0:
             continue
-        roi_data = func_2d[idx_mask, :]  # (nvox, T)
+
+        roi_data = func_2d[roi_mask, :]  # shape: (n_voxels, T)
+
         if nan_policy == "omit":
             roi_ts = np.nanmean(roi_data, axis=0)
         elif nan_policy == "zero":
             roi_ts = np.mean(np.nan_to_num(roi_data, nan=0.0), axis=0)
         else:
-            raise ValueError("nan_policy 仅支持 'omit' 或 'zero'。")
+            raise ValueError("nan_policy must be either 'omit' or 'zero'.")
+
         ts_list.append(roi_ts)
-        roi_sizes[lab] = nvox
-        kept_indices.append(lab)
-    
+        roi_sizes[label] = n_voxels
+        kept_indices.append(label)
+
     if not ts_list:
-        raise RuntimeError("在 atlas 中未找到任何与 func 重叠的 ROI 体素。")
-    ts = np.vstack(ts_list).T  # (T, n_kept)
+        raise RuntimeError("No overlapping ROI voxels were found between atlas and func.")
+
+    ts = np.vstack(ts_list).T  # shape: (T, n_kept)
     return ts, kept_indices, roi_sizes
 
-# ---- 主程序 ----
+
+# ---- Main program ----
 def main():
-    ap = argparse.ArgumentParser(description="基于 AAL3 脑谱图提取各脑区 BOLD 时序到 CSV")
-    ap.add_argument("--func", required=True, help="4D 功能像（MNI 空间），如 func_MNI.nii.gz")
-    ap.add_argument("--atlas", default='/ailab/group/medai-share/syDu/Brain_EC/AAL_atlas/AAL3/AAL3v1_1mm.nii.gz',
-                    help="3D AAL3 分区图 (1mm)")
-    ap.add_argument("--out", required=True, help="输出时序 CSV 路径")
-    ap.add_argument("--out_sizes", default=None, help="可选：输出每个 ROI 体素数的 CSV")
-    ap.add_argument("--tr", type=float, default=None, help="可选：TR（秒），用于 time_sec 列")
-    ap.add_argument("--no_resample", action="store_true", help="atlas 与 func 已同空间时跳过重采样")
-    ap.add_argument("--nan_policy", choices=["omit", "zero"], default="omit", help="NaN 处理策略")
-    args = ap.parse_args()
-    
-    # 读入影像
+    parser = argparse.ArgumentParser(
+        description="Extract ROI-wise BOLD time series from a 4D image using the AAL3 atlas."
+    )
+    parser.add_argument(
+        "--func",
+        required=True,
+        help="4D functional image in MNI space, e.g. func_MNI.nii.gz",
+    )
+    parser.add_argument(
+        "--atlas",
+        default="Data_process/AAL3v1_1mm.nii.gz",
+        help="3D AAL3 atlas file",
+    )
+    parser.add_argument(
+        "--out",
+        required=True,
+        help="Output CSV path for ROI time series",
+    )
+    parser.add_argument(
+        "--out_sizes",
+        default=None,
+        help="Optional output CSV path for ROI voxel counts",
+    )
+    parser.add_argument(
+        "--tr",
+        type=float,
+        default=None,
+        help="Optional TR in seconds; adds a time_sec column if provided",
+    )
+    parser.add_argument(
+        "--no_resample",
+        action="store_true",
+        help="Skip atlas resampling if atlas and functional image are already aligned",
+    )
+    parser.add_argument(
+        "--nan_policy",
+        choices=["omit", "zero"],
+        default="omit",
+        help="NaN handling strategy",
+    )
+    args = parser.parse_args()
+
+    # Load images
     func_img = load_img(args.func)
     atlas_img = load_img(args.atlas)
-    
-    # 重采样
+
+    # Resample atlas if needed
     atlas_to_func = atlas_img if args.no_resample else resample_atlas_to_func(atlas_img, func_img)
-    
-    # 获取 AAL3 中所有非零标签 (1-170) 并排序
+
+    # Collect all non-zero labels present in the atlas after resampling
     atlas_data = atlas_to_func.get_fdata()
     all_labels = np.unique(np.rint(atlas_data).astype(np.int32))
-    aal3_labels = [int(l) for l in all_labels if l != 0]
-    aal3_labels.sort()  # 确保顺序为 1,2,3,...,170
-    
-    # 提取时序
+    aal3_labels = [int(label) for label in all_labels if label != 0]
+    aal3_labels.sort()
+
+    # Extract time series
     ts_array, kept_indices, roi_sizes = extract_timeseries(
         func_img=func_img,
         atlas_img=atlas_to_func,
-        labels_keep=aal3_labels,  # 按 AAL3 标准顺序 1-170
-        nan_policy=args.nan_policy
+        labels_keep=aal3_labels,
+        nan_policy=args.nan_policy,
     )
-    
-    # 直接使用标签值作为列名 (1,2,3,...,170)
+
+    # Use atlas label values directly as column names
     col_names = [str(idx) for idx in kept_indices]
-    
-    # 组装 DataFrame：行=T，列=ROI
+
+    # Build output dataframe: rows=timepoints, columns=ROIs
     ts_df = pd.DataFrame(ts_array, columns=col_names)
     ts_df.index.name = "timepoint"
+
     if args.tr is not None:
         ts_df.insert(0, "time_sec", ts_df.index.values * float(args.tr))
-    
-    # 输出时序 CSV
-    os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
+
+    # Save time series CSV
+    out_dir = os.path.dirname(os.path.abspath(args.out))
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
     ts_df.to_csv(args.out, index=False)
-    
-    # 输出 ROI 体素数（只包含 index 和 n_voxels）
+
+    # Save ROI voxel counts if requested
     if args.out_sizes:
         sizes_rows = []
         for idx in kept_indices:
-            sizes_rows.append({
-                "index": idx,
-                "n_voxels": roi_sizes.get(idx, 0)
-            })
-        sizes_df = pd.DataFrame(sizes_rows)
-        sizes_df = sizes_df.sort_values("index")
+            sizes_rows.append(
+                {
+                    "index": idx,
+                    "n_voxels": roi_sizes.get(idx, 0),
+                }
+            )
+        sizes_df = pd.DataFrame(sizes_rows).sort_values("index")
+
+        out_sizes_dir = os.path.dirname(os.path.abspath(args.out_sizes))
+        if out_sizes_dir:
+            os.makedirs(out_sizes_dir, exist_ok=True)
+
         sizes_df.to_csv(args.out_sizes, index=False)
-    
-    # 简短日志
+
+    # Minimal logging
     sys.stderr.write(f"[OK] Saved ROI time series: {args.out}\n")
     if args.out_sizes:
         sys.stderr.write(f"[OK] Saved ROI voxel counts: {args.out_sizes}\n")
+
 
 if __name__ == "__main__":
     main()

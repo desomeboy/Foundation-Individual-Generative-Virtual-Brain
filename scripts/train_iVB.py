@@ -13,6 +13,9 @@ from vtb import (
 )
 from vtb.config import *
 
+from vtb.data import load_patient_data
+from vtb.utils import set_seed
+
 class TeeStream:
     def __init__(self, file_path):
         self.terminal = sys.stdout
@@ -25,7 +28,6 @@ class TeeStream:
         self.log.flush()
 
 def build_model(args, input_dim):
-    """构建与训练阶段一致的模型结构，以确保 checkpoint 可正确加载"""
     if args.model_type == 'MLP':
         model = ANN_MLP(
             input_dim=input_dim,
@@ -56,28 +58,28 @@ def build_model(args, input_dim):
 
 def main():
     parser = argparse.ArgumentParser(description="Test a pre-trained model on a single patient's CSV")
-    # 路径与基础参数
-    parser.add_argument('--patient_csv', type=str, required=True, help='单个新病人的 CSV 文件路径')
+    # Paths and basic parameters
+    parser.add_argument('--patient_csv', type=str, required=True, help='Path to the CSV file for a single new patient')
     parser.add_argument('--model_path', type=str, default=os.path.join(DEFAULT_OUTPUT_DIR, 'best_model.pth'))
     parser.add_argument('--output_dir', type=str, default=None)
     parser.add_argument('--label_path', type=str, default=DEFAULT_LABEL_PATH)
     parser.add_argument('--cache_dir', type=str, default=DEFAULT_CACHE_DIR)
 
-    # 预处理与模型结构参数（需与训练阶段一致）
+    # Preprocessing and model structure parameters (must match training phase)
     parser.add_argument('--steps', type=int, default=DEFAULT_STEPS)
     parser.add_argument('--skip_first', type=int, default=30)
     parser.add_argument('--model_type', type=str, default=DEFAULT_MODEL_TYPE, choices=['MLP', 'transformer'])
     parser.add_argument('--use_last_token', type=bool, default=False)
 
-    # 分析控制
-    parser.add_argument('--fine_tune', action='store_true', help='是否对该病人进行微调')
+    # Analysis control
+    parser.add_argument('--fine_tune', action='store_true', help='Whether to fine-tune on this patient')
     parser.add_argument('--ft_batch_size', type=int, default=32)
     parser.add_argument('--ft_epochs', type=int, default=300)
     parser.add_argument('--ft_lr', type=float, default=5e-5)
     parser.add_argument('--ft_l2', type=float, default=1e-3)
     parser.add_argument('--ft_patience', type=int, default=128)
     
-    #model params    
+    # Model params    
     parser.add_argument('--d_model', type=int, default=768)
     parser.add_argument('--num_layers', type=int, default=DEFAULT_NUM_LAYERS)
     parser.add_argument('--num_cross_layers', type=int, default=DEFAULT_NUM_CROSS_LAYERS)
@@ -88,7 +90,7 @@ def main():
         patient_basename = os.path.splitext(os.path.basename(args.patient_csv))[0]
         args.output_dir = os.path.join(DEFAULT_OUTPUT_DIR, patient_basename)
         
-    # 日志与基本信息
+
     ensure_dir(args.output_dir)
     log_path = os.path.join(args.output_dir, 'test.log')
     sys.stdout = TeeStream(log_path)
@@ -105,10 +107,8 @@ def main():
     print(f"Fine-tune   : {args.fine_tune} (bs={args.ft_batch_size}, epochs={args.ft_epochs}, lr={args.ft_lr}, l2={args.ft_l2}, patience={args.ft_patience})")
     print("="*60)
 
-    # ---------- Step 1: 读取并预处理该病人 CSV ----------
-    # 复用 vtb.data.load_patient_data（含 z-score、multi2one、维度检查、labels 填充）
-    from vtb.data import load_patient_data
-    from vtb.utils import set_seed
+    # ---------- Step 1: Load and preprocess patient CSV ----------
+
     set_seed(42)
 
     start = time.time()
@@ -116,8 +116,8 @@ def main():
         patient_file=args.patient_csv,
         steps=args.steps,
         skip_first=args.skip_first,
-        dataset_type='OTHER',     # 单病人 CSV 一般按 OTHER 处理（非 HCP 4800 切片）
-        label_map=None            # 对于新病人多数没有标签，此处默认 2
+        dataset_type='OTHER',     
+        label_map=None           
     )
     if inputs is None or len(inputs) == 0:
         raise ValueError(f"Failed to load or preprocess patient CSV: {args.patient_csv}")
@@ -125,7 +125,7 @@ def main():
     print(f"Loaded patient '{patient_id}': inputs={inputs.shape}, targets={targets.shape}, labels={labels.shape}, scans={num_scans}")
     print(f"Preprocess done in {time.time() - start:.2f}s")
 
-    # ---------- Step 2: 构建模型并加载 checkpoint ----------
+    # ---------- Step 2: Build model and load checkpoint ----------
     input_dim = args.steps * ROI_NUM
     model = build_model(args, input_dim)
     if not os.path.exists(args.model_path):
@@ -135,13 +135,13 @@ def main():
     if best_loss is not None:
         print(f"Loaded model with best test loss: {best_loss:.6f}")
 
-    # ---------- Step 3: zero-shot 分析（不微调） ----------
+    # ---------- Step 3: Zero-shot analysis ----------
     zero_dir = os.path.join(args.output_dir, 'zero_shot', patient_id)
     ensure_dir(zero_dir)
     print(f"\n[Zero-shot] Analyzing patient {patient_id} ...")
     patient_data_input = (inputs, targets, labels)
     from vtb.analysis import analyze_single_patient
-    # fine_tune=False：只评估，不更新权重
+
     empirical_FC, model_FC_matrix, NPI_EC = analyze_single_patient(
         pretrained_model=model,
         patient_data=patient_data_input,
@@ -152,7 +152,7 @@ def main():
     )
     print(f"[Zero-shot] Done. Results saved to: {zero_dir}")
 
-    # ---------- Step 4: （可选）对该病人微调并再次分析 ----------
+    # ---------- Step 4: Fine-tune on patient ----------
     if args.fine_tune:
         ft_dir = os.path.join(args.output_dir, 'fine_tune', patient_id)
         ensure_dir(ft_dir)
@@ -164,7 +164,7 @@ def main():
             'l2': args.ft_l2,
             'patience': args.ft_patience
         }
-        # analyze_single_patient 内部会调用 fine_tune_for_patient 并返回 fine-tuned 模型
+
         empirical_FC_ft, model_FC_matrix_ft, NPI_EC_ft, fine_tuned_model = analyze_single_patient(
             pretrained_model=model,
             patient_data=patient_data_input,
@@ -174,7 +174,7 @@ def main():
             fine_tune=True,
             fine_tune_params=fine_tune_params
         )
-        # 保存专属微调权重（包含 init_args，便于复现）
+
         pt_dir = os.path.join(args.output_dir, 'patient_models')
         ensure_dir(pt_dir)
         save_path = os.path.join(pt_dir, f"model_{patient_id}.pth")
@@ -186,7 +186,7 @@ def main():
 
     print("\nAll done!")
 
-    # 关闭日志并恢复标准输出
+    
     try:
         sys.stdout.log.close()
         sys.stderr.log.close()

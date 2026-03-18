@@ -1,7 +1,6 @@
 # vtb/viz.py
 import matplotlib.pyplot as plt
 
-# >>> paste from original: def plot_training_curves <<<
 def plot_training_curves(train_losses, test_losses, output_path="./results/training_curves.png"):
     plt.figure(figsize=(10, 6))
     plt.plot(train_losses, label='Training Loss')

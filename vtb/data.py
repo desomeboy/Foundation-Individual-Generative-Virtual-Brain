@@ -5,8 +5,7 @@ import pickle
 import numpy as np
 from tqdm import tqdm
 from sklearn.model_selection import train_test_split
-import pandas as pd # 在文件顶部导入
-# 数据切片：multi2one / 单病人加载 / 缓存 / 划分
+import pandas as pd
 import json
 
 # >>> paste from original: def multi2one <<<
@@ -29,21 +28,20 @@ def load_patient_data(patient_file, steps=7, skip_first=30, dataset_type='HCP', 
         scan_data = np.loadtxt(patient_file, delimiter=',', skiprows=1)
         n_timepoints, n_rois = scan_data.shape
         
-        # 验证ROI数量（所有数据集应该都是360个ROI）
         if n_rois not in  [166,360]:
             print(f"Warning: {patient_file} has incorrect ROI dimensions. Expected 166 or 360 , got {n_rois}")
             return None,None, None, 0            
           
-        # 标准化
+        # Normalization
         mean = np.mean(scan_data, axis=0, keepdims=True)
         std = np.std(scan_data, axis=0, keepdims=True)
-        std[std == 0] = 1.0  # 防止标准差为0
+        std[std == 0] = 1.0  
         normalized_data = (scan_data - mean) / std
         
         all_inputs, all_targets = [], []
         num_scans = 0
         
-        # HCP数据集：4800个时间点，分成4段，每段1200
+        # HCP dataset: 4800 timepoints, split into 4 segments, 1200 each
         if dataset_type == 'HCP':
             if n_timepoints != 4800:
                 print(f"Warning: HCP dataset expected 4800 timepoints, got {n_timepoints}")
@@ -60,9 +58,9 @@ def load_patient_data(patient_file, steps=7, skip_first=30, dataset_type='HCP', 
                 all_targets.append(targets)
             num_scans = 4
             
-        # 其他数据集：整个序列作为一次扫描
+        # Other datasets: Treat the entire sequence as one scan
         else:
-            # 检查是否有足够的时间点
+            # Check if there are enough timepoints
             if n_timepoints < steps + skip_first:
                 print(f"Warning: {patient_file} has too few timepoints ({n_timepoints}) for steps={steps} and skip_first={skip_first}")
                 return None, None, None, 0
@@ -72,27 +70,26 @@ def load_patient_data(patient_file, steps=7, skip_first=30, dataset_type='HCP', 
             all_targets.append(targets)
             num_scans = 1
         
-        # 检查是否有有效数据
+        # Check if there is valid data
         if not all_inputs or len(all_inputs[0]) == 0:
             return None, None, None, 0
             
         all_inputs = np.vstack(all_inputs)
         all_targets = np.vstack(all_targets)
         
-        # 获取病人ID (去掉路径和.csv后缀)
+        # Get patient ID 
         patient_id = os.path.splitext(os.path.basename(patient_file))[0]
         
-        # 初始化标签
-        patient_label = 2 # 默认为2 (HCP)
+        # Initialize label
+        patient_label = 0 # Default to 0 (HC)
         if label_map is not None:
             if patient_id in label_map:
                 patient_label = label_map[patient_id]
             else:
                 print(f"Warning: Label for patient {patient_id} not found, using default label 0.")   
                  
-        # 返回时，将标签作为一个与每个样本关联的数组
+        # When returning, associate the label as an array with each sample
         if all_inputs is not None and len(all_targets) > 0:
-            # 创建一个与 inputs 行数相同的标签数组
             labels = np.full((len(all_targets),), patient_label, dtype=np.int64)
             return all_inputs, all_targets, labels, num_scans
         else:

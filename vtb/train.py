@@ -30,8 +30,8 @@ class PatientDataset(data.Dataset):
         
         self.length = len(self.sample_indices)
         
-        # 添加一个字典，用于缓存已加载的病人数据
-        # 键：cache_path 的索引 (i)，值：已加载的 cache_data
+        # Add a dictionary to cache loaded patient data
+        # Key: index of cache_path (i), Value: loaded cache_data
         self._patient_cache = {}
 
     def __len__(self):
@@ -41,13 +41,11 @@ class PatientDataset(data.Dataset):
         path_idx = self.path_indices[idx]
         sample_idx = self.sample_indices[idx]
         
-        # 优化核心：检查该病人的数据是否已在缓存中
+        # Check if this patient's data is already in cache
         if path_idx not in self._patient_cache:
-            # 如果不在缓存中，则加载并缓存整个病人的数据
             with open(self.cache_paths[path_idx], 'rb') as f:
                 self._patient_cache[path_idx] = pickle.load(f)
         
-        # 从缓存中直接获取数据，避免重复I/O
         cache_data = self._patient_cache[path_idx]
         
         inputs = cache_data['inputs'][sample_idx]
@@ -61,14 +59,12 @@ class PatientDataset(data.Dataset):
         )
 
     def __del__(self):
-        # 可选：在对象销毁时清空缓存，释放内存
-        # 对于大型数据集，如果内存紧张，可以考虑在每个epoch后手动清空
         self._patient_cache.clear()
 
     def clear_cache(self):
         """
-        手动清空已加载的病人数据缓存。
-        在每个epoch结束后调用，以释放内存。
+        Manually clear the loaded patient data cache.
+        Call after each epoch to free memory.
         """
         self._patient_cache.clear()
   
@@ -103,15 +99,15 @@ def train_NN(model, train_data, test_data, batch_size=50, num_epochs=100, lr=1e-
         start_time = time.time()
         model.train()
         train_loss = 0.0
-        batch_counter = 0  # 计数器，记录当前epoch已处理的批次数
-        for X, y, labels in train_iter: # 修改：解包标签
+        batch_counter = 0 
+        for X, y, labels in train_iter: 
             X = X.to(device, non_blocking=True)
             y = y.to(device, non_blocking=True)
             labels = labels.to(device, non_blocking=True)
             optimizer.zero_grad()
             
             
-            y_hat = model(X, labels) # 
+            y_hat = model(X, labels)
             loss = loss_fn(y_hat, y)
             loss.backward()
             optimizer.step()
@@ -119,7 +115,7 @@ def train_NN(model, train_data, test_data, batch_size=50, num_epochs=100, lr=1e-
             
             batch_counter += 1
             if batch_counter % 50 == 0:
-                train_dataset.clear_cache()  # 每处理50个批次，清理一次缓存           
+                train_dataset.clear_cache()     
         train_loss /= len(train_dataset)
         train_losses.append(train_loss)
 
@@ -168,7 +164,7 @@ def train_NN(model, train_data, test_data, batch_size=50, num_epochs=100, lr=1e-
                   f"Train Loss: {train_loss:.6f} | Test Loss: {test_loss:.6f} | Best Test Loss: {best_loss:.6f}")
         else:
             print(f"Epoch [{epoch+1}/{num_epochs}] | Time: {epoch_time:.2f}s | Train Loss: {train_loss:.6f}")
-        #每个epoch过后删除掉cache    
+ 
         train_dataset.clear_cache()
         
         
@@ -186,7 +182,7 @@ def train_NN(model, train_data, test_data, batch_size=50, num_epochs=100, lr=1e-
         print(f"Best model saved to {model_path}")
     return model, train_losses, test_losses
 
-# >>> paste from original: def save_model / def load_model <<<
+
 def save_model(model, path, train_losses, test_losses, best_loss):
     torch.save({
         'model_state_dict': {k: v.cpu() for k, v in model.state_dict().items()},
@@ -203,13 +199,13 @@ def load_model(model, path):
     print(f"Model loaded from {path}")
     return model, checkpoint.get('train_losses', []), checkpoint.get('test_losses', []), checkpoint.get('best_loss', None)
 
-# >>> paste from original: def fine_tune_for_patient <<<
+
 def fine_tune_for_patient(pretrained_model, patient_data, 
                           batch_size=16, num_epochs=200, lr=1e-5, 
                           l2=1e-4, patience=25, min_delta=1e-4, output_dir=None):
     import matplotlib.pyplot as plt
     import os
-    inputs, targets, labels = patient_data # 新增：解包标签
+    inputs, targets, labels = patient_data 
     
     fine_tuned_model = type(pretrained_model)(**pretrained_model.init_args)
     fine_tuned_model.load_state_dict(pretrained_model.state_dict())
@@ -228,8 +224,8 @@ def fine_tune_for_patient(pretrained_model, patient_data,
     val_targets  = torch.tensor(val_targets, dtype=torch.float)
     val_labels = torch.tensor(val_labels, dtype=torch.long)
     
-    train_dataset = data.TensorDataset(train_inputs, train_targets, train_labels) # 新增 train_labels
-    val_dataset   = data.TensorDataset(val_inputs, val_targets, val_labels)       # 新增 val_labels
+    train_dataset = data.TensorDataset(train_inputs, train_targets, train_labels) 
+    val_dataset   = data.TensorDataset(val_inputs, val_targets, val_labels)       
     
     train_iter = data.DataLoader(train_dataset, batch_size, shuffle=True)
     val_iter   = data.DataLoader(val_dataset, batch_size, shuffle=False)
@@ -246,13 +242,13 @@ def fine_tune_for_patient(pretrained_model, patient_data,
     for epoch in range(num_epochs):
         fine_tuned_model.train()
         train_loss = 0.0
-        for X, y, batch_labels in train_iter: # 修改：解包标签
+        for X, y, batch_labels in train_iter: 
             X = X.to(device, non_blocking=True)
             y = y.to(device, non_blocking=True)
             batch_labels = batch_labels.to(device, non_blocking=True)
             
             optimizer.zero_grad()
-            y_hat = fine_tuned_model(X, batch_labels) # 修改：传递标签
+            y_hat = fine_tuned_model(X, batch_labels) 
             loss = loss_fn(y_hat, y)
             loss.backward()
             optimizer.step()
@@ -263,11 +259,11 @@ def fine_tune_for_patient(pretrained_model, patient_data,
         fine_tuned_model.eval()
         val_loss = 0.0
         with torch.no_grad():
-            for X, y, batch_labels in val_iter: # 修改：解包标签
+            for X, y, batch_labels in val_iter: 
                 X = X.to(device, non_blocking=True)
                 y = y.to(device, non_blocking=True)
                 batch_labels = batch_labels.to(device, non_blocking=True)
-                y_hat = fine_tuned_model(X, batch_labels) # 修改：传递标签
+                y_hat = fine_tuned_model(X, batch_labels) 
                 loss = loss_fn(y_hat, y)
                 val_loss += loss.item() * X.size(0)
         val_loss /= len(val_dataset)
@@ -286,18 +282,8 @@ def fine_tune_for_patient(pretrained_model, patient_data,
         if (epoch + 1) % 5 == 0 or epoch == num_epochs - 1:
             print(f"Fine-tune Epoch [{epoch+1}/{num_epochs}] | Train Loss: {train_loss:.6f} | Val Loss: {val_loss:.6f}")
 
-    # if best_model_state is not None:
-    #     fine_tuned_model.load_state_dict(best_model_state)
+    if best_model_state is not None:
+        fine_tuned_model.load_state_dict(best_model_state)
 
-    if output_dir and best_model_state is not None:
-        os.makedirs(output_dir, exist_ok=True)
-        plt.figure(figsize=(10, 6))
-        plt.plot(train_losses, label='Fine-tune Train Loss')
-        plt.plot(val_losses, label='Fine-tune Val Loss')
-        plt.xlabel('Epoch'); plt.ylabel('Loss (MSE)')
-        plt.title('Fine-tuning Curves'); plt.legend(); plt.yscale('log')
-        plt.grid(True, linestyle='--', alpha=0.7)
-        plt.savefig(os.path.join(output_dir, 'fine_tuning_curves.png'), dpi=300, bbox_inches='tight')
-        plt.close()
 
     return fine_tuned_model, train_losses, val_losses

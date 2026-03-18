@@ -11,7 +11,7 @@ import torch
 
 from vtb import (
     device, ensure_dir,
-    ANN_MLP,ANN_Transformer,  # 可换成 ANN_CNN/ANN_RNN/ANN_VAR
+    ANN_MLP,ANN_Transformer, 
     prepare_dataset,
     train_NN, load_model, plot_training_curves,
     analyze_single_patient
@@ -77,7 +77,7 @@ def main():
          
     args = parser.parse_args()
 
-    # 生成一个基于超参数的唯一输出目录
+
     folder_name = f"{args.atlas}_lr_{args.lr}_batch_{args.batch_size}_epochs_{args.num_epochs}_l2_{args.l2}_patience_{args.patience}_steps_{args.steps}_dmodel_{args.d_model}"
     args.output_dir = os.path.join(args.output_dir, folder_name)
     
@@ -86,11 +86,11 @@ def main():
     
     args.cache_dir = f"{args.cache_dir}/{args.dataset}_{args.atlas}_{args.steps}steps_{args.skip_first}skip"
     
-    # 创建输出目录
+    # Create output directory
     ensure_dir(args.output_dir)
     print(f"Saving results to: {args.output_dir}")
     
-    # 重定向输出到日志文件
+    # Redirect output to log files
     log_path = os.path.join(args.output_dir, 'training.log')
     sys.stdout = TeeStream(log_path)
     sys.stderr = TeeStream(os.path.join(args.output_dir, 'error.log'))    
@@ -101,7 +101,7 @@ def main():
             f.write(f"{arg}: {getattr(args, arg)}\n")    
 
     
-    # 根据atlas选择数据集路径
+    # Select dataset paths based on atlas
     ROI_NUM_MAPPING = {'HCP-MMP': 360, 'AAL3': 166}
     ROI_NUM = ROI_NUM_MAPPING[args.atlas]
     
@@ -120,11 +120,7 @@ def main():
         
     print(f"Using dataset(s): {args.dataset}")
     print(f"Data directories: {data_dirs}")
-        
 
-    # 保存脚本快照
-    this_file = __file__
-    shutil.copy(this_file, os.path.join(args.output_dir, 'NPI_demo.py'))
 
     print("="*50)
     print("="*50)
@@ -152,13 +148,13 @@ def main():
         test_size=0.0, cache_dir=args.cache_dir, force_reprocess=args.force_reprocess
     )
     
-    # 如果指定了使用特定的测试ID，则重新划分
+    # If specified test IDs are provided, split the dataset accordingly
     if args.use_specified_test_ids:
-        # 解析测试患者ID
+        
         specified_test_ids = [pid.strip() for pid in args.test_patient_ids.split(',') if pid.strip()]
         print(f"Using specified test patient IDs: {specified_test_ids}")
         
-        # 读取manifest文件获取所有患者信息
+        # Read manifest file to get all patient information
         import json
         manifest_path = os.path.join(args.cache_dir, f"dataset_manifest_steps{args.steps}_skip{args.skip_first}.json")
         with open(manifest_path, 'r') as f:
@@ -167,7 +163,7 @@ def main():
         patient_cache_paths = manifest['patient_cache_paths']
         all_patient_ids = [os.path.basename(p).split('_steps')[0] for p in patient_cache_paths]
         
-        # 根据指定ID划分训练集和测试集
+        # Split training and test sets based on specified IDs
         train_indices = []
         test_indices = []
         
@@ -177,7 +173,7 @@ def main():
             else:
                 train_indices.append(i)
         
-        # 重建训练集和测试集
+        # Reconstruct training and test sets
         train_data = [patient_cache_paths[i] for i in train_indices]
         test_data = [patient_cache_paths[i] for i in test_indices]
         train_patient_ids = [all_patient_ids[i] for i in train_indices]
@@ -186,7 +182,7 @@ def main():
         print(f"Manually split dataset: {len(train_patient_ids)} training patients, {len(test_patient_ids)} test patients")
         print(f"Test patients: {test_patient_ids}")
     else:
-        # 原有的随机划分方式
+        # Original random split method
         train_data, test_data, train_patient_ids, test_patient_ids = prepare_dataset(
             data_dirs, args.label_path, steps=args.steps, skip_first=args.skip_first,
             test_size=args.test_size,
@@ -229,14 +225,14 @@ def main():
         steps=args.steps,
         roi_num=ROI_NUM,
         d_model=args.d_model,          
-        nhead=args.nhead,              # 确保 d_model % nhead == 0
-        num_layers=args.num_layers,         # 2~6 之间按数据量/显存调
-        dim_feedforward=2*args.d_model,  # 2x~4x d_model
+        nhead=args.nhead,              
+        num_layers=args.num_layers,         
+        dim_feedforward=2*args.d_model,  
         dropout=0.1,
         use_layernorm = True,
         use_last_token = args.use_last_token,
         num_labels=4, 
-        num_cross_layers=args.num_cross_layers, #
+        num_cross_layers=args.num_cross_layers, 
     )
     print(f"Model created with {sum(p.numel() for p in model.parameters() if p.requires_grad):,} parameters")
 
@@ -365,13 +361,11 @@ def main():
     print("\nvtb analysis completed successfully!")
     print(f"Results saved to: {args.output_dir}")
     
-    # 在main函数结束时关闭日志
     try:
         sys.stdout.log.close()
         sys.stderr.log.close()
     except:
         pass
-    # 恢复原始输出
     sys.stdout = sys.__stdout__
     sys.stderr = sys.__stderr__
 
