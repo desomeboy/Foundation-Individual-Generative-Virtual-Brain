@@ -34,7 +34,7 @@ pip install -r requirements.txt
 If you plan to run the scripts in [`Data_process/`](https://github.com/desomeboy/Foundation-Individual-Generative-Virtual-Brain/tree/main/Data_process), you will also need several external command-line tools:
 
 - [`dcm2niix`](https://github.com/rordenlab/dcm2niix) for DICOM-to-NIfTI conversion
-- [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) utilities such as `bet`, `fast`, `flirt`, `fnirt`, `slicetimer`, `mcflirt`, `fslmaths`, and `applywarp`
+- [`FSL`](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) utilities such as `bet`, `fast`, `flirt`, `fnirt`, `slicetimer`, `mcflirt`, `fslmaths`, and `applywarp`
 
 Please make sure these tools are installed and available in your `PATH` (and `FSLDIR` is correctly configured for FSL) before running the preprocessing pipeline.
 
