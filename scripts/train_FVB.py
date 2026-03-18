@@ -11,7 +11,7 @@ import torch
 
 from vtb import (
     device, ensure_dir,
-    ANN_MLP,ANN_Transformer, 
+    ANN_MLP, VTB_Transformer,
     prepare_dataset,
     train_NN, load_model, plot_training_curves,
     analyze_single_patient
@@ -220,7 +220,7 @@ def main():
         )
     elif args.model_type == 'transformer':
         
-        model = ANN_Transformer(
+        model = VTB_Transformer(
         input_dim=input_dim,
         steps=args.steps,
         roi_num=ROI_NUM,
@@ -385,23 +385,6 @@ if __name__ == "__main__":
 
 
 
-
-# CUDA_VISIBLE_DEVICES=0 python scripts/train_FVB \
-#   --train \
-#   --batch_size 256\
-#   --num_epochs 300\
-#   --lr 5e-5 \
-#   --l2 1e-4 \
-#   --patience 100 \
-#   --steps 7 \
-#   --atlas HCP-MMP \
-#   --cache_dir /ailab/user/dusiyuan/code/Brain/EC/data_cache \
-#   --model_path /ailab/user/dusiyuan/code/Brain/EC/HCP/EC_results_num_layer_2/best_model.pth \
-#   --label_path /ailab/group/medai-share/syDu/Brain_EC/source_label.csv \
-#   --skip_first 30 --output_dir /ailab/user/dusiyuan/code/Brain/EC/HCP/EC_results_num_layer_2  --d_model 256 --num_layers 2 --num_cross_layers 1 --use_specified_test_ids
-
-
-
 #fintune iVB
 # CUDA_VISIBLE_DEVICES=0 python scripts/train_FVB \
 #   --batch_size 256\
@@ -427,4 +410,3 @@ if __name__ == "__main__":
 #   --patience 100 \
 #   --steps 7 --model_type MLP \
 #   --skip_first 30 --output_dir /ailab/user/dusiyuan/code/Brain/EC/AAL3/ANN_baseline --use_specified_test_ids
-

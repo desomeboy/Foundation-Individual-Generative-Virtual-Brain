@@ -63,7 +63,7 @@ class PositionalEncoding(nn.Module):
 
  
     
-class ANN_Transformer(nn.Module):
+class VTB_Transformer(nn.Module):
     def __init__(
         self,
         input_dim,     # = steps * roi_num
@@ -204,3 +204,6 @@ class ANN_Transformer(nn.Module):
         y = self.head(h_last)                     # [B, ROI]
 
         return y[0] if single else y    
+
+
+

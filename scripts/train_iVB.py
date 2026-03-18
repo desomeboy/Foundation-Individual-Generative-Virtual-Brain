@@ -8,7 +8,7 @@ import torch
 
 from vtb import (
     device, ensure_dir,
-    ANN_MLP, ANN_Transformer,
+    ANN_MLP, VTB_Transformer,
     load_model, analyze_single_patient
 )
 from vtb.config import *
@@ -36,7 +36,7 @@ def build_model(args, input_dim):
             output_dim=ROI_NUM
         )
     elif args.model_type == 'transformer':
-        model = ANN_Transformer(
+        model = VTB_Transformer(
             input_dim=input_dim,
             steps=args.steps,
             roi_num=ROI_NUM,
@@ -197,6 +197,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
