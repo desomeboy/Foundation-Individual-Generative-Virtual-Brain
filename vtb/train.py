@@ -1,4 +1,4 @@
-# npi/train.py
+# vtb/train.py
 import torch
 import torch.nn as nn
 import torch.utils.data as data
@@ -7,7 +7,7 @@ import time
 from .utils import device
 import pickle
 
-# npi/train.py
+# vtb/train.py
 
 import torch
 import torch.utils.data as data

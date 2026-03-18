@@ -1,46 +1,43 @@
 """
-批量将分层 DICOM (.dcm) 数据集转换为 NIfTI（.nii），并生成 CSV 索引。
-目录结构（示例）：
+Batch-convert hierarchical DICOM (.dcm) datasets to NIfTI (.nii) and generate a CSV index.
+
+Example directory layout:
 root/
   ├─ PATIENT_ID/
   │    ├─ CT/
   │    │   ├─ 2021-01-01/
-  │    │   │   └─ Ixxxx.../   # 该层应只有一个以 "I" 开头的目录
+  │    │   │   └─ Ixxxx.../   # This level should contain exactly one directory starting with "I"
   │    │   │       └─ *.dcm
   │    │   └─ 2021-06-01/ ...
   │    └─ MR/ ...
   └─ PATIENT_ID_2/ ...
 
-需求：
-- 将每个“时间”目录下唯一的 I* 序列用 dcm2niix 转为 .nii 并存放在该“时间”目录下
-- 生成 CSV：patient_id, modality, time, nifti_path
-- 若“时间”目录下发现 0 个或 >1 个 I* 子目录，提醒并跳过
-- 支持多进程加速
-- 默认输出 .nii（非 .nii.gz）
+Requirements:
+- Convert the unique I* series under each "time" directory to .nii using dcm2niix
+- Save the output .nii file inside the same "time" directory
+- Generate a CSV with columns: patient_id, modality, time, nifti_path
+- Warn and skip if a "time" directory contains 0 or more than 1 I* subdirectories
+- Support multiprocessing
+- Default output is .nii instead of .nii.gz
 
-依赖：
-- 已安装 dcm2niix 命令行工具（本脚本会通过子进程调用）
-
-用法：
-python dicom2nii_multiproc.py --root /path/to/dataset --csv /path/to/index.csv --workers 8
+Dependencies:
+- dcm2niix command-line tool must already be installed
+- This script invokes dcm2niix via subprocess
 """
-
-
 
 import argparse
 import csv
 import logging
-import os
 import re
 import subprocess
-import sys
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 
 I_DIR_PATTERN = re.compile(r"^I[\w\-.]+$", re.IGNORECASE)
 DCM_SUFFIX = ".dcm"
+
 
 @dataclass
 class TimeTask:
@@ -48,7 +45,7 @@ class TimeTask:
     modality: str
     time_name: str
     time_dir: Path
-    series_dir: Path  # Ixxxx... 目录
+    series_dir: Path  # Ixxxx... directory
 
 
 def find_i_dirs(time_dir: Path) -> List[Path]:
@@ -80,17 +77,22 @@ def discover_tasks(root: Path, overwrite: bool) -> Tuple[List[TimeTask], int, in
 
                 i_dirs = find_i_dirs(time_dir)
                 if len(i_dirs) == 0:
-                    logging.warning("未找到以 'I' 开头的图像目录：%s", time_dir)
+                    logging.warning("No image directory starting with 'I' found: %s", time_dir)
                     warns += 1
                     skipped += 1
                     continue
                 if len(i_dirs) > 1:
-                    logging.warning("发现多个以 'I' 开头的目录，已选择第一个：%s -> %s", time_dir, i_dirs[0].name)
+                    logging.warning(
+                        "Multiple directories starting with 'I' found, using the first one: %s -> %s",
+                        time_dir,
+                        i_dirs[0].name,
+                    )
                     warns += 1
+
                 series_dir = i_dirs[0]
 
                 if not has_dcm_files(series_dir):
-                    logging.warning("序列目录下未发现 .dcm 文件，已跳过：%s", series_dir)
+                    logging.warning("No .dcm files found under series directory, skipped: %s", series_dir)
                     warns += 1
                     skipped += 1
                     continue
@@ -109,22 +111,33 @@ def run_dcm2niix(dcm2niix_bin: str, series_dir: Path, out_dir: Path, out_prefix:
     out_dir.mkdir(parents=True, exist_ok=True)
     z = "y" if gz else "n"
     cmd = [
-        dcm2niix_bin, "-z", z, "-b", "n", "-v", "n",
-        "-f", out_prefix, "-o", str(out_dir), str(series_dir),
+        dcm2niix_bin,
+        "-z",
+        z,
+        "-b",
+        "n",
+        "-v",
+        "n",
+        "-f",
+        out_prefix,
+        "-o",
+        str(out_dir),
+        str(series_dir),
     ]
     try:
         proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=False)
         if proc.returncode != 0:
-            return False, None, f"dcm2niix 失败：{proc.stderr.strip() or proc.stdout.strip()}"
+            return False, None, f"dcm2niix failed: {proc.stderr.strip() or proc.stdout.strip()}"
+
         produced_nii = sorted(out_dir.glob(out_prefix + "*.nii"))
         produced_gz = sorted(out_dir.glob(out_prefix + "*.nii.gz"))
         if produced_nii:
             return True, str(produced_nii[0].resolve()), None
         if produced_gz:
-            return True, str(produced_gz[0].resolve()), "生成了 .nii.gz 而不是 .nii"
-        return False, None, "未发现生成的 NIfTI 文件"
+            return True, str(produced_gz[0].resolve()), "Generated .nii.gz instead of .nii"
+        return False, None, "No generated NIfTI file found"
     except Exception as e:
-        return False, None, f"调用 dcm2niix 异常：{e}"
+        return False, None, f"Exception while calling dcm2niix: {e}"
 
 
 def worker(task: TimeTask, dcm2niix_bin: str, gz: bool):
@@ -134,20 +147,38 @@ def worker(task: TimeTask, dcm2niix_bin: str, gz: bool):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="批量 DICOM->NIfTI 转换（多进程，dcm2niix）并生成 CSV 索引")
-    parser.add_argument("--root", type=Path, default='/ailab/group/medai-share/syDu/Brain_EC/ADNI2/ADNI', help="数据集根目录")
-    parser.add_argument("--csv", type=Path, required=False, default=Path("dataset_index.csv"), help="输出 CSV 路径（默认：./dataset_index.csv）")
-    parser.add_argument("--workers", type=int, default=32, help="并行进程数（默认=CPU核数）")
-    parser.add_argument("--overwrite", action="store_true", help="若时间目录下已存在 .nii，是否覆盖（默认不覆盖）")
-    parser.add_argument("--gz", action="store_true", help="输出 .nii.gz（默认关闭，输出 .nii）")
-    parser.add_argument("--dcm2niix", type=str, default="dcm2niix", help="dcm2niix 可执行文件路径（默认已在 PATH 中）")
-    parser.add_argument("--log", type=str, default="INFO", help="日志级别：DEBUG/INFO/WARNING/ERROR（默认 INFO）")
+    parser = argparse.ArgumentParser(
+        description="Batch DICOM-to-NIfTI conversion with multiprocessing and CSV index generation"
+    )
+    parser.add_argument("--root", type=Path, required=True, help="Dataset root directory")
+    parser.add_argument(
+        "--csv",
+        type=Path,
+        required=False,
+        default=Path("dataset_index.csv"),
+        help="Output CSV path (default: ./dataset_index.csv)",
+    )
+    parser.add_argument("--workers", type=int, default=32, help="Number of worker processes (default: 32)")
+    parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Overwrite when .nii already exists under the time directory (default: disabled)",
+    )
+    parser.add_argument("--gz", action="store_true", help="Output .nii.gz instead of .nii (default: disabled)")
+    parser.add_argument(
+        "--dcm2niix",
+        type=str,
+        default="dcm2niix",
+        help="Path to the dcm2niix executable (default: resolved from PATH)",
+    )
+    parser.add_argument("--log", type=str, default="INFO", help="Logging level: DEBUG/INFO/WARNING/ERROR")
+
     args = parser.parse_args()
 
     logging.basicConfig(level=getattr(logging, args.log.upper(), logging.INFO), format="%(levelname)s: %(message)s")
 
     tasks, skipped0, warns0 = discover_tasks(args.root, overwrite=args.overwrite)
-    logging.info("发现任务 %d 个，跳过 %d 个，警告 %d 个", len(tasks), skipped0, warns0)
+    logging.info("Discovered %d tasks, skipped %d, warnings %d", len(tasks), skipped0, warns0)
 
     results = []
     total_success = 0
@@ -175,7 +206,13 @@ def main():
             else:
                 skipped += 1
                 warns += 1
-                logging.warning("转换失败：(%s/%s/%s) %s", task.patient_id, task.modality, task.time_name, msg or "")
+                logging.warning(
+                    "Conversion failed: (%s/%s/%s) %s",
+                    task.patient_id,
+                    task.modality,
+                    task.time_name,
+                    msg or "",
+                )
 
     args.csv.parent.mkdir(parents=True, exist_ok=True)
     with args.csv.open("w", newline="", encoding="utf-8") as f:
@@ -184,8 +221,8 @@ def main():
         for row in sorted(results, key=lambda r: (r[0], r[1], r[2], r[3])):
             writer.writerow(row)
 
-    logging.info("完成。成功: %d，跳过: %d，警告: %d", total_success, skipped, warns)
-    logging.info("CSV 索引：%s", args.csv.resolve())
+    logging.info("Done. Success: %d, skipped: %d, warnings: %d", total_success, skipped, warns)
+    logging.info("CSV index: %s", args.csv.resolve())
 
 
 if __name__ == "__main__":

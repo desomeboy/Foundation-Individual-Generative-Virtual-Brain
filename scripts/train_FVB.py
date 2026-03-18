@@ -1,5 +1,3 @@
-# scripts/train_npi.py
-
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import pickle
@@ -11,14 +9,14 @@ import time
 import torch
 
 
-from npi import (
+from vtb import (
     device, ensure_dir,
     ANN_MLP,ANN_Transformer,  # 可换成 ANN_CNN/ANN_RNN/ANN_VAR
     prepare_dataset,
     train_NN, load_model, plot_training_curves,
     analyze_single_patient
 )
-from npi.config import *
+from vtb.config import *
 
 import hashlib
 
@@ -129,7 +127,6 @@ def main():
     shutil.copy(this_file, os.path.join(args.output_dir, 'NPI_demo.py'))
 
     print("="*50)
-    print("NPI (Neural Perturbation Inference) Analysis")
     print("="*50)
     print(f"Data directory: {data_dirs}")
     print(f"Output directory: {args.output_dir}")
@@ -365,7 +362,7 @@ def main():
     else:
         print("\nStep 4: No test patients to analyze")
 
-    print("\nNPI analysis completed successfully!")
+    print("\nvtb analysis completed successfully!")
     print(f"Results saved to: {args.output_dir}")
     
     # 在main函数结束时关闭日志
@@ -382,7 +379,7 @@ if __name__ == "__main__":
     main()
 
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/train_npi.py \
+# CUDA_VISIBLE_DEVICES=0 python scripts/train_FVB \
 #   --train \
 #   --batch_size 256\
 #   --num_epochs 300\
@@ -395,7 +392,7 @@ if __name__ == "__main__":
 
 
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/train_npi.py \
+# CUDA_VISIBLE_DEVICES=0 python scripts/train_FVB \
 #   --train \
 #   --batch_size 256\
 #   --num_epochs 300\
@@ -412,7 +409,7 @@ if __name__ == "__main__":
 
 
 #fintune iVB
-# CUDA_VISIBLE_DEVICES=0 python scripts/train_npi.py \
+# CUDA_VISIBLE_DEVICES=0 python scripts/train_FVB \
 #   --batch_size 256\
 #   --num_epochs 300\
 #   --lr 5e-5 \
@@ -428,7 +425,7 @@ if __name__ == "__main__":
 
 
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/train_npi.py \
+# CUDA_VISIBLE_DEVICES=0 python scripts/train_FVB \
 #   --batch_size 512\
 #   --num_epochs 100\
 #   --lr 1e-3 \

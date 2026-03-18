@@ -1,4 +1,3 @@
-# scripts/test_npi.py
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
@@ -7,12 +6,12 @@ import time
 import pickle
 import torch
 
-from npi import (
+from vtb import (
     device, ensure_dir,
     ANN_MLP, ANN_Transformer,
     load_model, analyze_single_patient
 )
-from npi.config import *
+from vtb.config import *
 
 class TeeStream:
     def __init__(self, file_path):
@@ -35,7 +34,6 @@ def build_model(args, input_dim):
             output_dim=ROI_NUM
         )
     elif args.model_type == 'transformer':
-        # 注意：参数需与 train_npi.py 中保持一致
         model = ANN_Transformer(
             input_dim=input_dim,
             steps=args.steps,
@@ -47,7 +45,7 @@ def build_model(args, input_dim):
             dropout=0.1,
             use_layernorm=True,
             use_last_token=args.use_last_token,
-            num_labels=4,            # 与 train_npi.py 保持一致
+            num_labels=4,           
             num_cross_layers=args.num_cross_layers
         )
         
@@ -57,7 +55,7 @@ def build_model(args, input_dim):
     return model
 
 def main():
-    parser = argparse.ArgumentParser(description="Test a pre-trained NPI model on a single patient's CSV")
+    parser = argparse.ArgumentParser(description="Test a pre-trained model on a single patient's CSV")
     # 路径与基础参数
     parser.add_argument('--patient_csv', type=str, required=True, help='单个新病人的 CSV 文件路径')
     parser.add_argument('--model_path', type=str, default=os.path.join(DEFAULT_OUTPUT_DIR, 'best_model.pth'))
@@ -97,7 +95,7 @@ def main():
     sys.stderr = TeeStream(os.path.join(args.output_dir, 'error.log'))
 
     print("="*60)
-    print("NPI Single-Patient Test")
+    print("vtb Single-Patient Test")
     print("="*60)
     print(f"Patient CSV : {args.patient_csv}")
     print(f"Model path  : {args.model_path}")
@@ -108,9 +106,9 @@ def main():
     print("="*60)
 
     # ---------- Step 1: 读取并预处理该病人 CSV ----------
-    # 复用 npi.data.load_patient_data（含 z-score、multi2one、维度检查、labels 填充）
-    from npi.data import load_patient_data
-    from npi.utils import set_seed
+    # 复用 vtb.data.load_patient_data（含 z-score、multi2one、维度检查、labels 填充）
+    from vtb.data import load_patient_data
+    from vtb.utils import set_seed
     set_seed(42)
 
     start = time.time()
@@ -142,7 +140,7 @@ def main():
     ensure_dir(zero_dir)
     print(f"\n[Zero-shot] Analyzing patient {patient_id} ...")
     patient_data_input = (inputs, targets, labels)
-    from npi.analysis import analyze_single_patient
+    from vtb.analysis import analyze_single_patient
     # fine_tune=False：只评估，不更新权重
     empirical_FC, model_FC_matrix, NPI_EC = analyze_single_patient(
         pretrained_model=model,

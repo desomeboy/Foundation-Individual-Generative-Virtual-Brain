@@ -1,4 +1,4 @@
-# npi/analysis.py
+
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,7 +8,7 @@ from .metrics import corrcoef, model_FC as _model_FC, model_EC as _model_EC, fla
 from .utils import ensure_dir,device
 import torch
 from sklearn.metrics import mean_absolute_error, r2_score
-from npi.vis_tool import *
+from vtb.vis_tool import *
 import csv
 
 def safe_corrcoef(matrix):

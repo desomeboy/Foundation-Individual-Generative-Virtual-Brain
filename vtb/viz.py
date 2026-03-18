@@ -1,4 +1,4 @@
-# npi/viz.py
+# vtb/viz.py
 import matplotlib.pyplot as plt
 
 # >>> paste from original: def plot_training_curves <<<
