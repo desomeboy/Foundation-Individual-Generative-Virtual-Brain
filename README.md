@@ -85,7 +85,7 @@ bash batch_iVB_final.sh
 
 This step fine-tunes the pre-trained model for each clinical subject and saves the corresponding VTB outputs, including subject-level anomaly/distortion features.
 
-### 3. Prognosis Evaluation
+### 3. Response prediction
 
 Use the scripts under [`predict_exp/`](https://github.com/desomeboy/Foundation-Individual-Generative-Virtual-Brain/tree/main/predict_exp) for downstream prediction tasks. For example:
 
