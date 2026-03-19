@@ -96,8 +96,9 @@ def plot_region_time_series(empirical_targets, predicted_targets, region_dict, p
 def analyze_single_patient(pretrained_model, patient_data, patient_id, steps, output_dir="./results", 
                            neworder=None, fig_size=(12, 10), fine_tune=True, fine_tune_params=None, 
                            max_analysis_steps=1200,
-                           healthy_csv_path="/ailab/group/medai-share/syDu/Brain_EC/HCP/HCP_AAL3_csv_out/187547_AAL3_ts.csv",
-                           healthy_model_path="/ailab/user/dusiyuan/code/Brain/EC/AAL3/EC_results_num_layer_2/AAL3_lr_5e-05_batch_256_epochs_300_l2_0.0001_patience_100_steps_7_dmodel_256/patient_models/model_187547_AAL3_ts.pth"):
+                           healthy_csv_path="", # Brain dynamics in healthy individuals
+                           healthy_model_path="" # Healthy virtual brain model
+                           ):
  
     
     ensure_dir(output_dir)
