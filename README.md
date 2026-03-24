@@ -13,7 +13,7 @@ Overview of the proposed framework: a generative virtual brain paradigm transfer
 
 #### 2. Model Architecture
 Architecture of the generative virtual brain model.
-![Architecture of the generative virtual brain model](Figure/model_sturcture.png)
+![Architecture of the generative virtual brain model](Figure/model_structure.png)
 
 #### 3. Workflow & Counterfactual Analysis
 Schematic illustration of the iVB-based workflow for predicting neuromodulation response and diagram depicting the calculation of the Counterfactual Brain Mismatch.
